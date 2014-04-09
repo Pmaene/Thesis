@@ -1,0 +1,77 @@
+% 
+% Systemen voor Online Verkiezingen
+% @author Pieter Maene <pieter.maene@student.kuleuven.be>
+%
+
+\documentclass[master=elt,masteroption=im,inputenc=utf8]{kulemt}
+\setup{title={Systemen voor Online Verkiezingen},
+  subtitle={},
+  author={Pieter Maene},
+  promotor={Bart Preneel},
+  assessor={Vincent Rijmen \and Luc Van Eycken},
+  assistant={Jens Hermans \and Frederik Vercauteren}
+}
+
+\setup{filingcard,
+  translatedtitle={Systems for Online Elections},
+  udc=621.3,
+  shortabstract={}
+}
+
+% Kies de fonts voor de gewone tekst, bv. Latin Modern
+\setup{font=lm}
+
+% Hier kun je dan nog andere pakketten laden of eigen definities voorzien
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{eurosym}
+\usepackage{float}
+\usepackage{kulirx}
+\usepackage{multirow,bigstrut}
+\usepackage{pdfpages}
+
+% Dit mag verwijderd worden voor de af te drukken versie.
+\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
+
+% Verwijder de "%" op de volgende lijn als je de kaft wil afdrukken
+%\setup{coverpageonly}
+
+% Customisations
+\graphicspath{{./images/}}
+
+\setlength{\parindent}{0pt}
+\setlist[description]{topsep=0.5em, itemsep=0.25em, leftmargin=2em, labelindent=2em}
+
+\headstyles{kulirman}
+
+% Alias
+%\include{alias}
+
+% Document
+\begin{document}
+
+  % Alias
+  \include{alias}
+
+  \tableofcontents*
+
+  \renewcommand{\abstractname}{Inleiding}
+  \begin{abstract}
+    %TODO Inleiding
+  \end{abstract}
+
+  \mainmatter
+
+  % Chapters
+  \include{chapters/00-literatuurstudie}
+
+  \backmatter
+
+  % Bibliography
+  \nocite{*}
+
+  \bibliographystyle{plain}
+  \bibliography{references}
+
+\end{document}

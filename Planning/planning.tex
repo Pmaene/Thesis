@@ -1,0 +1,55 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anysize}
+\usepackage[dutch]{babel}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newcommand{\npar}{\par \vspace{2.3ex plus 0.3ex minus 0.3ex} \noindent}
+
+\marginsize{2.5cm}{2.5cm}{1.5cm}{1.5cm}
+
+\setlength{\parindent}{0pt}
+\setlist[description]{topsep=0.5em, itemsep=0.25em, leftmargin=2em, labelindent=2em}
+
+\title{Thesisplanning}
+\author{Pieter Maene}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Doelen}
+
+Het doel van mijn thesis over \textit{Systemen voor Online Verkiezingen} is het opstellen van procedures om een online verkiezing te organiseren. Hierbij is het idee dat deze gevolgd moeten kunnen worden door een zo breed mogelijk publiek. Het Helios project zal gebruikt worden als voting server. Om praktische ervaring op te doen met het organiseren van een online verkiezing, willen we Helios ook gebruiken tijdens de kringverkiezingen van een nog te bepalen studentenorganisatie. Daarnaast is er ook een literatuurstudie naar de verschillende fysieke stemsystemen die bestaan.
+
+\npar Concreet is het de bedoeling om verder te bouwen aan Helios en de interface gebruiksvriendelijker te maken voor mensen zonder speciale cryptografische kennis. Daarnaast voert Helios een groot aantal cryptografische bewerkingen uit aan de gebruikerskant. Met het oog op de nieuwe WebCrypto standaard, is het de bedoeling om zoveel mogelijk van deze operaties te vervangen door een polyfill.\footnote{Web Cryptography API, \href{http://www.w3.org/TR/WebCryptoAPI/}{http://www.w3.org/TR/WebCryptoAPI/}} We kiezen voor een polyfill omdat de standaard nog een working draft van W3C is op dit moment. Bijgevolg zijn er nog maar weinig browsers die al een implementatie klaar hebben.
+
+\section*{Milestones}
+
+\subsection*{Eerste Semester}
+
+Tijdens het eerste semester zal ik me voornamelijk concentreren op de literatuurstudie. Daarnaast is het de bedoeling om bekend te worden met de structuur en de code van Helios.
+
+\begin{description}
+    \item[8 december 2013] Literatuurstudie
+\end{description}
+
+\subsection*{Tweede Semester}
+
+Het grootste deel van het werk zal tijdens het tweede semester gebeuren. Dit is dus enerzijds het implementeren van de WebCrypto polyfill en anderzijds het uitwerken van de procedures en aanpassen van de interface.
+
+\begin{description}
+    \item[30 maart 2014] Implementatie
+    \item[28 april - 9 mei 2014] Kringverkiezing
+    \item[26 mei 2014] Eerste Tekst
+    \item[6 juni 2014] Deadline
+\end{description}
+
+\section*{Tijdsbesteding}
+
+Tijdens het eerste semester zou ik ongeveer 18 uur/week aan de thesis moeten werken (6 STP). Tijdens het tweede semester zou dit zo'n 40 uur zijn (18 STP). De reden voor deze verdeling is de verdeling van de andere vakken over de twee semesters: in het eerste volg ik nog 24 STP aan vakken, terwijl dat er in het tweede semester nog maar zes zijn.
+
+\end{document}
