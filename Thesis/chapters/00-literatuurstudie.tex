@@ -90,9 +90,9 @@ ThreeBallot is een stemsysteem dat ontworpen werd door Ronald Rivest in 2006. He
 De drie delen waaruit het stembiljet bestaat, kunnen ofwel op één blad geprint worden ofwel op meerdere met perforaties ertussen. De drie delen zijn identiek, op een willekeurige identifier na. De drie IDs op een multi-ballot hebben bovendien geen enkel verband met elkaar of met deze op de andere. In \ref{fig:ls:threeballot} wordt een voorbeeld van een multi-ballot getoond.
 
 \begin{figure}
-	\center{\includegraphics[width=0.5\linewidth]{ls/threeballot.png}}
-	\caption{Multi-Ballot\cite{rivest_threeballot}}
-	\label{fig:ls:threeballot}
+  \center{\includegraphics[width=0.5\linewidth]{ls/threeballot.png}}
+  \caption{Multi-Ballot\cite{rivest_threeballot}}
+  \label{fig:ls:threeballot}
 \end{figure}
 
 \npar Bij het invullen van het multi-ballot gelden de volgende regels. Elke rij van drie bolletjes komt overeen met \'e\'en kandidaat. Om voor een kandidaat te stemmen, moet de kiezer exact twee bolletjes inkleuren. Om tegen te stemmen, moet er \'e\'en bolletje aangeduid worden. In elke rij moet exact \'e\'en of twee bolletjes ingevuld zijn, anders is het biljet ongeldig. Hoe de verschillende delen ingevuld zijn, maakt hierbij niet uit.
@@ -142,9 +142,9 @@ Het ThreeBallot systeem is veel complexer dan de manier waarop nu gestemd wordt.
 Scratch-Card\cite{randell_ryan_voting_technologies_and_trust} maakt gebruik van een speciaal biljet dat makkelijk in twee gedeeld kan worden (\ref{fig:ls:scratch-card}). Belangrijk is dat de kandidaten op elk biljet in een willekeurige volgorde moeten staan. Een kiezer moet een willekeurig biljet trekken. Na het stemmen moet de kiezer het linkerdeel vernietigen. Hij kan een kopie van het rechterdeel als ticket mee naar huis nemen.
 
 \begin{figure}
-	\center{\includegraphics[width=0.5\linewidth]{ls/scratch-card.png}}
-	\caption{Scratch-Card biljet\cite{randell_ryan_voting_technologies_and_trust}}
-	\label{fig:ls:scratch-card}
+  \center{\includegraphics[width=0.5\linewidth]{ls/scratch-card.png}}
+  \caption{Scratch-Card biljet\cite{randell_ryan_voting_technologies_and_trust}}
+  \label{fig:ls:scratch-card}
 \end{figure}
 
 \npar Op het rechterdeel van het biljet is onderaan een kraslaag aangebracht. Bovenop deze laag is het unieke ID (RIN) van het biljet geprint, dat de kiezer later kan gebruiken om zijn stem op het bulletin board terug te controleren. Bovendien verbergt deze laag een vooraf geprinte code die de volgorde van de kandidaten aangeeft (OCN). Bij het tellen wordt deze laag verwijderd en tegelijk verdwijnt ook het RIN van het biljet. Het is zeer belangrijk dat de RIN en OCN volledig ongecorreleerd zijn, want anders zou achterhaald kunnen worden van wie de stem is.
@@ -173,15 +173,15 @@ Secret-Ballot Receipts werden in 2004 gepubliceerd door David Chaum. De kiezer z
 \npar Door de twee kanten van elkaar los te maken, wordt de afbeelding op het strookje schijnbaar willekeurig. Het doorgelaten licht op de plaatsen waar geen van beide kanten bedrukt is, maakte de stem zichtbaar. Geen van beide lagen bevat dus informatie over hoe gestemd is. Het laatst geprinte stukje is verschillend omdat daar wel tekst opstaat die ook na het scheiden van de twee lagen nog gelezen kan worden. Op de ene kant wordt duidelijk aangegeven dat deze bijgehouden moet worden en op de andere dat hij afgegeven moet worden. Deze laatste wordt duidelijk zichtbaar voor de kiezer vernietigd.
 
 \begin{figure}
-	\center{\includegraphics[width=0.5\linewidth]{ls/secret-ballot_vote.png}}
-	\caption{Strookje met optische ge\"encrypteerde stem\cite{chaum_secret_ballot}}
-	\label{fig:ls:secret_ballot_vote}
+  \center{\includegraphics[width=0.5\linewidth]{ls/secret-ballot_vote.png}}
+  \caption{Strookje met optische ge\"encrypteerde stem\cite{chaum_secret_ballot}}
+  \label{fig:ls:secret_ballot_vote}
 \end{figure}
 
 \begin{figure}
-	\center{\includegraphics[width=0.5\linewidth]{ls/secret-ballot_receipt.png}}
-	\caption{Laatste stukje ticket met beide kanten nog samen\cite{chaum_secret_ballot}}
-	\label{fig:ls:secret_ballot_receipt}
+  \center{\includegraphics[width=0.5\linewidth]{ls/secret-ballot_receipt.png}}
+  \caption{Laatste stukje ticket met beide kanten nog samen\cite{chaum_secret_ballot}}
+  \label{fig:ls:secret_ballot_receipt}
 \end{figure}
 
 \npar De computer houdt zelf een digitale versie van het volledige ticket bij en verwijdert ook de data van de andere kant. Deze data wordt na het aflopen van de stemming ge\"upload naar een online bulletin board. Omdat het ticket geen informatie bevat over de stem van de kiezer, kan hij dit aan iedereen tonen zonder zijn stem openbaar te maken. Door het ticket te scannen kan eenvoudig vastgesteld worden of het authentiek is. Bij een ongeldige controle is men dus zeker dat de apparatuur niet correct gewerkt heeft.
@@ -204,9 +204,9 @@ Scratch \& Vote werd in 2006 ontworpen door Ben Adida en Ronald L. Rivest. Het i
 \npar Door aan te melden op het bulletin board, kan de kiezer controleren of zijn biljet correct gescand werd. Omdat alle gescande biljetten online geplaatst worden, kan iedereen nagaan of de cijfertekst van de eindtelling correct is.
 
 \begin{figure}
-	\center{\includegraphics[width=0.5\linewidth]{ls/scratch_and_vote_ballot.png}}
-	\caption{Scratch \& Vote biljet\cite{adida_rivest_scratch_and_vote}}
-	\label{fig:ls:scratch_and_vote_ballot}
+  \center{\includegraphics[width=0.5\linewidth]{ls/scratch_and_vote_ballot.png}}
+  \caption{Scratch \& Vote biljet\cite{adida_rivest_scratch_and_vote}}
+  \label{fig:ls:scratch_and_vote_ballot}
 \end{figure}
 
 \npar Voor de encryptie wordt gebruik gemaakt van het Paillier public key cryptosystem. Dit systeem heeft een additief homomorfisme door het vermenigvuldigen van de cijferteksten. Het tellen van de stemmen bij een verkiezing met meerdere kandidaten zou echter niet mogelijk zijn zonder gebruik te maken van een multi-counter. Het aantal beschikbare bits voor de leesbare tekst wordt onderverdeeld in verschillende tellers. Hierbij worden voldoende bits beschikbaar gemaakt voor elke teller zodat ze niet in elkaar kunnen overlopen.
@@ -216,9 +216,9 @@ Scratch \& Vote werd in 2006 ontworpen door Ben Adida en Ronald L. Rivest. Het i
 \npar Daarnaast worden ook bewijzen opgesteld die aantonen dat de biljetten zelf correct zijn. Omdat deze bewijzen te lang zijn om op de biljetten te printen, worden ze voor de start van de verkiezing ge\"upload naar het bulletin board. Ze worden tijdens het tellen van de stemmen gebruikt om te verzekeren dat elk biljet maar \'e\'en stem uitbrengt per verkiezing. Om de kiezer te garanderen dat zijn biljet tijdens het tellen niet ongeldig verklaard zal worden, wordt ook een offici\"ele lijst van alle geldige biljetten voorzien. De kiezer kan dan eenvoudig nagaan of zijn biljet hierop voorkomt.
 
 \begin{figure}[H]
-	\center{\includegraphics[width=0.5\linewidth]{ls/scratch_and_vote_encryption.png}}
-	\caption{Scratch \& Vote encryptie\cite{adida_rivest_scratch_and_vote}}
-	\label{fig:ls:scratch_and_vote_encryption}
+  \center{\includegraphics[width=0.5\linewidth]{ls/scratch_and_vote_encryption.png}}
+  \caption{Scratch \& Vote encryptie\cite{adida_rivest_scratch_and_vote}}
+  \label{fig:ls:scratch_and_vote_encryption}
 \end{figure}
 
 \npar De 2D barcode op elk biljet encodeert de willekeurige volgorde van de cijferteksten voor de verschillende kandidaten samen met een hash van de publieke sleutel (\ref{fig:ls:scratch_and_vote_encryption}). De startwaarde van de teller van elke kandidaat wordt samen met een willekeurige waarde ge\"encrypteerd. Zo heeft elk biljet een unieke cijfertekst voor elke kandidaat. Deze willekeurige waarden worden verborgen door de kraslaag. De startwaarden van de tellers vormen samen met de publieke sleutel de gepubliceerde parameters. Samen met de willekeurige waarden kunnen ze dus gebruikt worden om de volgorde van de kandidaten op het biljet te achterhalen. Daarom is het belangrijk dat dit stukje van het biljet vernietigd wordt.
