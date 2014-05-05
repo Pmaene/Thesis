@@ -42,7 +42,7 @@ De eerste stap is het aanmaken van de verkiezing. Hier moet eerst de basisinform
   \label{fig:proc:elections_new}
 \end{figure}
 
-%TODO Verwijzing naar BTC in Helios
+%TODO Referentie naar BTC in Helios
 
 \npar Vervolgens kunnen een aantal belangrijke functies aan- of uitgezet worden. Wanneer aliassen gebruikt worden, dan worden de namen van de kiezers verborgen in het publieke ballot tracking center. Het is ook mogelijk om de antwoorden in een random volgorde op het biljet te laten zetten. Bij een geheime verkiezing kan alleen bekeken worden door de geregistreerde kiezers. Hier moet ook aangegeven worden of threshold encryptie gebruikt zal worden.
 
@@ -50,7 +50,7 @@ De eerste stap is het aanmaken van de verkiezing. Hier moet eerst de basisinform
 
 \subsection{Trustees}
 
-%TODO Verwijzing naar Dashboard in Interface
+%TODO Referentie naar Dashboard in Interface
 
 Eens de nieuwe verkiezing aangemaakt is, moeten de trustees toegevoegd worden. Deze stap is eerst gezet in de procedure omdat hij veruit de meeste tijd in beslag neemt. De beheerder van de verkiezing moet eerst alle trustees aanmaken. De trustee krijgt dan ook meteen een link toegestuurd via e-mail naar zijn trustee dashboard waar hij al zijn acties zal moeten uitvoeren.
 
@@ -106,10 +106,20 @@ Ook deze stap werd reeds volledig voorbereid (\ref{sec:proc:voorbereiding:vragen
   \label{fig:proc:voters_upload}
 \end{figure}
 
-\subsection{Bevriezen van de verkiezing}
+\subsection{Bevriezen van het stembilhet}
 
-
+Wanneer alle voorgaande informatie ingegeven is en de sleutelceremonie afgerond is, kan het stembiljet bevroren worden. Wanneer er geen tijdsstip gegeven is waarop de verkiezing moet starten, kunnen de kiezers onmiddellijk beginnen stemmen. Wanneer geen einddatum opgegeven is, blijft ze open totdat de beheerder ze sluit.
 
 \subsection{Telling}
 
+%TODO Referentie naar Homomorfisme in Helios
 
+De stemming kan steeds manueel afgesloten worden door het telproces te starten. De stemmen worden dan homomorf samengeteld in een geëncrypteerd resultaat. Vooraleer dit gedecrypteerd kan worden, moeten we opnieuw wachten op de trustees.
+
+\npar Wanneer geen threshold encryptie gebruikt wordt, moeten alle trustees nu hun decryptiefactor berekenen en uploaden. Wordt dit wel gebruikt, dan moeten slechts $k$ van de $n$ trustees dit doen. Zodra alle nodige decryptiefactoren beschikaar zijn, kan de beheerder het resultaat vrijgeven. Indien geen publicatiedatum opgegeven werd, is het resultaat dan voor iedereen beschikbaar. Anders kan de beheerder het resultaat wel reeds bekijken, maar wordt het pas gepubliceerd op die datum.
+
+\begin{figure}
+  \center{\includegraphics[width=0.9\linewidth]{proc/elections_admin.png}}
+  \caption{Admin}
+  \label{fig:proc:elections_admin}
+\end{figure}
