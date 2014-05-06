@@ -4,8 +4,7 @@
 %
 
 \documentclass[master=elt,masteroption=im,inputenc=utf8]{kulemt}
-\setup{title={Gebruiksvriendelijkheid en praktische toepassing van het Helios online verkiezingssysteem},
-  subtitle={},
+\setup{title={Online verkiezingen in de praktijk: verbetering en toepassing van het Helios verkiezingssysteem},
   author={Pieter Maene},
   promotor={Bart Preneel},
   assessor={Vincent Rijmen \and Luc Van Eycken},
@@ -13,7 +12,7 @@
 }
 
 \setup{filingcard,
-  translatedtitle={Usability and Practical Application of the Helios Online Voting System},
+  translatedtitle={Online Elections in Practice: Improvement and Application of the Helios Voting System},
   udc=621.3,
   shortabstract={}
 }
@@ -54,25 +53,31 @@
   % Alias
   \include{alias}
 
+  \begin{preface}
+    %TODO Voorwoord
+  \end{preface}
+
   \tableofcontents*
   \listoffiguresandtables
 
-  \renewcommand{\abstractname}{Inleiding}
   \begin{abstract}
-    %TODO Inleiding
+    %TODO Samenvatting
   \end{abstract}
 
   \mainmatter
 
   % Chapters
-  \include{chapters/00-literatuurstudie}
+  \include{chapters/00-inleiding}
   
-  \include{chapters/10-helios}
-  \include{chapters/11-procedure}
-  \include{chapters/12-interface}
-  \include{chapters/13-kringverkiezing}
-  \include{chapters/14-key_storage}
-  \include{chapters/15-webcrypto}
+  \include{chapters/10-literatuurstudie}
+  
+  \include{chapters/20-helios}
+  \include{chapters/21-procedure}
+  \include{chapters/22-interface}
+  \include{chapters/23-kringverkiezing}
+  \include{chapters/24-key_storage}
+  \include{chapters/25-webcrypto}
+  \include{chapters/26-besluit}
 
   \backmatter
 
