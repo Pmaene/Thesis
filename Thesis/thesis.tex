@@ -28,6 +28,7 @@
 \usepackage{float}
 \usepackage{kulemtx}
 \usepackage{multirow,bigstrut}
+\usepackage[np,autolanguage]{numprint}
 \usepackage{pdfpages}
 
 % De optie colorlinks mag verwijderd worden voor de af te drukken versie
@@ -57,7 +58,9 @@
     %TODO Voorwoord
   \end{preface}
 
-  \tableofcontents*
+  \kulemtmanToC
+  \tableofcontents
+  
   \listoffiguresandtables
 
   \begin{abstract}
