@@ -1,5 +1,8 @@
 sources/
 
+## Texpad:
+.texpadtmp
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

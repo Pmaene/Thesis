@@ -73,7 +73,7 @@ Tijdens het testen kwamen geen functionele problemen naar voor met het stemhokje
 
 \npar Om dit proces te vereenvoudigen, werd de laatste stap van het stemhokje verwijderd. Na het bevestigen van zijn keuzes, wordt de kiezer onmiddellijk doorgestuurd naar het uploaden buiten het stemhokje. De audit van een stem werd verplaatst naar het scherm waar de keuzes bevestigd moet worden. Omdat de stem hiervoor reeds ge\"encrypteerd moet zijn, wordt dit nu gedaan na het beantwoorden van de laatste vraag. Het grootste nadeel hierbij is dat de encryptie opnieuw uitgevoerd moet worden wanneer de kiezer zijn stem wijzigt. In de huidige implementatie gaat dit echter al relatief vlot in moderne browsers. In de toekomst zal dit waarschijnlijk nog sneller kunnen door gebruik te maken van de Web Cryptography API (\ref{chap:web_cryptography_api}).
 
-%TODO Test herhaald na aanpassingen.
+\npar Na het aanpassen van het stemhokje werd deze test herhaald om zeker te zijn dat alles nog correct werkte. Ook tijdens deze test kwamen nog vragen om enkele kleine dingen aan te passen.
 
 \subsection{Stresstest}
 
@@ -83,6 +83,8 @@ Er is elk jaar een opkomst van ongeveer 25\% bij de kringverkiezing van VTK, wat
 
 \section{Stemdag}
 \label{sec:kv:stemdag}
+
+De stemming zelf vond plaats op donderdag 8 mei 2014. Oorspronkelijk stond ze open van 7u00 tot 19u00. Omdat de communicatie 's ochtends traag op gang gekomen was, werd dit verlengd tot 20u00, wat ondersteund wordt door Helios. De trustees en het threshold schema waren dezelfde als tijdens de test (\ref{sec:kv:beheer}). De vragen en het resultaat worden getoond in \ref{fig:kv:result}. In totaal hebben 768 mensen hun stem uitgebracht. Zowel bij het stemmen als het decrypteren van het resultaat waren er geen problemen.
 
 \begin{figure}
   \center{\includegraphics[width=\linewidth]{kv/result.png}}
