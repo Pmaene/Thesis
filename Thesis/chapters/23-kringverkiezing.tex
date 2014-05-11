@@ -32,12 +32,31 @@ Helios publiceert het resultaat van de verkiezing standaard van zodra het bekend
 
 Om er zeker van te zijn dat het systeem op de stemdag zelf goed zou functioneren, werd het na de installatie op de server getest. Hierbij werd niet alleen nagegaan of alles technisch in orde was, maar werd ook feedback gevraagd over de gebruiksvriendelijkheid. 
 
+\npar De testen van het beheer (\ref{sec:kv:beheer}) en het stemhokje (\ref{sec:kv:stemhokje}) werden uitgevoerd in de context van de verkiezingen bij VTK, die hier wat verder belicht wordt. Het Neutraal Comit\'e, dat alles in goede banen leidt, wordt bij VTK aangeduid met VKK. De huidige praeses is hier steeds de voorzitter van. Hij wordt geholpen door een aantal vrijwilligers uit het huidige praesidium die geen kandidaat zijn. Er zijn twee verschillende types kiesploegen bij VTK. Enerzijds zijn er de serieuze ploegen die opkomen als praesidium voor het volgende jaar en anderzijds de lolploegen die niet als vertegenwoordigers verkiesbaar zijn.
+
 \subsection{Beheer}
 \label{sec:kv:beheer}
 
-%TODO Trustees
+%TODO Andere Referentie naar Interface Hoofdstuk
 
-\npar Om het tellen van de stemmen te testen, werd een verkiezing aangemaakt met de echte vragen. Vervolgens werd aan de 60 leden van het huidige praesidium gevraagd om een stem uit te brengen.
+Aangezien hier de meeste veranderingen gebeurd zijn (\ref{chap:interface}), moest zeker dit deel goed getest worden. Hiervoor werd een testverkiezing aangemaakt door de voorzitter van VKK. Hierbij werden de echte trustees en vragen gebruikt. De echte kieslijsten werden vervangen door een lijst met de huidige praesidiumleden.
+
+%TODO Referentie naar Secret Sharing
+
+\npar De trustees voor de verkiezing zijn de zes leden van VKK. Als threshold schema werd ervoor gekozen dat drie van hen nodig zijn om het resultaat te decrypteren. Tijdens deze test kwamen echter twee fouten naar boven. Ten eerste werd de Lagrange-interpolatie niet over het eindig veld berekend, maar met een rationele breuk. Wanneer slechts twee trustees gebruikt werden, was dit geen probleem omdat de noemer dan gelijk is aan \'e\'en. Dit kon eenvoudig opgelost worden door de teller en noemer voor het hele product apart te berekenen (\ref{eq:kv:modular_lagrange_numerator} en \ref{eq:kv:modular_lagrange_denominator}). Vervolgens wordt de teller vermenigvuldigd met de modulaire inverse van de noemer (\ref{eq:kv:modular_lagrange_result}).
+
+\begin{align}
+  \label{eq:kv:modular_lagrange_numerator} 
+  N & = \prod_{j=1, j\not=i}^k{-x_j} & \mod q \\
+  \label{eq:kv:modular_lagrange_denominator}
+  D & = \prod_{j=1, j\not=i}^k{(x_i - x_j)} & \mod q \\
+  \label{eq:kv:modular_lagrange_result}
+  \lambda{_i}(0) & = N * (D^{-1} \mod q) & \mod q
+\end{align}
+
+\npar Ten tweede werd de Helios trustee automatisch toegevoegd als trustee aan de verkiezing. Alle acties die een trustee moet uitvoeren, waren hiervoor geautomatiseerd. Na het uitvoeren van een aantal tests bleek dat de shares van deze trustee niet compatibel waren met deze van de anderen. Het grote verschil tussen beide is dat deze van Helios in Python en niet in JavaScript gegenereerd werden. Omdat er niet direct een fout gevonden kon worden, werd ervoor gekozen om Helios niet langer als trustee toe te voegen. Omdat alles hiervoor geautomatiseerd was, speelde deze toch geen belangrijke rol binnen het proces. Deze werd voornamelijk toegevoegd omdat dan een verkiezing zonder eigen trustees opgezet kon worden, wat leidt tot een eenvoudigere procedure.
+
+\npar Verder verliep deze test zeer goed. De voorzitter kon zonder hulp van mij de volledige procedure (\ref{chap:procedure}) voor het aanmaken van een verkiezing met threshold encryptie doorlopen. Ook de trustees hadden weinig moeite om hun geheime sleutels aan te maken. Ondanks de e-mails die verstuurd worden telkens een actie van hen nodig is, duurde het wel nog steeds relatief lang voordat dit in orde was.
 
 \subsection{Stemhokje}
 \label{sec:kv:stemhokje}
@@ -54,6 +73,8 @@ Tijdens het testen kwamen geen functionele problemen naar voor met het stemhokje
 
 \npar Om dit proces te vereenvoudigen, werd de laatste stap van het stemhokje verwijderd. Na het bevestigen van zijn keuzes, wordt de kiezer onmiddellijk doorgestuurd naar het uploaden buiten het stemhokje. De audit van een stem werd verplaatst naar het scherm waar de keuzes bevestigd moet worden. Omdat de stem hiervoor reeds ge\"encrypteerd moet zijn, wordt dit nu gedaan na het beantwoorden van de laatste vraag. Het grootste nadeel hierbij is dat de encryptie opnieuw uitgevoerd moet worden wanneer de kiezer zijn stem wijzigt. In de huidige implementatie gaat dit echter al relatief vlot in moderne browsers. In de toekomst zal dit waarschijnlijk nog sneller kunnen door gebruik te maken van de Web Cryptography API (\ref{chap:web_cryptography_api}).
 
+%TODO Test herhaald na aanpassingen.
+
 \subsection{Stresstest}
 
 Er is elk jaar een opkomst van ongeveer 25\% bij de kringverkiezing van VTK, wat iets minder dan \np{1000} kiezers zijn. Daarom werd ook nagegaan of Helios ook een groot aantal stemmen nog correct kon verwerken. Hiervoor werd een aparte verkiezing aangemaakt met twee trustees en drie vragen. Vervolgens werden \np{1000} stemmen uitgebracht. Het resultaat kon van de eerste keer correct gedecrypteerd worden, dus hier was geen verdere actie nodig.
@@ -63,4 +84,8 @@ Er is elk jaar een opkomst van ongeveer 25\% bij de kringverkiezing van VTK, wat
 \section{Stemdag}
 \label{sec:kv:stemdag}
 
-
+\begin{figure}
+  \center{\includegraphics[width=\linewidth]{kv/result.png}}
+  \caption{Resultaat van de stemming}
+  \label{fig:kv:result}
+\end{figure}
