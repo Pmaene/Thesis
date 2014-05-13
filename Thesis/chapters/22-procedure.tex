@@ -6,7 +6,7 @@
 \chapter{Procedure}
 \label{chap:procedure}
 
-Dit hoofdstuk geeft de procedure die in Helios gevolgd moet worden om een verkiezing op te zetten. In \ref{sec:proc:voorbereiding} wordt bekeken welke informatie gekend moet zijn voordat met het aanmaken van de verkiezing aangevat wordt. De procedure van Helios wordt in \ref{sec:proc:helios} beschreven.
+Dit hoofdstuk geeft de procedure die in Helios gevolgd moet worden om een verkiezing op te zetten. In \ref{sec:proc:voorbereiding} wordt bekeken welke informatie gekend moet zijn voordat met het aanmaken van de verkiezing aangevat wordt. De procedure zelf wordt in \ref{sec:proc:helios} beschreven.
 
 \section{Voorbereiding}
 \label{sec:proc:voorbereiding}
@@ -38,13 +38,13 @@ De eerste stap is het aanmaken van de verkiezing. Hier moet eerst de basisinform
 
 \begin{figure}
   \center{\includegraphics[width=0.9\linewidth]{proc/elections_new.png}}
-  \caption{Create a new Election}
+  \caption{Aanmaken van de verkiezing}
   \label{fig:proc:elections_new}
 \end{figure}
 
 %TODO Referentie naar BTC in Helios
 
-\npar Vervolgens kunnen een aantal belangrijke functies aan- of uitgezet worden. Wanneer aliassen gebruikt worden, dan worden de namen van de kiezers verborgen in het publieke ballot tracking center. Het is ook mogelijk om de antwoorden in een random volgorde op het biljet te laten zetten. Bij een geheime verkiezing kan alleen bekeken worden door de geregistreerde kiezers. Hier moet ook aangegeven worden of threshold encryptie gebruikt zal worden.
+\npar Vervolgens kunnen een aantal belangrijke functies aan- of uitgezet worden. Wanneer aliassen gebruikt worden, dan worden de namen van de kiezers verborgen in het publieke ballot tracking center. Het is ook mogelijk om de antwoorden in een random volgorde op het biljet te laten zetten. Een geheime verkiezing kan alleen bekeken worden door de geregistreerde kiezers. Hier moet ook aangegeven worden of threshold encryptie gebruikt zal worden.
 
 \npar Tot slot is het mogelijk om aan te geven wanneer de verkiezing moet starten en sluiten. Wanneer het resultaat niet onmiddellijk na het aflopen van de verkiezing gepubliceerd mag worden, kan een alternatief tijdstip hiervoor opgegeven worden.
 
@@ -68,11 +68,11 @@ Wanneer geen threshold encryptie gebruikt wordt, is dit proces eenvoudig. Van zo
 
 \subsubsection{Verkiezing met threshold encryptie}
 
-\npar Wanneer alle trustees aangemaakt, kan deze lijst bevroren worden. Op dit moment moet ook het threshold schema ingegeven worden. Wanneer dit gebeurd is, begint voor de trustees de sleutelceremonie. Deze bestaat uit drie stappen.
+\npar Wanneer alle trustees aangemaakt zijn, kan deze lijst bevroren worden. Op dit moment moet ook het threshold schema ingegeven worden. Wanneer dit gebeurd is, begint voor de trustees de sleutelceremonie. Deze bestaat uit drie stappen.
 
 \begin{figure}
   \center{\includegraphics[width=0.9\linewidth]{proc/trustees_freeze.png}}
-  \caption{Threshold Scheme}
+  \caption{Threshold schema}
   \label{fig:proc:trustees_freeze}
 \end{figure}
 
@@ -92,23 +92,23 @@ Terwijl de trustees bezig zijn met het uitvoeren van de sleutelceremonie, kan he
 
 \begin{figure}
   \center{\includegraphics[width=0.9\linewidth]{proc/questions.png}}
-  \caption{Questions}
+  \caption{Vragen}
   \label{fig:proc:questions}
 \end{figure}
 
 \subsection{Kiezers}
 
-Ook deze stap werd reeds volledig voorbereid (\ref{sec:proc:voorbereiding:vragen}). Hier kunnen de voorbereidde de CSV-bestanden ge\"upload worden, waarna het systeem ze verwerkt en alle kiezers toevoegt aan de verkiezing.
+Ook deze stap werd reeds volledig voorbereid (\ref{sec:proc:voorbereiding:vragen}). Hier kunnen de CSV-bestanden ge\"upload worden, waarna het systeem ze verwerkt en alle kiezers toevoegt aan de verkiezing.
 
 \begin{figure}
   \center{\includegraphics[width=0.9\linewidth]{proc/voters_upload.png}}
-  \caption{Bulk Upload Voters}
+  \caption{Uploaden van kiezers}
   \label{fig:proc:voters_upload}
 \end{figure}
 
 \subsection{Bevriezen van het stembilhet}
 
-Wanneer alle voorgaande informatie ingegeven is en de sleutelceremonie afgerond is, kan het stembiljet bevroren worden. Wanneer er geen tijdsstip gegeven is waarop de verkiezing moet starten, kunnen de kiezers onmiddellijk beginnen stemmen. Wanneer geen einddatum opgegeven is, blijft ze open totdat de beheerder ze sluit.
+Wanneer alle voorgaande informatie ingegeven is en de sleutelceremonie afgerond, kan het stembiljet bevroren worden. Wanneer er geen tijdsstip gegeven is waarop de verkiezing moet starten, kunnen de kiezers onmiddellijk beginnen stemmen. Wanneer geen einddatum opgegeven is, blijft ze open totdat de beheerder ze sluit.
 
 \subsection{Telling}
 
