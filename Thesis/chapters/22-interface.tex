@@ -13,16 +13,6 @@ Het verbeteren van de gebruiksvriendelijkheid van het Helios verkiezingssysteem 
 
 In de oude interface zaten het beheer en het bekijken van de verkiezing op dezelfde pagina (\ref{fig:ui:elections_view_old}). De gewone kiezers zagen de beheersfuncties uiteraard niet, maar dit maakte het wel ingewikkeld voor de beheerder. Bovendien was het niet duidelijk wat de volgende stap was of waar de beheerder juist in de procedure zat. Daarom werd besloten om deze twee functies uit elkaar te halen en een aparte pagina te voorzien voor het beheer (\ref{fig:ui:elections_admin}).
 
-\npar Op deze nieuwe pagina wordt de volledige procedure weergegeven. Er wordt ook aangegeven wat de volgende stap is en welke stappen reeds allemaal voltooid zijn. Tot slot staan onderaan alle problemen die nog opgelost moeten worden voordat het stembiljet bevroren kan worden.
-
-%TODO Referentie naar Threshold Encryptie in Helios
-
-\npar Voor een verkiezing met threshold encryptie zijn er belangrijke veranderingen in de workflow. Robbert Coeckelbergh had een publiek bulletin board ge\"introduceerd waar iedereen sleutelparen voor communicatie kon aanmaken en uploaden. De beheerder kon dan trustees toevoegen aan een verkiezing door ze te selecteren uit een lijst. Dit betekent ook dat dezelfde sleutelparen voor communicatie gebruikt werden bij elke verkiezing waar deze persoon trustee was.
-
-\npar Voordat alle trustees toegevoegd konden worden aan een trustee, moest de beheerder dus wachten totdat iedereen zijn sleutelparen voor communicatie ge\"upload had. Omdat iedereen hiervoor buiten het systeem om nog eens gecontacteerd moest worden, maakte dit de sleutelceremonie nog ingewikkelder. Een bijkomend nadeel was dat om het even wie een sleutelpaar zou kunnen aanmaken, omdat het bulletin board publiek toegankelijk is. Omdat er ook geen controle is op de identiteit van de uploader, was het mogelijk om je als iemand anders voor te doen. Ervan uitgaande dat deze persoon geen toegang heeft tot de e-mailaccount van zijn slachtoffer, zou hij nooit de link krijgen naar het trustee dashboard (\ref{sec:ui:trustee_dashboard}). Hij kan dus niet actief de rol van trustee spelen, maar kan het opzetten van de verkiezing wel tijdelijk blokkeren.
-
-\npar Daarom werd besloten om het bulletin board weg te halen. De trustees worden nu eerst toegevoegd aan de verkiezing, waarna ze een link krijgen toegestuurd naar hun trustee dashboard. De eerst stap van de sleutelceremonie die ze daar moeten uitvoeren, is nu het uploaden van de sleutelparen voor communicatie. Het proces dat een trustee doorloopt, wordt zo ook beter vergelijkbaar met dat wanneer geen threshold encryptie gebruikt wordt.
-
 \begin{figure}
   \center{\includegraphics[width=\linewidth]{ui/elections_view_old.png}}
   \caption{Overzicht van de verkiezing (oud)}
@@ -34,6 +24,22 @@ In de oude interface zaten het beheer en het bekijken van de verkiezing op dezel
   \caption{Beheer van de verkiezing}
   \label{fig:ui:elections_admin}
 \end{figure}
+
+\npar Op deze nieuwe pagina wordt de volledige procedure weergegeven. Er wordt ook aangegeven wat de volgende stap is en welke stappen reeds allemaal voltooid zijn. Tot slot staan onderaan alle problemen die nog opgelost moeten worden voordat het stembiljet bevroren kan worden. Bovendien wordt bovenaan elke pagina ook getoond waar hij zit en wat de volgende stap is (\ref{fig:ui:election_progress}). Zo kan hij dit ook volgen wanneer hij niet op de speciale beheerpagina zit.
+
+\begin{figure}
+  \center{\includegraphics[width=\linewidth]{ui/election_progress.png}}
+  \caption{Voortgang procedure}
+  \label{fig:ui:election_progress}
+\end{figure}
+
+%TODO Referentie naar Threshold Encryptie in Helios
+
+\npar Voor een verkiezing met threshold encryptie zijn er belangrijke veranderingen in de workflow. Robbert Coeckelbergh had een publiek bulletin board ge\"introduceerd waar iedereen sleutelparen voor communicatie kon aanmaken en uploaden. De beheerder kon dan trustees toevoegen aan een verkiezing door ze te selecteren uit een lijst. Dit betekent ook dat dezelfde sleutelparen voor communicatie gebruikt werden bij elke verkiezing waar deze persoon trustee was.
+
+\npar Voordat alle trustees toegevoegd konden worden aan een trustee, moest de beheerder dus wachten totdat iedereen zijn sleutelparen voor communicatie ge\"upload had. Omdat iedereen hiervoor buiten het systeem om nog eens gecontacteerd moest worden, maakte dit de sleutelceremonie nog ingewikkelder. Een bijkomend nadeel was dat om het even wie een sleutelpaar zou kunnen aanmaken, omdat het bulletin board publiek toegankelijk is. Omdat er ook geen controle is op de identiteit van de uploader, was het mogelijk om je als iemand anders voor te doen. Ervan uitgaande dat deze persoon geen toegang heeft tot de e-mailaccount van zijn slachtoffer, zou hij nooit de link krijgen naar het trustee dashboard (\ref{sec:ui:trustee_dashboard}). Hij kan dus niet actief de rol van trustee spelen, maar kan het opzetten van de verkiezing wel tijdelijk blokkeren.
+
+\npar Daarom werd besloten om het bulletin board weg te halen. De trustees worden nu eerst toegevoegd aan de verkiezing, waarna ze een link krijgen toegestuurd naar hun trustee dashboard. De eerst stap van de sleutelceremonie die ze daar moeten uitvoeren, is nu het uploaden van de sleutelparen voor communicatie. Het proces dat een trustee doorloopt, wordt zo ook beter vergelijkbaar met dat wanneer geen threshold encryptie gebruikt wordt.
 
 \section{Trustee Dashboard}
 \label{sec:ui:trustee_dashboard}
