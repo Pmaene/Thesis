@@ -54,7 +54,7 @@ Iedere trustee krijgt een unieke link naar zijn trustee dashboard, dat wordt get
 
 \npar Door gebruik te maken van de HTML5 File API kon de omgang met de sleutels veel gebruiksvriendelijker gemaakt worden.\cite{ranganathan_sicking_file_api} Enerzijds voorziet deze API de \texttt{Blob} interface om lokaal bestanden te generen en aan te bieden als download in de browser. Anderzijds kan de \texttt{FileReader} interface gebruikt worden om objecten die voldoen aan de \texttt{Blob} of \texttt{File} interface uit te lezen. Een voorbeeld van deze laatste zijn bestanden die geselecteerd worden in een \texttt{file} input element.
 
-\npar In het trustee dashboard wordt de eerste API interface gebruikt om de geheime sleutels onmiddelijk in een JSON bestand te plaatsen dat gedownload kan worden. Zo krijgen de trustees onmiddelijk een bestand en worden de cryptografische details van de sleutel voor hen verborgen. De tweede interface wordt dan weer gebruikt om de trustee deze bestanden te laten selecteren om vervolgens de geheime sleutel uit te lezen naar het tekstvak. Het verschil tussen de oude en nieuwe manier van werken kan gezien worden in \ref{fig:ui:trustees_home_encrypted_shares_old} en \ref{fig:ui:trustees_home_encrypted_shares} respectievelijk.
+\npar In het trustee dashboard wordt de eerste API interface gebruikt om de geheime sleutels onmiddelijk in een JSON bestand te plaatsen dat gedownload kan worden. Zo krijgen de trustees direct een bestand en worden de cryptografische details van de sleutel voor hen verborgen. De tweede interface wordt dan weer gebruikt om de trustee deze bestanden te laten selecteren om vervolgens de geheime sleutel uit te lezen naar het tekstvak. Het verschil tussen de oude en nieuwe manier van werken kan gezien worden in \ref{fig:ui:trustees_home_encrypted_shares_old} en \ref{fig:ui:trustees_home_encrypted_shares} respectievelijk.
 
 \begin{figure}
   \center{\includegraphics[width=\linewidth]{ui/trustees_home_encrypted_shares_old.png}}
@@ -68,7 +68,23 @@ Iedere trustee krijgt een unieke link naar zijn trustee dashboard, dat wordt get
   \label{fig:ui:trustees_home_encrypted_shares}
 \end{figure}
 
-%TODO Samenvoegen sleutelpaar voor communicatie.
+%TODO Referentie naar Threshold Encryption in Helios
+
+\npar Om de communicatie te beveiligen worden twee sleutelparen gebruikt. Oorspronkelijk moesten deze apart gedownload worden. Omdat het voor de gebruiker eenvoudiger is om maar met \'e\'en bestand te moeten werken, werden deze samengevoegd.
 
 \section{Controleapplicatie}
 \label{sec:ui:controleapplicatie}
+
+De controleapplicatie draait net zoals het stemhokje volledig in de browser. Ze kan gebruikt worden door te kiezer om het resultaat van de verkiezing te controleren. Alle ruwe data wordt gedownload van de server, waarna de nodige berekeningen lokaal worden uitgevoerd. In de oude versie (\ref{fig:ui:verifier_old}). Zoals gezien kan worden in \ref{fig:ui:verifier} werd de output veel overzichtelijker gemaakt.
+
+\begin{figure}
+  \center{\includegraphics[width=\linewidth]{ui/verifier_old.png}}
+  \caption{Controleapplicatie (oud)}
+  \label{fig:ui:verifier_old}
+\end{figure}
+
+\begin{figure}
+  \center{\includegraphics[width=\linewidth]{ui/verifier.png}}
+  \caption{Controleapplicatie}
+  \label{fig:ui:verifier}
+\end{figure}

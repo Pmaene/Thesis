@@ -37,11 +37,9 @@ Om er zeker van te zijn dat het systeem op de stemdag zelf goed zou functioneren
 \subsection{Beheer}
 \label{sec:kv:beheer}
 
-%TODO Andere Referentie naar Interface Hoofdstuk
+Aangezien hier de meeste veranderingen gebeurd zijn (\ref{sec:ui:beheer}), moest zeker dit deel goed getest worden. Hiervoor werd een testverkiezing aangemaakt door de voorzitter van VKK, met de echte trustees en vragen. De echte kieslijsten werden vervangen door een lijst met de huidige praesidiumleden.
 
-Aangezien hier de meeste veranderingen gebeurd zijn (\ref{chap:interface}), moest zeker dit deel goed getest worden. Hiervoor werd een testverkiezing aangemaakt door de voorzitter van VKK, met de echte trustees en vragen. De echte kieslijsten werden vervangen door een lijst met de huidige praesidiumleden.
-
-%TODO Referentie naar Secret Sharing
+%TODO Referentie naar Secret Sharing in Helios
 
 \npar De trustees voor de verkiezing zijn de zes leden van VKK. Als threshold schema werd ervoor gekozen dat drie van hen nodig zijn om het resultaat te decrypteren. Tijdens deze test kwamen echter twee fouten naar boven. Ten eerste werd de Lagrange-interpolatie niet over het eindig veld berekend, maar met een rationale breuk. Wanneer slechts twee trustees gebruikt werden, was dit geen probleem omdat de noemer dan gelijk is aan \'e\'en. Dit kon eenvoudig opgelost worden door de teller en noemer voor het hele product apart te berekenen (\ref{eq:kv:modular_lagrange_numerator} en \ref{eq:kv:modular_lagrange_denominator}). Vervolgens wordt de teller vermenigvuldigd met de modulaire inverse van de noemer (\ref{eq:kv:modular_lagrange_result}).
 
@@ -74,6 +72,12 @@ Tijdens het testen kwamen geen functionele problemen naar voor met het stemhokje
 \npar Om dit proces te vereenvoudigen, werd de laatste stap van het stemhokje verwijderd. Na het bevestigen van zijn keuzes, wordt de kiezer onmiddellijk doorgestuurd naar het uploaden buiten het stemhokje. De audit van een stem werd verplaatst naar het scherm waar de keuzes bevestigd moet worden. Omdat de stem hiervoor reeds ge\"encrypteerd moet zijn, wordt dit nu gedaan na het beantwoorden van de laatste vraag. Het grootste nadeel hierbij is dat de encryptie opnieuw uitgevoerd moet worden wanneer de kiezer zijn stem wijzigt. In de huidige implementatie gaat dit echter al relatief vlot in moderne browsers. In de toekomst zal dit waarschijnlijk nog sneller kunnen door gebruik te maken van de Web Cryptography API (\ref{chap:web_cryptography_api}).
 
 \npar Na het aanpassen van het stemhokje werd deze test herhaald om zeker te zijn dat alles nog correct werkte. Ook tijdens deze test kwamen nog vragen om enkele kleine dingen te wijzigen voor de echte verkiezing. Zo wordt er een waarschuwing gegeven wanneer de kiezer het laatste scherm sluit voordat hij zijn stem ge\"upload heeft.
+
+\begin{figure}
+  \center{\includegraphics[width=\linewidth]{kv/cast_confirm.png}}
+  \caption{Bevestigen van de stem}
+  \label{fig:kv:cast_confirm}
+\end{figure}
 
 \subsection{Stresstest}
 
