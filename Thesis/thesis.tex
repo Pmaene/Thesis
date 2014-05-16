@@ -6,9 +6,9 @@
 \documentclass[master=elt,masteroption=im,inputenc=utf8]{kulemt}
 \setup{title={Online verkiezingen in de praktijk: verbetering en toepassing van het Helios verkiezingssysteem},
   author={Pieter Maene},
-  promotor={Bart Preneel},
-  assessor={Vincent Rijmen \and Luc Van Eycken},
-  assistant={Jens Hermans \and Frederik Vercauteren}
+  promotor={Prof. dr. ir. B. Preneel},
+  assessor={Prof. dr. ir. V. Rijmen \and Prof. dr. ir. L. Van Eycken},
+  assistant={Dr. ir. J. Hermans \and Dr. ir. F. Vercauteren}
 }
 
 \setup{filingcard,
@@ -60,12 +60,24 @@
 
   \kulemtmanToC
   \tableofcontents
-  
-  \listoffiguresandtables
 
   \begin{abstract}
     %TODO Samenvatting
   \end{abstract}
+  
+  \listoffiguresandtables
+  
+  %TODO Lijst van afkortingen en symbolen
+  \chapter{Lijst van afkortingen en symbolen}
+  \section*{Lijst van symbolen}
+  \begin{flushleft}
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabularx}{\textwidth}{@{}p{12mm}X@{}}
+      pk & Publieke sleutel \\
+      sk & Geheime sleutel \\
+      df & Decryptiefactor
+    \end{tabularx}
+  \end{flushleft}
 
   \mainmatter
 

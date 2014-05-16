@@ -15,8 +15,6 @@ Het Helios verkiezingssysteem werd in de praktijk gebruikt tijdens de kringverki
 
 Shibboleth is het authenticatie mechanisme dat gebruikt wordt voor de centrale login van de KU Leuven. Iedere gebruiker kan uniek ge\"identificeerd worden aan de hand van zijn studentennummer. Alle stemgerechtigde kiezers voor een kringverkiezing hebben een dergelijke account. Helios had hier echter nog geen ondersteuning voor. Gezien het modulaire ontwerp van het authenticatiesysteem, was dit relatief eenvoudig toe te voegen.
 
-%TODO Referentie naar Voter File in Helios
-
 \npar De kieslijsten zelf werden opgemaakt door LOKO, de Leuvense studentenkoepel. Deze moesten wel nog omgezet worden naar een bestand dat uitgelezen kon worden door Helios. Het studentennummer werd hierbij gebruikt als het unieke ID voor elke kiezer. Een probleem was hier wel dat de e-mailadressen van de kiezers niet mee opgenomen waren in deze lijsten. Deze kunnen wel mee doorgegeven worden met het antwoord dat de server ontvangt nadat de student zich aangemeld heeft via de centrale login.
 
 \subsection{Opkomst}
@@ -39,17 +37,15 @@ Om er zeker van te zijn dat het systeem op de stemdag zelf goed zou functioneren
 
 Aangezien hier de meeste veranderingen gebeurd zijn (\ref{sec:ui:beheer}), moest zeker dit deel goed getest worden. Hiervoor werd een testverkiezing aangemaakt door de voorzitter van VKK, met de echte trustees en vragen. De echte kieslijsten werden vervangen door een lijst met de huidige praesidiumleden.
 
-%TODO Referentie naar Secret Sharing in Helios
-
-\npar De trustees voor de verkiezing zijn de zes leden van VKK. Als threshold schema werd ervoor gekozen dat drie van hen nodig zijn om het resultaat te decrypteren. Tijdens deze test kwamen echter twee fouten naar boven. Ten eerste werd de Lagrange-interpolatie niet over het eindig veld berekend, maar met een rationale breuk. Wanneer slechts twee trustees gebruikt werden, was dit geen probleem omdat de noemer dan gelijk is aan \'e\'en. Dit kon eenvoudig opgelost worden door de teller en noemer voor het hele product apart te berekenen (\ref{eq:kv:modular_lagrange_numerator} en \ref{eq:kv:modular_lagrange_denominator}). Vervolgens wordt de teller vermenigvuldigd met de modulaire inverse van de noemer (\ref{eq:kv:modular_lagrange_result}).
+\npar De trustees voor de verkiezing zijn de zes leden van VKK. Als threshold schema (\ref{sec:helios:threshold_encryptie}) werd ervoor gekozen dat drie van hen nodig zijn om het resultaat te decrypteren. Tijdens deze test kwamen echter twee fouten naar boven. Ten eerste werd de Lagrange-interpolatie niet over het eindig veld berekend, maar met een rationale breuk. Wanneer slechts twee trustees gebruikt werden, was dit geen probleem omdat de noemer dan gelijk is aan \'e\'en. Dit kon eenvoudig opgelost worden door de teller en noemer voor het hele product apart te berekenen (\ref{eq:kv:modular_lagrange_numerator} en \ref{eq:kv:modular_lagrange_denominator}). Vervolgens wordt de teller vermenigvuldigd met de modulaire inverse van de noemer (\ref{eq:kv:modular_lagrange_result}).
 
 \begin{align}
   \label{eq:kv:modular_lagrange_numerator} 
-  N & = \prod_{j=1, j\not=i}^k{-x_j} & \mod q \\
+  N_i & = \prod_{j=1, j\not=i}^k{-x_j} \mod{q} \\
   \label{eq:kv:modular_lagrange_denominator}
-  D & = \prod_{j=1, j\not=i}^k{(x_i - x_j)} & \mod q \\
+  D_i & = \prod_{j=1, j\not=i}^k{(x_i - x_j)} \mod{q} \\
   \label{eq:kv:modular_lagrange_result}
-  \lambda{_i}(0) & = N * (D^{-1} \mod q) & \mod q
+  \lambda{_i}(0) & = N_i * (D_i^{-1} \mod{q}) \mod{q}
 \end{align}
 
 \npar Ten tweede werd de Helios trustee automatisch toegevoegd als trustee aan de verkiezing. Alle acties die een trustee moet uitvoeren, waren hiervoor geautomatiseerd. Na het uitvoeren van een aantal tests bleek dat de shares van deze trustee niet compatibel waren met deze van de anderen. Het grote verschil tussen beide is dat deze van Helios in Python en niet in JavaScript gegenereerd werden. Omdat er niet direct een fout gevonden kon worden, werd ervoor gekozen om Helios niet langer als trustee toe te voegen. Omdat alles hiervoor geautomatiseerd was, had deze toch niet zo'n belangrijke rol binnen het proces. Hij werd voornamelijk toegevoegd omdat dan een verkiezing zonder eigen trustees opgezet kon worden, wat leidt tot een eenvoudigere procedure.

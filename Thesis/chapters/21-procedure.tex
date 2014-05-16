@@ -13,9 +13,7 @@ Dit hoofdstuk geeft de procedure die in Helios gevolgd moet worden om een verkie
 
 \subsection{Trustees}
 
-%TODO Referentie naar Threshold in Helios
-
-De trustees zijn de personen die verantwoordelijk zullen zijn voor het decrypteren van het resultaat. Aangezien zijn een belangrijke rol spelen in het verkiezingsproces, is het belangrijk vooraf vast te leggen wie dit zal doen. Helios heeft ondersteuning voor threshold encryptie. Er moet dus ook nagedacht worden over het threshold schema: hoeveel trustees nodig zullen zijn om het resultaat van de verkiezing te decrypteren. Om een trustee aan te maken, moeten zijn naam en een geldig e-mailadres opgegeven worden.
+De trustees zijn de personen die verantwoordelijk zullen zijn voor het decrypteren van het resultaat. Aangezien zijn een belangrijke rol spelen in het verkiezingsproces, is het belangrijk vooraf vast te leggen wie dit zal doen. Helios heeft ondersteuning voor threshold encryptie (\ref{sec:helios:threshold_encryptie}). Er moet dus ook nagedacht worden over het threshold schema: hoeveel trustees nodig zullen zijn om het resultaat van de verkiezing te decrypteren. Om een trustee aan te maken, moeten zijn naam en een geldig e-mailadres opgegeven worden.
 
 \subsection{Vragen}
 \label{sec:proc:voorbereiding:vragen}
@@ -42,9 +40,7 @@ De eerste stap is het aanmaken van de verkiezing. Hier moet eerst de basisinform
   \label{fig:proc:elections_new}
 \end{figure}
 
-%TODO Referentie naar BTC in Helios
-
-\npar Vervolgens kunnen een aantal belangrijke functies aan- of uitgezet worden. Wanneer aliassen gebruikt worden, dan worden de namen van de kiezers verborgen in het publieke ballot tracking center. Het is ook mogelijk om de antwoorden in een random volgorde op het biljet te laten zetten. Een geheime verkiezing kan alleen bekeken worden door de geregistreerde kiezers. Hier moet ook aangegeven worden of threshold encryptie gebruikt zal worden.
+\npar Vervolgens kunnen een aantal belangrijke functies aan- of uitgezet worden. Wanneer aliassen gebruikt worden, dan worden de namen van de kiezers verborgen in het publieke ballot tracking center (\ref{sec:helios:ballot_tracking_center}). Het is ook mogelijk om de antwoorden in een random volgorde op het biljet te laten zetten. Een geheime verkiezing kan alleen bekeken worden door de geregistreerde kiezers. Hier moet ook aangegeven worden of threshold encryptie  (\ref{sec:helios:threshold_encryptie}) gebruikt zal worden.
 
 \npar Tot slot is het mogelijk om aan te geven wanneer de verkiezing moet starten en sluiten. Wanneer het resultaat niet onmiddellijk na het aflopen van de verkiezing gepubliceerd mag worden, kan een alternatief tijdstip hiervoor opgegeven worden.
 
@@ -61,9 +57,7 @@ Eens de nieuwe verkiezing aangemaakt is, moeten de trustees toegevoegd worden. D
 
 \subsubsection{Verkiezing zonder threshold encryptie}
 
-%TODO Referentie naar Sleutel in Helios
-
-Wanneer geen threshold encryptie gebruikt wordt, is dit proces eenvoudig. Van zodra een trustee aangemaakt is, kan hij het sleutelpaar genereren dat gebruikt zal worden als deel van de sleutel voor de verkiezing. Alle trustees moeten dit gedaan hebben voordat de beheerder de verkiezing kan bevriezen en openstellen voor de kiezers. Hij kan echter wel verdergaan met de procedure terwijl hij hierop wacht.
+Wanneer geen threshold encryptie gebruikt wordt, is dit proces eenvoudig. Van zodra een trustee aangemaakt is, kan hij het sleutelpaar genereren dat gebruikt zal worden als deel van de sleutel voor de verkiezing. Alle trustees moeten dit gedaan hebben voordat de beheerder de verkiezing kan bevriezen en openstellen voor de kiezers. Hij kan ondertussen echter wel verdergaan met de procedure.
 
 \subsubsection{Verkiezing met threshold encryptie}
 
@@ -74,8 +68,6 @@ Wanneer geen threshold encryptie gebruikt wordt, is dit proces eenvoudig. Van zo
   \caption{Threshold schema}
   \label{fig:proc:trustees_freeze}
 \end{figure}
-
-%TODO Referentie naar Threshold Encryptie in Helios
 
 \begin{enumerate}
   \item De trustees moeten eerst de twee sleutelparen genereren die gebruikt zullen worden om hun onderlinge communicatie te beveiligen. Pas wanneer alle trustees deze stap uitgevoerd hebben, kan verdergegaan worden.
@@ -111,9 +103,7 @@ Wanneer alle voorgaande informatie ingegeven is en de sleutelceremonie afgerond,
 
 \subsection{Telling}
 
-%TODO Referentie naar Homomorfisme in Helios
-
-De stemming kan steeds manueel afgesloten worden door het telproces te starten. De stemmen worden dan homomorf samengeteld in een geëncrypteerd resultaat. Vooraleer dit gedecrypteerd kan worden, moeten we opnieuw wachten op de trustees.
+De stemming kan steeds manueel afgesloten worden door het telproces te starten. De stemmen worden dan homomorf samengeteld in een geëncrypteerd resultaat (\ref{sec:helios:homomorfe_encryptie}). Vooraleer dit gedecrypteerd kan worden, moeten we opnieuw wachten op de trustees.
 
 \npar Wanneer geen threshold encryptie gebruikt wordt, moeten alle trustees nu hun decryptiefactor berekenen en uploaden. Wordt dit wel gebruikt, dan moeten slechts $k$ van de $n$ trustees dit doen. Zodra alle nodige decryptiefactoren beschikaar zijn, kan de beheerder het resultaat vrijgeven. Indien geen publicatiedatum opgegeven werd, is het resultaat dan voor iedereen beschikbaar. Anders kan de beheerder het resultaat wel reeds bekijken, maar wordt het pas gepubliceerd op die datum.
 

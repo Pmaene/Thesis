@@ -6,7 +6,7 @@
 \chapter{Interface}
 \label{chap:interface}
 
-Het verbeteren van de gebruiksvriendelijkheid van het Helios verkiezingssysteem was een belangrijk doel van deze thesis. Er zijn op vier belangrijke plaatsen wijzigingen aangebracht. Veruit het meeste werk was nodig om de procedure (\ref{chap:procedure}) duidelijker te maken in het beheer (\ref{sec:ui:beheer}). Ook de gebruiksvriendelijkheid van het trustee dashboard werd sterk verbeterd (\ref{sec:ui:trustee_dashboard}). Tot slot werd ook de output van de applicatie die gebruikt kan worden om het resultaat te controleren, verduidelijkt (\ref{sec:ui:controleapplicatie}). Hoewel in dit hoofdstuk alleen de grootste aanpassingen besproken worden, werd de layout doorheen het hele systeem geüniformeerd.
+Het verbeteren van de gebruiksvriendelijkheid van het Helios verkiezingssysteem was een belangrijk doel van deze thesis. Er zijn op vier belangrijke plaatsen wijzigingen aangebracht. Veruit het meeste werk was nodig om de procedure van \ref{chap:procedure} duidelijker te maken in het beheer (\ref{sec:ui:beheer}). Ook de gebruiksvriendelijkheid van het trustee dashboard werd sterk verbeterd (\ref{sec:ui:trustee_dashboard}). Tot slot werd ook de output van de applicatie die gebruikt kan worden om het resultaat te controleren, verduidelijkt (\ref{sec:ui:controleapplicatie}). Hoewel in dit hoofdstuk alleen de grootste aanpassingen besproken worden, werd de layout doorheen het hele systeem geüniformeerd.
 
 \section{Beheer}
 \label{sec:ui:beheer}
@@ -33,9 +33,7 @@ In de oude interface zaten het beheer en het bekijken van de verkiezing op dezel
   \label{fig:ui:election_progress}
 \end{figure}
 
-%TODO Referentie naar Threshold Encryptie in Helios
-
-\npar Voor een verkiezing met threshold encryptie zijn er belangrijke veranderingen in de workflow. Robbert Coeckelbergh had een publiek bulletin board ge\"introduceerd waar iedereen sleutelparen voor communicatie kon aanmaken en uploaden. De beheerder kon dan trustees toevoegen aan een verkiezing door ze te selecteren uit een lijst. Dit betekent ook dat dezelfde sleutelparen voor communicatie gebruikt werden bij elke verkiezing waar deze persoon trustee was.
+\npar Voor een verkiezing met threshold encryptie (\ref{sec:helios:threshold_encryptie}) zijn er belangrijke veranderingen in de workflow. Robbert Coeckelbergh had een publiek bulletin board ge\"introduceerd waar iedereen sleutelparen voor communicatie kon aanmaken en uploaden. De beheerder kon dan trustees toevoegen aan een verkiezing door ze te selecteren uit een lijst. Dit betekent ook dat dezelfde sleutelparen voor communicatie gebruikt werden bij elke verkiezing waar deze persoon trustee was.
 
 \npar Voordat alle trustees toegevoegd konden worden aan een trustee, moest de beheerder dus wachten totdat iedereen zijn sleutelparen voor communicatie ge\"upload had. Omdat iedereen hiervoor buiten het systeem om nog eens gecontacteerd moest worden, maakte dit de sleutelceremonie nog ingewikkelder. Een bijkomend nadeel was dat om het even wie een sleutelpaar zou kunnen aanmaken, omdat het bulletin board publiek toegankelijk is. Omdat er ook geen controle is op de identiteit van de uploader, was het mogelijk om je als iemand anders voor te doen. Ervan uitgaande dat deze persoon geen toegang heeft tot de e-mailaccount van zijn slachtoffer, zou hij nooit de link krijgen naar het trustee dashboard (\ref{sec:ui:trustee_dashboard}). Hij kan dus niet actief de rol van trustee spelen, maar kan het opzetten van de verkiezing wel tijdelijk blokkeren.
 
@@ -53,8 +51,6 @@ Iedere trustee krijgt een unieke link naar zijn trustee dashboard, dat wordt get
   \caption{Trustee Dashboard}
   \label{fig:ui:trustees_home}
 \end{figure}
-
-%TODO Referentie naar Threshold Encryption in Helios
 
 \npar De trustee zal in totaal drie geheime sleutels genereren tijdens de sleutelceremonie (\ref{sec:proc:trustees}). Elke geheime sleutel moet lokaal bewaard worden in het JSON formaat. Oorspronkelijk moest de trustee deze zelf kopi\"eren naar een bestand. Om zijn sleutel te gebruiken, moest hij de inhoud daarvan opnieuw kopi\"eren naar een tekstvak.
 
@@ -74,14 +70,12 @@ Iedere trustee krijgt een unieke link naar zijn trustee dashboard, dat wordt get
   \label{fig:ui:trustees_home_encrypted_shares}
 \end{figure}
 
-%TODO Referentie naar Threshold Encryption in Helios
-
-\npar Om de communicatie te beveiligen worden twee sleutelparen gebruikt. Oorspronkelijk moesten deze apart gedownload worden. Omdat het voor de gebruiker eenvoudiger is om maar met \'e\'en bestand te moeten werken, werden deze samengevoegd.
+\npar Om de communicatie te beveiligen worden twee sleutelparen gebruikt (\ref{sec:helios:communicatiesleutels}). Oorspronkelijk moesten deze apart gedownload worden. Omdat het voor de gebruiker eenvoudiger is om maar met \'e\'en bestand te moeten werken, werden deze samengevoegd.
 
 \section{Controleapplicatie}
 \label{sec:ui:controleapplicatie}
 
-De controleapplicatie draait net zoals het stemhokje volledig in de browser. Ze kan gebruikt worden door te kiezer om het resultaat van de verkiezing te controleren. Alle ruwe data wordt gedownload van de server, waarna de nodige berekeningen lokaal worden uitgevoerd. In de oude versie (\ref{fig:ui:verifier_old}). Zoals gezien kan worden in \ref{fig:ui:verifier} werd de output veel overzichtelijker gemaakt.
+De controleapplicatie (\ref{sec:helios:controleapplicatie}) draait net zoals het stemhokje volledig in de browser. Ze kan gebruikt worden door te kiezer om het resultaat van de verkiezing te controleren. Alle ruwe data wordt gedownload van de server, waarna de nodige berekeningen lokaal worden uitgevoerd. In de oude versie (\ref{fig:ui:verifier_old}). Zoals gezien kan worden in \ref{fig:ui:verifier}, werd de output veel overzichtelijker gemaakt.
 
 \begin{figure}
   \center{\includegraphics[width=\linewidth]{ui/verifier_old.png}}
