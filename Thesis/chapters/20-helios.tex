@@ -8,7 +8,7 @@
 
 Het Helios verkiezingssysteem is een open-source project dat geleid wordt door Ben Adida.\cite{adida_helios} Het laat toe om online voter-verifiable verkiezingen te organiseren. Dit systeem werd vorig jaar door Robbert Coeckelbergh uitgebreid met threshold encryptie en gerangschikte verkiezingen.\cite{coeckelbergh_toepassing_en_uitbreiding_van_het_helios_online_verkiezingssysteem} 
 
-\npar In dit hoofdstuk worden de belangrijkste cryptografische technieken uitgelegd die Helios gebruikt (\ref{sec:helios:cryptografische_technieken}). Daarna wordt de functionaliteit van de publieke delen van Helios besproken (\ref{sec:helios:stemhokje} en \ref{sec:helios:ballot_tracking_center}).
+\npar In dit hoofdstuk worden de belangrijkste cryptografische technieken uitgelegd die Helios gebruikt (\ref{sec:helios:cryptografische_technieken}). Daarna wordt de functionaliteit van de publieke delen van Helios besproken: het stemhokje (\ref{sec:helios:stemhokje}), het ballot tracking center (\ref{sec:helios:ballot_tracking_center}) en de controleapplicatie (\ref{sec:helios:controleapplicatie}).
 
 \section{Cryptografische technieken}
 \label{sec:helios:cryptografische_technieken}
@@ -123,14 +123,24 @@ Voordat iedere trustee zijn gegenereerde shares doorstuurt naar de andere truste
 \section{Stemhokje}
 \label{sec:helios:stemhokje}
 
+Het stemhokje staat volledig los van de rest van het systeem. Het is een applicatie die de kiezer kan gebruiken om zijn stem uit te brengen. Nadat hij zijn keuze gemaakt heeft, wordt deze ge\"encrypteerd met de publieke sleutel voor de verkiezing. Zoals besproken in \ref{sec:helios:cryptografische_technieken}, zal de cijfertekst bestaan uit twee delen (\ref{eq:helios:elgamal_c1} en \ref{eq:helios:elgamal_c2_homomorphic}). Wanneer threshold encryptie aanstaat, wordt de publieke sleutel gedefinieerd door \ref{eq:helios:threshold_encryption_public_key} gebruikt; anders is het deze van \ref{eq:helios:elgamal_c2_homomorphic_trustees}.
 
+\npar Het encryptieproces is in JavaScript ge\"implementeerd en vindt dus volledig plaats in de browser van de kiezer. De stem van de kiezer zal dan nooit onge\"encrypteerd op de server toekomen. Alle informatie over de verkiezing kan eenvoudig opgevraagd worden. De kiezer zou dus ook zijn eigen software kunnen gebruiken om zijn stem te encrypteren.
 
 \section{Ballot Tracking Center}
 \label{sec:helios:ballot_tracking_center}
 
+Net zoals bij Scratch \& Vote (\ref{sec:ls:scratch_and_vote}) worden de uitgebrachte stemmen gepubliceerd. In het ballot tracking center kan een lijst met alle kiezers teruggevonden worden. Bij een publieke verkiezing kan iedereen deze opvragen, bij een private alleen de geregistreerde kiezers. Standaard staan hier gewoon de namen van de kiezers, maar de beheerder kan ervoor kiezen om aliassen te gebruiken in de plaats.
 
+\npar Van zodra een kiezer zijn stem uitgebracht heeft, kan deze bekeken worden (\ref{fig:helios:cast_vote}). Dit is nodig omdat zo het resultaat van de verkiezing gecontroleerd kan worden (\ref{sec:helios:controleapplicatie}). Alle deze informatie kan ook opgevraagd worden als JSON, zodat ze eenvoudiger verwerkt kan worden door een applicatie.
+
+\begin{figure}
+  \center{\includegraphics[width=0.9\linewidth]{helios/cast_vote.png}}
+  \caption{Uitgebrachte stem}
+  \label{fig:helios:cast_vote}
+\end{figure}
 
 \section{Controleapplicatie}
 \label{sec:helios:controleapplicatie}
 
-
+Net zoals het stemhokje is de controleapplicatie onafhankelijk en draait ze lokaal in de browser van de gebruiker. Ze kan gebruikt worden om het resultaat van de verkiezing te controleren. Alle ruwe data wordt gedownload van de server, waarna de nodige berekeningen lokaal worden uitgevoerd.

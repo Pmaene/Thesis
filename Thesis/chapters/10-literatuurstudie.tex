@@ -6,9 +6,10 @@
 \chapter{Literatuurstudie}
 \label{chap:literatuurstudie}
 
-Deze thesis handelt over methoden voor online verkiezingen. Een interessant verwant probleem zijn systemen die gebruik maken van papier. Eerst wordt een kort overzicht van de geschiedenis van stemsystemen gegeven. Vervolgens worden de belangrijkste vereisten bekeken waaraan deze systemen moeten voldoen. Belangrijk hierbij is de definitie van een voter verifiable systeem. Tot slot onderzoeken we zowel systemen die geen gebruik maken van cryptografische methoden als deze die daar wel op steunen.
+Deze thesis handelt over methoden voor online verkiezingen. Een interessant verwant probleem zijn systemen die gebruik maken van papier. Eerst wordt een kort overzicht van de geschiedenis van stemsystemen gegeven (\ref{sec:ls:geschiedenis}). Vervolgens worden de belangrijkste vereisten bekeken waaraan deze systemen moeten voldoen (\ref{sec:ls:vereisten}). Belangrijk hierbij is de definitie van een voter verifiable systeem. Tot slot onderzoeken we zowel systemen die geen gebruik maken van cryptografische methoden (\ref{sec:ls:systemen_zonder_cryptografie}) als deze die daar wel op steunen (\ref{sec:ls:systemen_met_cryptografie}).
 
 \section{Geschiedenis~\cite{adida_advances_in_cryptographic_voting_systems}}
+\label{sec:ls:geschiedenis}
 
 Onze samenleving heeft een rijke geschiedenis van stemprocedures, die teruggaat tot Athene in het oude Griekenland. Hier bracht men een negatieve stem uit op een potscherf. In deze paragraaf bekijken we kort enkele die bepalend zijn geweest voor de manier waarop we vandaag werken.\cite{wiki:ostracon}
 
@@ -21,6 +22,7 @@ Onze samenleving heeft een rijke geschiedenis van stemprocedures, die teruggaat 
 \npar Het gebrek aan controle door de kiezer bij DRE vormde de aanleiding voor het ontwerpen van Voter-Verified Paper Audit Trails (VVPAT) machines. Hierbij toont de machine de kiezer een afgeschermde afdruk van zijn stem, waarna hij deze kan accepteren of weigeren. Op die manier kan de kiezer verifi\"eren dat zijn stem correct is. In principe zouden bij een hertelling dan ook deze papieren tickets en niet de digitale data gebruikt moeten worden.\cite{wiki:vvpat}
 
 \section{Vereisten}
+\label{sec:ls:vereisten}
 
 Bij het ontwerpen van een stemsysteem zijn er twee tegenstrijdige doelen. Enerzijds moet het mogelijk zijn dat zowel de kiezer thuis kan controleren of zijn stem juist meegeteld is. Anderzijds mag diezelfde persoon niet kunnen bewijzen voor wie hij precies gestemd heeft, noch mag het mogelijk zijn dat anderen hierachter kunnen komen. Wanneer hij dit wel kan, zou hij zijn stem kunnen verkopen aan iemand die de verkiezing wil beïnvloeden, of hiertoe gedwongen worden.
 
@@ -158,6 +160,7 @@ Scratch-Card\cite{randell_ryan_voting_technologies_and_trust} maakt gebruik van 
 \npar Net zoals bij Twin (\ref{sec:ls:twin}) is het invullen van het biljet zeer eenvoudig voor de kiezer. Ook hier is het echter belangrijk dat de kiezers de juiste procedure volgen en een kopie nemen van hun biljet voordat de kraslaag verwijderd is. Ook hier moeten de bijzitters dus toezien op het correct verloop van de verkiezing.
 
 \section{Systemen met cryptografie}
+\label{sec:ls:systemen_met_cryptografie}
 
 De systemen in de vorige sectie maakten geen gebruik van ingewikkelde cryptografische technieken. Omdat het hierdoor eenvoudiger te begrijpen is, zal zo'n systeem sneller vertrouwd worden door de kiezer (\ref{sec:ls:vertrouwen}). In deze sectie worden toch enkele systemen besproken die hier wel op steunen. Door gebruik te maken van zero-knowledge bewijzen, homomorfe cryptografie en mixnets kunnen immers veilige end-to-end verifiable systemen ontworpen worden.
 
