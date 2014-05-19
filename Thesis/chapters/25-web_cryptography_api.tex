@@ -83,7 +83,7 @@ Een tweede vergelijking werd gemaakt tussen JSBN en NfWebCrypto voor een RSA enc
 
 \npar De JSBN library voorziet in enkele klassen specifiek voor RSA encryptie en decryptie. Het is dus zeer eenvoudig om een bepaalde klaartekst te encrypteren met een gegeven publieke sleutel. De Web Cryptography API ondersteunt hier het \texttt{RSAES-PKCS1-v1\_5} algoritme voor.\cite{rfc3447} Hoewel het mogelijk zou moeten zijn om publieke sleutels in het \texttt{SPKI}-formaat te importeren, bleek het opnieuw moeilijk om de sleutel die gebruikt werd voor de JSBN encryptie om te zetten. Daarom werd besloten om voor elke encryptie een nieuwe sleutel te genereren. De tijd die hiervoor nodig is, wordt niet meegerekend in het eindresultaat.
 
-\npar Ook hier werd de encryptie \np{1000} keer uitgevoerd. De resultaten van deze test zijn terug te vinden in \ref{fig:wc:rsa} en \ref{tab:wc:modular_exponentiation}. We zien dat de JavaScript implementatie voor deze veel kortere exponent sneller is dan de berekening door de NfWebCrypto plugin. De communicatie met de plugin weegt hier duidelijk zwaarder door.
+\npar Ook hier werd de encryptie \np{1000} keer uitgevoerd. De resultaten van deze test zijn terug te vinden in \ref{fig:wc:rsa} en \ref{tab:wc:rsa}. We zien dat de JavaScript implementatie voor deze veel kortere exponent sneller is dan de berekening door de NfWebCrypto plugin. De communicatie met de plugin weegt hier duidelijk zwaarder door.
 
 \begin{figure}
   \center{\includegraphics[width=\linewidth]{wc/rsa.eps}}
@@ -99,7 +99,7 @@ Een tweede vergelijking werd gemaakt tussen JSBN en NfWebCrypto voor een RSA enc
       NfWebCrypto & 2,1360 & 0,4219
     \end{tabular}
     \caption{RSA}
-    \label{tab:wc:modular_exponentiation}
+    \label{tab:wc:rsa}
   \end{center}
 \end{table}
 

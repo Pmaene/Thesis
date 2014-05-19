@@ -70,12 +70,21 @@
   issn = {0001-0782}
 }
 
+@book{ gollman_computer_security,
+  author = {Dieter Gollmann},
+  title = {Computer Security (Third Edition)},
+  publisher = {Wiley},
+  year = {2011},
+  pages = {I-XIX, 1-436},
+  isbn = {978-0-470-74115-3}
+}
+
 @book{ menezes_vanstone_oorschot_handbook_of_applied_cryptography,
   author = {Menezes, A.J. and Vanstone, S.A. and Van Oorschot, P.C.},
   title = {{Handbook of Applied Cryptography}},
   year = {1996},
   isbn = {0849385237}
-} 
+}
 
 @incollection{ cichon_kutylowski_weglorz_short_ballot_assumption,
   author = {Cicho\'n, J. and Kuty{\l}owski, M. and W{\c e}glorz, B.},
@@ -153,6 +162,17 @@
   note = {[Mailing List Archive; Online; Accessed 6-May-2014]}
 }
 
+@misc{ rfc2898,
+  author = {B. Kaliski},
+  title = {{PKCS \#5: Password-Based Cryptography Specification Version 2.0}},
+  series = {{Request for Comments}},
+  number = {2898},
+  publisher = {{IETF}},
+  organization = {{Internet Engineering Task Force}},
+  year = 2000,
+  url = {http://www.ietf.org/rfc/rfc2898.txt}
+}
+
 @misc{ rfc3447,
   author = {J. Jonsson and B. Kaliski},
   title = {{Public-Key Cryptography Standards (PKCS) \#1: RSA Cryptography Specifications Version 2.1}},
@@ -209,7 +229,7 @@
 
 @misc{ news:tijd_moeder_aller_verkiezingen_kostprijs,
   author = {De Tijd},
-  title = {{'Moeder aller verkiezingen' kost meer dan 10 miljoen}},
+  title = {{`Moeder aller verkiezingen' kost meer dan 10 miljoen}},
   year = {2013},
   url = {http://www.tijd.be/r/t/1/id/9388719},
   note = {[Online; Accessed 17-May-2014]}
@@ -237,6 +257,22 @@
   year = {2012},
   url = {http://codehenge.net/blog/2012/08/javascript-performance-rundown-2012/},
   note = {[Online; Accessed 5-May-2014]}
+}
+
+@misc{ site:github_aes_js,
+  author = {cryodex},
+  title = {{aes-js}},
+  year = {2014},
+  url = {https://github.com/cryodex/aes-js},
+  note = {[Online; Accessed 19-May-2014]}
+}
+
+@misc{ site:github_sjcl,
+  author = {bitwiseshiftleft},
+  title = {{sjcl}},
+  year = {2014},
+  url = {https://github.com/bitwiseshiftleft/sjcl},
+  note = {[Online; Accessed 19-May-2014]}
 }
 
 @misc{ site:html5test_web_cryptography_api,
@@ -279,6 +315,30 @@
   note = {[Online; Accessed 5-May-2014]}
 }
 
+@misc{ site:pilgrim_local_storage,
+  author = {Pilgrim, M.},
+  title = {{Local Storage - Dive Into HTML5}},
+  year = {2011},
+  url = {http://diveintohtml5.info/storage.html},
+  note = {[Online; Accessed 19-May-2014]}
+}
+
+@misc{ site:robohash,
+  author = {RoboHash},
+  title = {{RoboHash}},
+  year = {2014},
+  url = {http://robohash.org},
+  note = {[Online; Accessed 19-May-2014]}
+}
+
+@misc{ site:truecrypt,
+  author = {TrueCrypt},
+  title = {{TrueCrypt - Free Open-Source On-The-Fly Encryption}},
+  year = {2014},
+  url = {http://www.truecrypt.org},
+  note = {[Online; Accessed 19-May-2014]}
+}
+
 @misc{ site:wu_rsa_and_ecc_in_javascript,
   author = {Wu, T.},
   title = {{RSA and ECC in JavaScript}},
@@ -303,12 +363,28 @@
 	note = {[Online; Accessed 15-May-2014]}
 }
 
+@misc{ wiki:identicon,
+	author = {Wikipedia},
+	title = {{Identicon --- Wikipedia}},
+	year = {2014}, 
+	url = {http://en.wikipedia.org/w/index.php?title=Identicon&oldid=590908926},
+	note = {[Online; Accessed 19-May-2014]}
+}
+
 @misc { wiki:ostracon,
   author = {Wikipedia},
   title = {{Ostracon --- Wikipedia}},
   year = {2014}, 
   url = {http://en.wikipedia.org/w/index.php?title=Ostracon&oldid=603659772},
   note = {[Online; Accessed 11-Apr-2014]}
+}
+
+@misc { wiki:pretty_good_privacy,
+  author = {Wikipedia},
+  title = {{Pretty Good Privacy --- Wikipedia}},
+  year = {2014}, 
+  url = {http://en.wikipedia.org/w/index.php?title=Pretty_Good_Privacy&oldid=606033746},
+  note = {[Online; Accessed 19-May-2014]}
 }
 
 @misc { wiki:vvpat,
@@ -342,12 +418,12 @@
   year = {2006}
 }
 
-@techreport{ sleevi_watson_web_cryptography_api,
-  author = {Sleevi, R. and Watson, M.},
-  title = {{Web Cryptography API}},
-  url = {http://www.w3.org/TR/2013/WD-FileAPI-20130912/},
-  year = {2014},
-  type = {{W3C Last Call Working Draft 12 September 2013}},
+@techreport{ hickson_web_storage,
+  author = {Hickson, I.},
+  title = {{Web Storage}},
+  url = {http://www.w3.org/TR/2013/REC-webstorage-20130730/},
+  year = {2013},
+  type = {{W3C Recommendation 30 July 2013}},
   institution = {{W3C}},
 }
 
@@ -357,6 +433,15 @@
   url = {http://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/},
   year = {2014},
   type = {{W3C Last Call Working Draft 25 March 2014}},
+  institution = {{W3C}},
+}
+
+@techreport{ sleevi_watson_web_cryptography_api,
+  author = {Sleevi, R. and Watson, M.},
+  title = {{Web Cryptography API}},
+  url = {http://www.w3.org/TR/2013/WD-FileAPI-20130912/},
+  year = {2014},
+  type = {{W3C Last Call Working Draft 12 September 2013}},
   institution = {{W3C}},
 }
 
