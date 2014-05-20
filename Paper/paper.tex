@@ -1,0 +1,43 @@
+% 
+% Systemen voor Online Verkiezingen
+% @author Pieter Maene <pieter.maene@student.kuleuven.be>
+%
+
+\documentclass[journal]{IEEEtran}
+
+% Hier kun je dan nog andere pakketten laden of eigen definities voorzien
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[np,autolanguage]{numprint}
+\usepackage{pdfpages}
+\usepackage{url}
+
+% De optie colorlinks mag verwijderd worden voor de af te drukken versie
+\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
+
+% Customisations
+\graphicspath{{./images/}}
+
+% Document
+\begin{document}
+
+  \title{Online Elections in Practice: Improvement and Application of the Helios Voting System}
+  \author{Pieter~Maene}
+
+  \maketitle
+  
+  \begin{abstract}
+    %TODO Abstract
+  \end{abstract}
+  
+  \input{sections/00-introduction}
+  \input{sections/01-procedure}
+  \input{sections/02-interface}
+  \input{sections/03-web_cryptography_api}
+  \input{sections/04-conclusion}
+  
+  \bibliographystyle{IEEEtran}
+  \bibliography{references}
+
+\end{document}
