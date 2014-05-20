@@ -86,7 +86,7 @@ Oorspronkelijk kon de publieke sleutel voor de verkiezing alleen berekend worden
 
 \subsubsection{Secret Sharing}
 
-De methode die ge\"implementeerd werd is gebaseerd op Shamir's secret sharing.\cite{shamir_how_to_share_a_secret} Iedere trustee genereert eerst een veelterm van graad $k - 1$. Vervolgens stuurt hij elke trustee (ook zichzelf) een zogeheten \textit{share} van deze rechte. Deze share is de waarde van de rechte voor een punt $x$. Deze $x$-co\"ordinaat moet door iedereen gekend zijn, omdat het vereist is dat de shares die een trustee ontvangt van de anderen voor dezelfde waarde werden aangemaakt. Daarom wordt hiervoor binnen Helios het database ID van de trustee gebruikt. Dit is een uniek natuurlijk getal dat wordt opgehoogd telkens een nieuwe trustee aangemaakt wordt.
+De methode die ge\"implementeerd werd is gebaseerd op Shamir's secret sharing.\cite{shamir_how_to_share_a_secret} Iedere trustee genereert eerst een veelterm van graad $k - 1$. Vervolgens stuurt hij elke trustee (ook zichzelf) een zogeheten \textit{share} van deze veelterm. Deze share is de waarde van de veelterm voor een punt $x$. Deze $x$-co\"ordinaat moet door iedereen gekend zijn, omdat het vereist is dat de shares die een trustee ontvangt van de anderen voor dezelfde waarde werden aangemaakt. Daarom wordt hiervoor binnen Helios het database ID van de trustee gebruikt. Dit is een uniek natuurlijk getal dat wordt opgehoogd telkens een nieuwe trustee aangemaakt wordt.
 
 \npar Vervolgens moet de trustee de $n$ shares die hij zo ontvangt, optellen. Zo bekomt hij de $y$-co\"ordinaat die hoort bij zijn ID op een nieuwe veelterm, die de som is van de $n$ veeltermen die door de trustees gegenereerd werden. Deze waarde kan hij nu gebruiken als zijn geheime sleutel ${sk}$. Omdat ElGamal gebruikt wordt als encryptieschema, wordt zijn publieke sleutel ${pk} = g^{sk} \mod{p}$.
 
@@ -123,7 +123,7 @@ Voordat iedere trustee zijn gegenereerde shares doorstuurt naar de andere truste
 \section{Stemhokje}
 \label{sec:helios:stemhokje}
 
-Het stemhokje staat volledig los van de rest van het systeem. Het is een applicatie die de kiezer kan gebruiken om zijn stem uit te brengen. Nadat hij zijn keuze gemaakt heeft, wordt deze ge\"encrypteerd met de publieke sleutel voor de verkiezing. Zoals besproken in \ref{sec:helios:cryptografische_technieken}, zal de cijfertekst bestaan uit twee delen (\ref{eq:helios:elgamal_c1} en \ref{eq:helios:elgamal_c2_homomorphic}). Wanneer threshold encryptie aanstaat, wordt de publieke sleutel gedefinieerd door \ref{eq:helios:threshold_encryption_public_key} gebruikt; anders is het deze van \ref{eq:helios:elgamal_c2_homomorphic_trustees}.
+Het stemhokje staat volledig los van de rest van het systeem. Het is een applicatie die de kiezer kan gebruiken om zijn stem uit te brengen. Nadat hij zijn keuze gemaakt heeft, wordt deze ge\"encrypteerd met de publieke sleutel voor de verkiezing. Zoals besproken in \ref{sec:helios:cryptografische_technieken}, zal de cijfertekst bestaan uit twee delen (\ref{eq:helios:elgamal_c1} en \ref{eq:helios:elgamal_c2_homomorphic}). Wanneer threshold encryptie aanstaat, wordt de publieke sleutel zoals gedefinieerd door \ref{eq:helios:threshold_encryption_public_key} gebruikt; anders is het deze van \ref{eq:helios:elgamal_c2_homomorphic_trustees}.
 
 \npar Het encryptieproces is in JavaScript ge\"implementeerd en vindt dus volledig plaats in de browser van de kiezer. De stem van de kiezer zal dan nooit onge\"encrypteerd op de server toekomen. Alle informatie over de verkiezing kan eenvoudig opgevraagd worden. De kiezer zou dus ook zijn eigen software kunnen gebruiken om zijn stem te encrypteren.
 
@@ -134,7 +134,7 @@ Het stemhokje staat volledig los van de rest van het systeem. Het is een applica
 
 Net zoals bij Scratch \& Vote (\ref{sec:ls:scratch_and_vote}) worden de uitgebrachte stemmen gepubliceerd. In het ballot tracking center kan een lijst met alle kiezers teruggevonden worden. Bij een publieke verkiezing kan iedereen deze opvragen, bij een private alleen de geregistreerde kiezers. Standaard staan hier gewoon de namen van de kiezers, maar de beheerder kan ervoor kiezen om aliassen te gebruiken in de plaats.
 
-\npar Van zodra een kiezer zijn stem uitgebracht heeft, kan deze bekeken worden (\ref{fig:helios:cast_vote}). Dit is nodig omdat zo het resultaat van de verkiezing gecontroleerd kan worden (\ref{sec:helios:controleapplicatie}). Alle deze informatie kan ook opgevraagd worden als JSON, zodat ze eenvoudiger verwerkt kan worden door een applicatie.
+\npar Van zodra een kiezer zijn stem uitgebracht heeft, kan deze bekeken worden (\ref{fig:helios:cast_vote}). Dit is nodig omdat zo het resultaat van de verkiezing gecontroleerd kan worden (\ref{sec:helios:controleapplicatie}). Al deze informatie kan ook opgevraagd worden als JSON, zodat ze eenvoudiger verwerkt kan worden door een applicatie.
 
 \begin{figure}
   \center{\includegraphics[width=0.9\linewidth]{helios/cast_vote.png}}

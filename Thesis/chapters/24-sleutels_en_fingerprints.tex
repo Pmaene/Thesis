@@ -18,16 +18,16 @@ De trustees downloaden hun geheime sleutels als JSON bestanden (\ref{sec:ui:trus
 
 \npar Een eenvoudige oplossing voor het eerste probleem is de trustees vragen om hun account zeker te beveiligen met een wachtwoord. De sleutel zou ook op een beveiligde partitie geplaatst kunnen worden. Dit kan bijvoorbeeld gedaan worden door gebruik te maken van TrueCrypt.\cite{site:truecrypt}
 
-\npar Wanneer de sleutel op een andere machine ingevoerd moet worden, kan deze op een USB-stick bewaard worden. Hier is het zeker aangeraden om de sleutel op een ge\"encrypteerde partitie te plaatsen. Daarnaast zou de sleutel ook ge\"upload kunnen worden naar een private server of een cloud opslagdienst. In dit geval moet de sleutel zeker eerst ge\"encrypteerd worden.
+\npar Wanneer de sleutel op een andere machine ingevoerd moet worden, kan deze op een USB-stick opgeslagen worden. Hier is het zeker aangeraden om de sleutel op een ge\"encrypteerde partitie te plaatsen. Daarnaast zou de sleutel ook ge\"upload kunnen worden naar een private server of een cloud opslagdienst. In dit geval moet hij zeker eerst ge\"encrypteerd worden.
 
 \npar Het zou echter veel gebruiksvriendelijker zijn om dit in de generator in te bouwen. Voordat de sleutel gedownload wordt, kan deze eerst symmetrisch ge\"encrypteerd worden met een wachtwoord. Hiervoor zou bijvoorbeeld AES-CTR gebruikt kunnen worden, waarbij de sleutel afgeleid wordt van het opgegeven wachtwoord.\cite{rfc2898} Er zijn verschillende JavaScript libraries die hiervoor ondersteuning hebben.\cite{site:github_aes_js}\cite{site:github_sjcl} Bovendien wordt deze mode ook ondersteund door de Web Cryptography API (\ref{chap:web_cryptography_api}).\cite{sleevi_watson_web_cryptography_api}
 
 \subsection{Web Storage~\cite{hickson_web_storage}\cite{site:pilgrim_local_storage}}
 \label{sec:sf:web_storage}
 
-Door gebruik te maken van de HTML5 Web Storage specificatie, zouden de sleutels ook op een alternatieve manier bewaard kunnen worden. Deze specificatie geeft een ontwikkelaar onder andere toegang tot een persistente key/value store waar tot 5MB aan data in opgeslagen kan worden. Er wordt ook voldaan aan de same-origin policy. Dit wil zeggen dat de data alleen toegankelijk is van op hetzelfde domein.\cite{gollman_computer_security}
+Door gebruik te maken van de HTML5 Web Storage specificatie, zouden de sleutels ook op een alternatieve manier bewaard kunnen worden. Deze specificatie geeft een ontwikkelaar onder andere toegang tot een persistente key/value store waar tot 5MB aan data in opgeslagen kan worden. Er wordt ook voldaan aan de same-origin policy. Dit wil zeggen dat de data alleen toegankelijk zijn van op hetzelfde domein.\cite{gollman_computer_security}
 
-\npar Deze functionaliteit zou toelaten om de geheime sleutels volledig te verbergen voor de trustees. In plaats van hen een bestand te laten downloaden met de sleutels, worden deze in de \texttt{localStorage} opgeslagen. Aangezien er naast de same-origin policy geen beveiligingsmechanismen ingebouwd zijn in de specificatie, is het beter om de sleutel eerst te encrypteren (\ref{sec:sf:disk}). Een groot nadeel aan deze oplossing is dat de sleutel vast zit in de machine die gebruikt is om hem aan te maken.
+\npar Deze functionaliteit zou toelaten om de geheime sleutels volledig te verbergen voor de trustees. In plaats van hen een bestand te laten downloaden met de sleutels, worden deze in de \texttt{localStorage} opgeslagen. Aangezien er naast de same-origin policy geen beveiligingsmechanismen ingebouwd zijn in de specificatie, is het beter om de sleutel eerst te encrypteren (\ref{sec:sf:disk}). Een \texttt{secureStorage} binnen de browser met ingebouwde encryptie zou dit nog eenvoudiger maken voor een ontwikkelaar.\cite{site:zakas_securestore} Een groot nadeel aan deze oplossing is dat de sleutel vast zit in de machine die gebruikt is om hem aan te maken.
 
 \section{Fingerprints}
 \label{sec:sf:fingerprints}
@@ -36,10 +36,10 @@ Door gebruik te maken van de HTML5 Web Storage specificatie, zouden de sleutels 
 
 Op verschillende plaatsen binnen Helios worden fingerprints gebruikt. Dit zijn base64-ge\"encodeerde SHA-256 hashes van specifieke data. Zo is de \textit{Smart Ballot Tracker} (\ref{fig:kv:cast_confirm}) een fingerprint van de ge\"encrypteerde stem. Aan de trustee wordt ook een fingerprint van de gegenereerde publieke sleutels getoond. Dit zijn echter lange strings zijn die moeilijk te onthouden kunnen worden. Bovendien kan niet in \'e\'en oogopslag gezien worden of twee fingerprints hetzelfde zijn.
 
-\npar Daarom kunnen hiervoor beter visuele hashes gebruikt worden. Dit zijn unieke afbeeldingen die gegenereerd worden voor een bepaalde string. Afbeeldingen kunnen niet alleen sneller herkend worden, het is ook veel eenvoudiger om ze te bewaren. Wanneer de fingerprint een string is, moet deze neergeschreven worden of gekopieerd worden naar een bestand. Een afbeelding daarentegen kan eenvoudig gedownload worden. Voorbeelden van dergelijke visuele hash systemen zijn RoboHash (\ref{fig:sf:robohash}) en Identicon.\cite{site:robohash}\cite{wiki:identicon}
+\npar Daarom kunnen hiervoor beter visuele hashes gebruikt worden. Dit zijn unieke afbeeldingen op basis van een bepaalde string. Afbeeldingen kunnen niet alleen sneller herkend worden, het is ook veel eenvoudiger om ze te bewaren. Wanneer de fingerprint een string is, moet deze neergeschreven worden of gekopieerd worden naar een bestand. Een afbeelding daarentegen kan eenvoudig gedownload worden. Voorbeelden van dergelijke visuele hashsystemen zijn RoboHash (\ref{fig:sf:robohash}) en Identicon.\cite{site:robohash}\cite{wiki:identicon}
 
 \begin{figure}
-  \center{\includegraphics[width=0.3\linewidth]{sf/robohash.png}}
+  \center{\includegraphics[width=0.25\linewidth]{sf/robohash.png}}
   \caption{RoboHash van de fingerprint in \ref{fig:kv:cast_confirm}}
   \label{fig:sf:robohash}
 \end{figure}
