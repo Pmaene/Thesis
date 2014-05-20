@@ -14,7 +14,9 @@
 \setup{filingcard,
   translatedtitle={Online Elections in Practice: Improvement and Application of the Helios Voting System},
   udc=621.3,
-  shortabstract={}
+  shortabstract={
+    \input{chapters/00-short_abstract}
+  }
 }
 
 % Kies de fonts voor de gewone tekst, bv. Latin Modern
@@ -22,9 +24,7 @@
 
 % Hier kun je dan nog andere pakketten laden of eigen definities voorzien
 \usepackage{amsmath,amssymb,mathtools}
-\usepackage{color}
 \usepackage{enumitem}
-\usepackage{eurosym}
 \usepackage{float}
 \usepackage{kulemtx}
 \usepackage{multirow,bigstrut}
@@ -53,14 +53,14 @@
   \include{alias}
 
   \begin{preface}
-    %TODO Voorwoord
+    \input{chapters/01-preface}
   \end{preface}
 
   \kulemtmanToC
   \tableofcontents
 
   \begin{abstract}
-    %TODO Samenvatting
+    \input{chapters/02-abstract}
   \end{abstract}
   
   \listoffiguresandtables
@@ -80,7 +80,7 @@
   \mainmatter
 
   % Chapters
-  \include{chapters/00-inleiding}
+  \include{chapters/03-inleiding}
   
   \include{chapters/10-literatuurstudie}
   
@@ -91,6 +91,11 @@
   \include{chapters/24-sleutels_en_fingerprints}
   \include{chapters/25-web_cryptography_api}
   \include{chapters/26-besluit}
+
+  \appendix
+  
+  \chapter{English Paper}
+  \includepdf{../Paper/paper.pdf}
 
   \backmatter
 
