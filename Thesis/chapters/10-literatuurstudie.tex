@@ -6,25 +6,25 @@
 \chapter{Literatuurstudie}
 \label{chap:literatuurstudie}
 
-Deze thesis handelt over methoden voor online verkiezingen. Een interessant verwant probleem zijn systemen die gebruik maken van papier. Eerst wordt een kort overzicht van de geschiedenis van stemsystemen gegeven (\ref{sec:ls:geschiedenis}). Vervolgens worden de belangrijkste vereisten bekeken waaraan deze systemen moeten voldoen (\ref{sec:ls:vereisten}). Belangrijk hierbij is de definitie van een voter verifiable systeem. Tot slot onderzoeken we zowel systemen die geen gebruik maken van cryptografische methoden (\ref{sec:ls:systemen_zonder_cryptografie}) als deze die daar wel op steunen (\ref{sec:ls:systemen_met_cryptografie}).
+Deze thesis handelt over methoden voor online verkiezingen. Een interessant verwant probleem zijn systemen die gebruik maken van papier. Eerst wordt een kort overzicht van de geschiedenis van stemsystemen gegeven (\ref{sec:ls:geschiedenis}). Vervolgens worden de voornaamste vereisten bekeken waaraan deze systemen moeten voldoen (\ref{sec:ls:vereisten}). Belangrijk hierbij is de definitie van een voter-verifiable systeem. Tot slot worden zowel systemen onderzocht die geen gebruik maken van cryptografische methoden (\ref{sec:ls:systemen_zonder_cryptografie}) als deze die daar wel op steunen (\ref{sec:ls:systemen_met_cryptografie}).
 
 \section{Geschiedenis~\cite{adida_advances_in_cryptographic_voting_systems}}
 \label{sec:ls:geschiedenis}
 
-Onze samenleving heeft een rijke geschiedenis van stemprocedures, die teruggaat tot Athene in het oude Griekenland. Hier bracht men een negatieve stem uit op een potscherf. In deze paragraaf bekijken we kort enkele die bepalend zijn geweest voor de manier waarop we vandaag werken.\cite{wiki:ostracon}
+Onze samenleving heeft een rijke geschiedenis van stemprocedures, die teruggaat tot Athene in het oude Griekenland. Hier bracht men een negatieve stem uit op een potscherf. In deze paragraaf bekijken we kort enkele methodes die bepalend zijn geweest voor de manier waarop we vandaag werken.\cite{wiki:ostracon}
 
 \npar Sinds de uitvinding van het geheime stembiljet in 1858 in Australi\"e is er eigenlijk niet meer zoveel veranderd. In dit systeem worden de biljetten op voorhand gedrukt door de staat en veilig bewaard tot op de stemdag. Elke stemgerechtigde krijgt op de stemdag een biljet waarna hij zijn stem uitbrengt in een stemhokje. Het grootste voordeel van deze methode ligt in het feit dat elke stem geheim is.
 
-\npar Deze stemmethode maakte het daarnaast ook mogelijk om mechanische (en later elektrische) machines te gebruiken. Mechanische systemen werden gebruikt in grotere gemeenschappen en waren gebaseerd op hendels en mechanische tellers. De eerste van deze machines werden in 1892 ingevoerd in New York. Rond 1960 werden de eerste elektrische machines ingevoerd. Deze maakten gebruiken van optische scans. Bij deze systemen moet de stem meestal op een specifieke manier aangegeven worden, bijvoorbeeld door het inkleuren van bolletjes.
+\npar Deze stemmethode maakte het daarnaast ook mogelijk om mechanische (en later elektrische) machines te gebruiken. Mechanische systemen werden gebruikt in grotere gemeenschappen en waren gebaseerd op hendels en mechanische tellers. De eerste van deze machines werden in 1892 ingevoerd in New York. Rond 1960 werden de eerste elektrische machines ingevoerd. Deze maakten gebruiken van optische scans. Bij deze systemen moest de stem meestal op een specifieke manier aangegeven worden, bijvoorbeeld door het inkleuren van bolletjes.
 
-\npar Sinds 2000 worden Direct Recording by Electronics (DRE) machines steeds vaker gebruikt. Hierop draait speciale stemsoftware, die de keuze van de kiezer digitaal vastlegt. Deze machines maken het stemproces aanzienlijk eenvoudiger. Het grootste probleem is dat er geen enkele bevestiging aan de kiezer gegeven wordt en dat hij deze machines dus volledig moet vertrouwen.\cite{wiki:dre_voting_machine}
+\npar Sinds 2000 worden DRE machines steeds vaker gebruikt. Hierop draait speciale stemsoftware die de keuze van de kiezer digitaal vastlegt. Deze machines maken het stemproces aanzienlijk eenvoudiger. Het grootste probleem is dat de kiezer geen enkele bevestiging krijgt en dat hij deze machines dus volledig moet vertrouwen.\cite{wiki:dre_voting_machine}
 
 \npar Het gebrek aan controle door de kiezer bij DRE vormde de aanleiding voor het ontwerpen van Voter-Verified Paper Audit Trails (VVPAT) machines. Hierbij toont de machine de kiezer een afgeschermde afdruk van zijn stem, waarna hij deze kan accepteren of weigeren. Op die manier kan de kiezer verifi\"eren dat zijn stem correct is. In principe zouden bij een hertelling dan ook deze papieren tickets en niet de digitale data gebruikt moeten worden.\cite{wiki:vvpat}
 
 \section{Vereisten}
 \label{sec:ls:vereisten}
 
-Bij het ontwerpen van een stemsysteem zijn er twee tegenstrijdige doelen. Enerzijds moet het mogelijk zijn dat zowel de kiezer thuis kan controleren of zijn stem juist meegeteld is. Anderzijds mag diezelfde persoon niet kunnen bewijzen voor wie hij precies gestemd heeft, noch mag het mogelijk zijn dat anderen hierachter kunnen komen. Wanneer hij dit wel kan, zou hij zijn stem kunnen verkopen aan iemand die de verkiezing wil beïnvloeden, of hiertoe gedwongen worden.
+Bij het ontwerpen van een stemsysteem zijn er twee tegenstrijdige doelen. Enerzijds moet het mogelijk zijn dat de kiezer thuis kan controleren of zijn stem juist meegeteld is. Anderzijds mag diezelfde persoon niet kunnen bewijzen voor wie hij precies gestemd heeft, noch mag het mogelijk zijn dat anderen hierachter kunnen komen. Wanneer hij dit wel kan, zou hij zijn stem kunnen verkopen aan iemand die de verkiezing wil beïnvloeden of gedwongen kunnen worden om op een bepaalde kandidaat te stemmen.
 
 \npar Hoewel het vaak zeer moeilijk is om een grote verkiezing doorslaggevend te wijzigen, wordt stemfraude toch regelmatig geconstateerd.\cite{adida_advances_in_cryptographic_voting_systems} E\'en van de grote moeilijkheden is dat zowel kiezers als bijzitters corrupt kunnen zijn. Er kan dus van geen enkele deelnemer verwacht worden dat hij eerlijk is.
 
@@ -40,7 +40,7 @@ De huidige manier van stemmen vereist dat de kiezer zeer veel vertrouwen legt in
 
 In een end-to-end verifiably voting systeem wordt niet nagegaan of de code van de stemmachines volledig correct is. In plaats daarvan wordt wiskundig bewezen dat het resultaat correct is. Op die manier kan de moeilijke en vaak ondoorzichtige fysische chain-of-custody vermeden worden. Dit betekent ook dat iemand niet langer speciale toegang moet hebben om de resultaten te controleren. Om het even wie kan nagaan of de bewijzen correct zijn.
 
-\npar Dergelijke end-to-end verifiable systemen kunnen zowel met als zonder cryptografische technieken gerealiseerd worden. Cryptografie kan enerzijds gebruikt worden om stemmen te encrypteren, zodat ze zeker geheim blijven. Anderzijds geven sommige systemen een zero-knowledge bewijs dat aangetoont dat de stemmen correct geteld zijn.
+\npar Dergelijke end-to-end verifiable systemen kunnen zowel met als zonder cryptografische technieken gerealiseerd worden. Cryptografie kan enerzijds gebruikt worden om stemmen te encrypteren, zodat ze zeker geheim blijven. Anderzijds geven sommige systemen een zero-knowledge bewijs dat aantoont dat de stemmen correct geteld zijn.
 
 \section{Systemen zonder cryptografie}
 \label{sec:ls:systemen_zonder_cryptografie}

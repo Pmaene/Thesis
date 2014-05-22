@@ -34,7 +34,7 @@ Aangezien de standaard nog niet voltooid is, wordt deze nauwelijks ondersteund d
 
 Helios maakt gebruik van ElGamal (\ref{sec:helios:elgamal}) om de stemmen te encrypteren. Dit algoritme wordt echter niet ondersteund door de Web Cryptography API (\ref{sec:wc:web_cryptography_api}). Deze kan dus niet onmiddellijk gebruikt worden om de encryptie te versnellen. De modulaire exponentiaties vragen veruit de meeste rekentijd. Een verbetering daar zou dus ook positief zijn voor de algemene prestaties.
 
-\npar Aangezien de enige publieke methodes van de API op hoog niveau werken, is er geen functie beschikbaar om dit te doen. Diffie-Hellman wordt echter wel ondersteund voor het genereren van een assymmetrisch sleutelpaar. De \texttt{deriveKey} methode van de API berekent de gedeelde geheime sleutel volgens \ref{eq:wc:diffie_hellman}.\cite{diffie_hellman_new_directions_in_cryptography}
+\npar Aangezien de enige publieke methodes van de API op hoog niveau werken, is er geen functie beschikbaar om dit te doen. Diffie-Hellman wordt echter wel ondersteund voor het genereren van een asymmetrisch sleutelpaar. De \texttt{deriveKey} methode van de API berekent de gedeelde geheime sleutel volgens \ref{eq:wc:diffie_hellman}.\cite{diffie_hellman_new_directions_in_cryptography}
 
 \begin{equation}
   \label{eq:wc:diffie_hellman}
@@ -49,7 +49,7 @@ Helios maakt gebruik van ElGamal (\ref{sec:helios:elgamal}) om de stemmen te enc
 
 \npar De prestaties van NfWebCrypto worden vergeleken met deze van JSBN en Leemon, twee big number libraries die geschreven zijn in JavaScript.\cite{site:wu_rsa_and_ecc_in_javascript}\cite{site:baird_big_integers_in_javascript} Er wordt telkens een exponent van \np{1024} bit gebruikt, wat ook de lengte van de parameters in Helios is. De berekening werd voor elke library \np{1000} keer uitgevoerd om een statistisch relevant resultaat te bekomen. De resultaten worden weergegeven in \ref{fig:wc:modular_exponentiation} en \ref{tab:wc:modular_exponentiation}. De berekening duurt bij Leemon veruit het langste. De JSBN library is sterk geoptimaliseerd. De NfWebCrypto plugin is daarentegen gemiddeld nog eens dubbel zo snel. De variantie is hier zo groot omdat de eerste exponentiatie veel langer duurt.
 
-\npar Het resultaat dat bekomen wordt na de \texttt{exportKey} is wel niet correct. In de communicatie met de plugin moeten de parameters \texttt{base64} ge\"encodeerd worden. Vermoedelijk loopt hier nog iets mis tussen de conversie in JavaScript en \cplusplus.
+\npar Het resultaat dat bekomen wordt na de \texttt{exportKey} is wel niet correct. In de communicatie met de plugin moeten de parameters \texttt{base64} ge\"encodeerd worden. Vermoedelijk loopt hier nog iets mis tussen de conversie in \cplusplus en JavaScript.
 
 \begin{figure}
   \center{\includegraphics[width=\linewidth]{wc/modular_exponentiation.eps}}
