@@ -1,0 +1,28 @@
+% 
+% Interface
+% @author Pieter Maene <pieter.maene@student.kuleuven.be>
+%
+
+\section{Interface}
+
+Most of our work on the interface to improve the usability concentrated on two big parts of Helios. First, the admin was modified to better reflect the procedure discussed in \ref{sec:procedure}. Second, the trustee dashboard was also simplified. Additionally, the layout was streamlined throughout the application.
+
+\subsection{Admin}
+
+The old interface integrated the administrative functions in the election view. This made it hard for the election admin to keep track of his progress in the procedure. It was therefore decided to move this functionality to a separate page. It shows the entire procedure and clearly indicates which steps have been completed. Since the actions lead away from this page, a bar was put on top of all pages where the progress is indicated as well.
+
+\par The workflow for an election with threshold encryption was thoroughly changed. Originally, a public bulletin board was available where anybody could upload a pair of communication keys. The admin could only add trustees to an election from a list of people who had done this. This meant that he had to wait for all trustees to do this before he could define the threshold scheme and continue setting up the election. This required a secondary path of communication, outside of Helios. Because the bulletin board was publicly accessible, an attacker could impersonate a trustee. Unless he has access to the trustee's e-mail account, he would not receive the URL to the trustee dashboard. In that case, he would have been able to stall the key ceremony.
+
+\par The bulletin board was removed completely and trustees are immediately added to the election. They then receive an e-mail with a unique link to their trustee dashboard where they can generate their communication keys.
+
+\subsection{Trustee Dashboard}
+
+The trustees will perform all actions of the key ceremony in the trustee dashboard. The trustee's role is explained and an overview of all steps in the ceremony is shown in the same way as the election procedure on the admin page.
+
+\par The trustee will generate three key pairs during the ceremony. The private keys are stored locally in JSON files. Originally, the JSON was simply shown to the user and he had to manually save it to a file. When the key was needed, the file's contents needed to be copied again to a text area.
+
+\par The HTML5 File API offers two API interfaces that can be used to ease this process.\cite{ranganathan_sicking_file_api} The first is the \texttt{Blob} interface that can be used to generate files in JavaScript. They can then be offered as a download in the browser. The second is the \texttt{FileReader} interface which allows a web developer to read files that conform to the \texttt{Blob} or \texttt{File} interfaces.
+
+\par They are used in the trustee dashboard to offer the secret keys as a download. The details of the key are now hidden from the trustee. When his key is needed, he has to select this file in an input element. The file's contents are then read to the text area. These adjustments make it a lot easier for the trustee to manage his keys.
+
+\par In addition to using this API, the two secret keys of the communication pair are stored in a single file. Since the distinction between two was only confusing to the trustee, this simplifies the process.

@@ -1,0 +1,37 @@
+% 
+% Procedure
+% @author Pieter Maene <pieter.maene@student.kuleuven.be>
+%
+
+\section{Procedure}
+\label{sec:procedure}
+
+\subsection{Preparation}
+
+The trustees will be responsible to decrypt the result. It is therefore important to give some thought to who this role will be given. If threshold encryption is begin used, the election administrator should also determine the threshold scheme.
+
+\par For each question the number of answers that can be selected by the voter can be specified. The result for each answer can be shown either as the absolute number of votes it received, or its relative position with respect to the other answers.
+
+\par Helios supports both open and closed elections. Anybody can vote in the former, while only specific voters are allowed to cast their ballot in the latter.
+
+\subsection{Helios}
+
+The first step is the creation of the election. Here, all basic information like the name should be given. It is also possible to enable options here, like threshold encryption or whether the election is private or not. The start and end date of the election can be controlled here as well.
+
+\par After creating the election, the trustees have to be added. This step was placed first in the procedure because it takes the longest to complete. After being added, the trustee receives an e-mail with the link to his trustee dashboard.
+
+\par If threshold encryption is not being used, each trustee simply has to generate a key pair. Once all trustees have done this, the election administrator can freeze the election. If threshold encryption was enabled, the key ceremony becomes more complicated. After adding all trustees, the election administrator can define the threshold scheme. The trustees can then start the following ceremony.
+
+\begin{enumerate}
+  \item The trustee has to generate his communication keys and upload the public keys to the server. They will be used to encrypt and sign the communication between them.
+  \item Once all trustees have done this, each of them can generate his encrypted shares and send them to the others.
+  \item After receiving a share from all other trustees, the trustee can decrypt and add them to obtain his share of the key that will be used to encrypt the ballots. It will serve as his private key for the election and he has to upload the corresponding public key.
+\end{enumerate}
+
+\par When all trustees have done this, the election can be frozen. Since the trustees will have to wait for the others. Therefore, e-mails are sent to all of them when action is required.
+
+\par While waiting for the trustees to complete the key ceremony, the election administrator can continue setting up the election. He can enter the questions and upload the voter lists if the election is private.
+
+\par Once the election is frozen, voters will be able to cast their ballot unless a specific starting time was entered. If no end time was given, the election will be closed at the administrator's discretion.
+
+\par After the election has been closed, the homomorphic tally can be decrypted. If threshold encryption is not enabled, all trustees will have to calculate their decryption factor and submit it. Otherwise, only the number of trustees defined in the threshold scheme will have to do this.
