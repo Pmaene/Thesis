@@ -4,6 +4,7 @@
 %
 
 \section{Web Cryptography API}
+\label{sec:web_cryptography_api}
 
 Currently, web developers implement cryptographic functionality in JavaScript. Despite great improvements in recent years, it is still slower than native code.\cite{site:resig_javascript_performance_rundown}\cite{site:cois_javascript_performance_rundown_2012}\cite{smedberg_performance_analysis_of_javascript} In 2012 a working group was started by W3C to write the Web Cryptography API specification, which would add cryptographic functionality to user agents.\cite{wiki:webcrypto} The specification defines the \texttt{SubtleCrypto} interface which has several high-level functions.\cite{sleevi_watson_web_cryptography_api} There are both methods to manage the keys and to encrypt data. The API only supports a specific set of algorithms, nor does each algorithm support all functions of the interface.
 
@@ -67,7 +68,3 @@ RSA was used to make a second comparison between JSBN and NfWebCrypto. This ciph
     \label{tab:wc:rsa}
   \end{center}
 \end{table}
-
-\subsection{Conclusion}
-
-The Web Cryptography API will give developers access to fast cryptographic functions in the browser. The small set of supported algorithms limits the possible applications. It also proved to be hard to import existing keys.
