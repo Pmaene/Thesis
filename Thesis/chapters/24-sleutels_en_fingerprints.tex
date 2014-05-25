@@ -6,7 +6,9 @@
 \chapter{Bewaren van sleutels en fingerprints}
 \label{chap:sleutels_en_fingerprints}
 
-Tijdens de sleutelceremonie generen de trustees sleutelparen, waarvan de sleutels uiteraard veilig bewaard moeten kunnen worden (\ref{sec:sf:sleutels}). Daarnaast werkt Helios op verschillende plaatsen met fingerprints. In \ref{sec:sf:fingerprints} wordt eerst hun doel besproken, waarna gekeken wordt naar alternatieve methoden om ze weer te geven.
+%TODO Remove Color
+
+Tijdens de sleutelceremonie generen de trustees sleutelparen, waarvan de sleutels uiteraard veilig bewaard moeten kunnen worden (\ref{sec:sf:sleutels}). Daarnaast werkt Helios op verschillende plaatsen met fingerprints. In \ref{sec:sf:fingerprints} wordt eerst hun doel besproken, waarna gekeken wordt naar alternatieve methoden om ze weer te geven. \textcolor{red}{Voor beide werden deze oplossingen theoretisch onderzocht, maar niet ge\"implementeerd.}
 
 \section{Sleutels}
 \label{sec:sf:sleutels}
@@ -39,7 +41,7 @@ Op verschillende plaatsen binnen Helios worden fingerprints gebruikt. Dit zijn b
 \npar Daarom kunnen hiervoor beter visuele hashes gebruikt worden. Dit zijn unieke afbeeldingen op basis van een bepaalde string. Afbeeldingen kunnen niet alleen sneller herkend worden, het is ook veel eenvoudiger om ze te bewaren. Wanneer de fingerprint een string is, moet deze neergeschreven worden of gekopieerd worden naar een bestand. Een afbeelding daarentegen kan eenvoudig gedownload worden. Voorbeelden van dergelijke visuele hashsystemen zijn RoboHash (\ref{fig:sf:robohash}) en Identicon.\cite{site:robohash}\cite{wiki:identicon}
 
 \begin{figure}
-  \center{\includegraphics[width=0.25\linewidth]{sf/robohash.png}}
+  \center{\includegraphics[width=0.33\linewidth]{sf/robohash.png}}
   \caption{RoboHash van de fingerprint in \ref{fig:kv:cast_confirm}}
   \label{fig:sf:robohash}
 \end{figure}

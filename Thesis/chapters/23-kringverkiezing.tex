@@ -3,6 +3,8 @@
 % @author Pieter Maene <pieter.maene@student.kuleuven.be>
 %
 
+%TODO Analyse
+
 \chapter{Kringverkiezing}
 \label{chap:kringverkiezing}
 
@@ -80,6 +82,10 @@ Tijdens het testen kwamen geen functionele problemen naar voor met het stemhokje
 Er is elk jaar een opkomst van ongeveer 25\% bij de kringverkiezing van VTK, wat iets minder dan \np{1000} kiezers zijn. Daarom werd nagegaan of Helios ook een groot aantal stemmen nog correct kon verwerken. Hiervoor werd een aparte verkiezing aangemaakt met twee trustees en drie vragen. Vervolgens werden \np{1000} stemmen uitgebracht. Het resultaat kon van de eerste keer correct gedecrypteerd worden, dus hier was geen verdere actie nodig.
 
 \npar Deze stemmen werden gegenereerd door een server-side actie. De kiezers stemmen normaal via het stemhokje, maar dat proces is moeilijk te automatiseren. Het grote verschil is dat de encryptie in Python in plaats van JavaScript gebeurt.
+
+%TODO Remove Color
+
+\npar \textcolor{red}{Deze test werd niet op de server maar lokaal uitgevoerd. Het doel was hierbij te kijken of decryptie ook bij een groot aantal stemmen correct functioneerde. De belasting op de server van een groot aantal kiezers werd niet onderzocht omdat iedere kiezer slechts een beperkt aantal lichte requests uivoert.}
 
 \section{Stemdag}
 \label{sec:kv:stemdag}

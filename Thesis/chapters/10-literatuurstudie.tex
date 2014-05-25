@@ -6,7 +6,11 @@
 \chapter{Literatuurstudie}
 \label{chap:literatuurstudie}
 
-Deze thesis handelt over methoden voor online verkiezingen. Een interessant verwant probleem zijn systemen die gebruik maken van papier. Eerst wordt een kort overzicht van de geschiedenis van stemsystemen gegeven (\ref{sec:ls:geschiedenis}). Vervolgens worden de voornaamste vereisten bekeken waaraan deze systemen moeten voldoen (\ref{sec:ls:vereisten}). Belangrijk hierbij is de definitie van een voter-verifiable systeem. Tot slot worden zowel systemen onderzocht die geen gebruik maken van cryptografische methoden (\ref{sec:ls:systemen_zonder_cryptografie}) als deze die daar wel op steunen (\ref{sec:ls:systemen_met_cryptografie}).
+%TODO Remove Color
+
+Deze thesis handelt over methoden voor online verkiezingen. Een interessant verwant probleem zijn systemen die gebruik maken van papier. \textcolor{red}{In dit hoofdstuk wordt specifiek gekeken naar papieren voter-verifiable systemen.}
+
+\npar Eerst wordt een kort overzicht van de geschiedenis van stemsystemen gegeven (\ref{sec:ls:geschiedenis}). Vervolgens worden de voornaamste vereisten bekeken waaraan deze systemen moeten voldoen (\ref{sec:ls:vereisten}). Belangrijk hierbij is de definitie van een voter-verifiable systeem. Tot slot worden zowel systemen onderzocht die geen gebruik maken van cryptografische methoden (\ref{sec:ls:systemen_zonder_cryptografie}) als deze die daar wel op steunen (\ref{sec:ls:systemen_met_cryptografie}).
 
 \section{Geschiedenis~\cite{adida_advances_in_cryptographic_voting_systems}}
 \label{sec:ls:geschiedenis}
@@ -27,6 +31,10 @@ Onze samenleving heeft een rijke geschiedenis van stemprocedures, die teruggaat 
 Bij het ontwerpen van een stemsysteem zijn er twee tegenstrijdige doelen. Enerzijds moet het mogelijk zijn dat de kiezer thuis kan controleren of zijn stem juist meegeteld is. Anderzijds mag diezelfde persoon niet kunnen bewijzen voor wie hij precies gestemd heeft, noch mag het mogelijk zijn dat anderen hierachter kunnen komen. Wanneer hij dit wel kan, zou hij zijn stem kunnen verkopen aan iemand die de verkiezing wil beïnvloeden of gedwongen kunnen worden om op een bepaalde kandidaat te stemmen.
 
 \npar Hoewel het vaak zeer moeilijk is om een grote verkiezing doorslaggevend te wijzigen, wordt stemfraude toch regelmatig geconstateerd.\cite{adida_advances_in_cryptographic_voting_systems} E\'en van de grote moeilijkheden is dat zowel kiezers als bijzitters corrupt kunnen zijn. Er kan dus van geen enkele deelnemer verwacht worden dat hij eerlijk is.
+
+%TODO Remove Color
+
+\npar \textcolor{red}{Het dus essentieel dat het stemsysteem vertrouwd wordt door de kiezers. Bij de huidige systemen moet hij dat echter meestal leggen bij de instantie die verkiezing organiseert (\ref{sec:ls:vertrouwen}). Nieuwe technieken laten ons echter toe om end-to-end verifiable systemen te ontwikkelen, waar de kiezer zelf de correctheid van het resultaat kan nagaan (\ref{sec:ls:end_to_end_verifiability}).}
 
 \subsection{Vertrouwen}
 \label{sec:ls:vertrouwen}
@@ -229,6 +237,10 @@ Scratch \& Vote werd in 2006 ontworpen door Ben Adida en Ronald L. Rivest. Het i
 \npar Deze informatie wordt toch op de biljetten geprint omdat ze nodig zijn voor een audit. Dit wordt gedaan door de kiezer twee biljetten te laten kiezen. Door de kraslaag weg te halen, worden de willekeurige waarden zichtbaar en kan nagegaan worden of het biljet correct is. Door het verwijderen van de kraslaag wordt het biljet ongeldig, wat de reden is dat de kiezer twee biljetten moet nemen. Op deze manier wordt de helft van de biljetten getest en dus is de kans groot dat foutieve biljetten gedetecteerd worden.
 
 \npar Zowel naar de kiezer als de bijzitters is dit systeem zeer gebruiksvriendelijk. Het standaard stembiljet is slechts licht gewijzigd en de kiezer zou er dus vertrouwd mee moeten zijn. Ook de stemprocedure is niet radicaal gewijzigd. Aangezien de telprocedure ook geautomatiseerd is, kan deze methode ook voor grote verkiezingen gebruikt worden.
+
+\section{Online systemen}
+
+%TODO Online systemen
 
 \section{Conclusie}
 \label{sec:ls:conclusie}
