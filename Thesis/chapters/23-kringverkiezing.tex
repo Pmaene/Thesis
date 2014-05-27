@@ -3,12 +3,35 @@
 % @author Pieter Maene <pieter.maene@student.kuleuven.be>
 %
 
-%TODO Analyse
-
 \chapter{Kringverkiezing}
 \label{chap:kringverkiezing}
 
-Het Helios verkiezingssysteem werd in de praktijk gebruikt tijdens de kringverkiezing van de Vlaamse Technische Kring. Dit is de faculteitskring van de studenten burgerlijk ingenieur aan de KU Leuven. Om het systeem hiervoor te kunnen gebruiken, waren enkele aanpassingen nodig die overlopen worden in \ref{sec:kv:aanpassingen}. Gezien het cruciale karakter van een verkiezing, werd het systeem vervolgens uitgebreid getest (\ref{sec:kv:testen}). Tot slot wordt het verloop van de stemdag zelf besproken in \ref{sec:kv:stemdag}.
+Het Helios verkiezingssysteem werd in de praktijk gebruikt tijdens de kringverkiezing van de Vlaamse Technische Kring. Dit is de faculteitskring van de studenten burgerlijk ingenieur aan de KU Leuven. Uit de kiesreglementen van VTK zelf en deze van LOKO volgen de vereisten waaraan het systeem moet voldoen (\ref{sec:kv:vereisten}). Om het systeem hiervoor te kunnen gebruiken, waren enkele aanpassingen nodig die overlopen worden in \ref{sec:kv:aanpassingen}. Gezien het cruciale karakter van een verkiezing, werd het systeem vervolgens uitgebreid getest (\ref{sec:kv:testen}). Tot slot wordt het verloop van de stemdag zelf besproken in \ref{sec:kv:stemdag}.
+
+%TODO Remove Color
+
+\section{Vereisten~\cite{loko_kiesreglement_verkiezingen}\cite{vtk_verkiezingsreglement}}
+\label{sec:kv:vereisten}
+
+%TODO Algemeen
+
+\subsection{Trustees}
+
+\textcolor{blue}{Het kiesreglement van LOKO schrijft voor dat over de verkiezingen gewaakt moet worden door een Neutraal Comit\'e. Dit wordt samengesteld door de huidige studentenvertegenwoordigers. Het Neutraal Comit\'e wordt bij VTK aangeduid met VKK. De huidige praeses is hier steeds de voorzitter van. Hij wordt geholpen door minstens vijf andere mensen uit het huidige praesidium die in een masteropleiding zitten en zelf geen kandidaat zijn in de verkiezing.}
+
+\npar \textcolor{blue}{De voorzitter van VKK moet de verkiezing zelf kunnen beheren. Daarnaast moet het mogelijk zijn om alle leden van VKK aan te duiden als trustees van de verkiezing. Het mag ook niet mogelijk zijn dat \'e\'en trustee de decryptie van het resultaat kan blokkeren.}
+
+\subsection{Vragen}
+
+\textcolor{blue}{Er zijn twee verschillende types kiesploegen bij VTK. Enerzijds zijn er de serieuze ploegen die opkomen als praesidium voor het volgende jaar en anderzijds de lolploegen die niet als vertegenwoordigers verkiesbaar zijn. Beide verkiezingen moeten als aparte vragen op hetzelfde biljet gesteld kunnen worden.}
+
+\textcolor{blue}{}
+
+
+\subsection{Kiezers}
+
+%TODO Kiezers
+\textcolor{red}{}
 
 \section{Aanpassingen}
 \label{sec:kv:aanpassingen}
@@ -30,9 +53,7 @@ Helios publiceert het resultaat van de verkiezing standaard van zodra het bekend
 \section{Testen}
 \label{sec:kv:testen}
 
-Om er zeker van te zijn dat het systeem op de stemdag zelf goed zou functioneren, werd het na de installatie op de server getest. Hierbij werd niet alleen nagegaan of alles technisch in orde was, maar werd ook feedback gevraagd over de gebruiksvriendelijkheid. 
-
-\npar De testen van het beheer (\ref{sec:kv:beheer}) en het stemhokje (\ref{sec:kv:stemhokje}) werden uitgevoerd in de context van de verkiezingen bij VTK, die hier wat verder belicht wordt. Het Neutraal Comit\'e, dat alles in goede banen leidt, wordt bij VTK aangeduid met VKK. De huidige praeses is hier steeds de voorzitter van. Hij wordt geholpen door een aantal vrijwilligers uit het praesidium die geen kandidaat zijn. Er zijn twee verschillende types kiesploegen bij VTK. Enerzijds zijn er de serieuze ploegen die opkomen als praesidium voor het volgende jaar en anderzijds de lolploegen die niet als vertegenwoordigers verkiesbaar zijn.
+Om er zeker van te zijn dat het systeem op de stemdag zelf goed zou functioneren, werd het na de installatie op de server getest. Hierbij werd niet alleen nagegaan of alles technisch in orde was, maar werd ook feedback gevraagd over de gebruiksvriendelijkheid. De testen van het beheer (\ref{sec:kv:beheer}) en het stemhokje (\ref{sec:kv:stemhokje}) werden uitgevoerd in de context van de vereisten voor VTK (\ref{sec:kv:vereisten}).
 
 \subsection{Beheer}
 \label{sec:kv:beheer}
@@ -59,12 +80,21 @@ Aangezien hier de meeste veranderingen gebeurd zijn (\ref{sec:ui:beheer}), moest
 
 Tijdens het testen kwamen geen functionele problemen naar voor met het stemhokje. Toch kwam ook hier veel feedback op van het praesidium. Veel mensen vonden het stemmen niet intu\"itief. Er waren twee belangrijke bemerkingen. Ten eerste waren sommige bewoordingen te ingewikkeld. De interface is volledig in het Engels en er kwamen veel onbekende vaktermen in voor. Dit kon eenvoudig opgelost worden door eenvoudigere terminologie in de plaats te gebruiken.
 
-\npar Ten tweede vonden velen het proces te moeilijk. Oorspronkelijk waren er vier stappen. Gebruikers kregen eerst een korte uitleg, gevolgd door het aanduiden van hun keuzes. Hierna konden deze gecontroleerd worden, waarna de stem ge\"encrypteerd werd. Daarna volgde nog een scherm (\ref{fig:kv:booth_submit}) waar gekozen kon worden om een audit te doen van de stem of ze te uploaden. In het laatste geval werd het stemhokje verlaten, maar moest de gebruiker nog eens bevestigen dat hij zijn stem wilde uitbrengen. Vooral deze twee laatste stappen vonden veel mensen verwarrend.
+\npar Ten tweede vonden velen het proces te moeilijk. Oorspronkelijk waren er vier stappen (\ref{fig:kv:voting_booth_flows}). Gebruikers kregen eerst een korte uitleg, gevolgd door het aanduiden van hun keuzes. Hierna konden deze gecontroleerd worden, waarna de stem ge\"encrypteerd werd. Daarna volgde nog een scherm (\ref{fig:kv:booth_submit}) waar gekozen kon worden om een audit te doen van de stem of ze te uploaden. In het laatste geval werd het stemhokje verlaten, maar moest de gebruiker nog eens bevestigen dat hij zijn stem wilde uitbrengen. Vooral deze twee laatste stappen vonden veel mensen verwarrend.
 
 \begin{figure}
-  \center{\includegraphics[width=\linewidth]{kv/booth_submit.png}}
-  \caption{Laatste scherm van het stemhokje}
-  \label{fig:kv:booth_submit}
+  \centering
+  \begin{minipage}{.45\linewidth}
+    \centering
+    \scalebox{.7}{\input{images/kv/old_voting_booth_flow.tikz}}
+  \end{minipage}
+  \quad
+  \begin{minipage}{.45\linewidth}
+    \centering
+    \scalebox{.7}{\input{images/kv/new_voting_booth_flow.tikz}}
+  \end{minipage}
+  \caption{Old (Left) and New (Right) Voting Booth Flows}
+  \label{fig:kv:voting_booth_flows}
 \end{figure}
 
 \npar Om dit proces te vereenvoudigen, werd de laatste stap van het stemhokje verwijderd. Na het bevestigen van zijn keuzes, wordt de kiezer onmiddellijk doorgestuurd naar het uploaden buiten het stemhokje. De audit van een stem werd verplaatst naar het scherm waar de keuzes bevestigd moet worden. Omdat de stem hiervoor reeds ge\"encrypteerd moet zijn, wordt dit nu gedaan na het beantwoorden van de laatste vraag. Het grootste nadeel hierbij is dat de encryptie opnieuw uitgevoerd moet worden wanneer de kiezer zijn stem wijzigt. In de huidige implementatie gaat dit echter al relatief vlot in moderne browsers. In de toekomst zal dit waarschijnlijk nog sneller kunnen door gebruik te maken van de Web Cryptography API (\ref{chap:web_cryptography_api}).
@@ -85,7 +115,7 @@ Er is elk jaar een opkomst van ongeveer 25\% bij de kringverkiezing van VTK, wat
 
 %TODO Remove Color
 
-\npar \textcolor{red}{Deze test werd niet op de server maar lokaal uitgevoerd. Het doel was hierbij te kijken of decryptie ook bij een groot aantal stemmen correct functioneerde. De belasting op de server van een groot aantal kiezers werd niet onderzocht omdat iedere kiezer slechts een beperkt aantal lichte requests uivoert.}
+\npar \textcolor{blue}{Deze test werd niet op de server maar lokaal uitgevoerd. Het doel was hierbij te kijken of decryptie ook bij een groot aantal stemmen correct functioneerde. De belasting op de server van een groot aantal kiezers werd niet onderzocht omdat iedere kiezer slechts een beperkt aantal lichte requests uivoert.}
 
 \section{Stemdag}
 \label{sec:kv:stemdag}

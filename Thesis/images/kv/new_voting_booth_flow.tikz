@@ -1,0 +1,14 @@
+\begin{tikzpicture}[node distance = 2cm, auto]
+  \node [block] (intro) {Introduction};
+  \node [block, below of=intro] (select) {Select Choices};
+  \node [block, below of=select, node distance=2.5cm] (review) {Review Choices};
+  \node [decision, below of=review] (decide) {Satisfied with Choices?};
+  \node [block, below of=decide, node distance=3cm] (submit) {Submit Ballot};
+
+  \path [line] (intro) -- (select);
+  \path [line, dashed] (select) -- node{Encrypt Ballot} (review);
+  \path [line] (review) -- (decide);
+  \path [line, dashed] (decide) -- node{Leave Voting Booth} (submit);
+  
+  \draw [line] (decide.east) -- node{No} ++(1.5,0) node(lower_right){} |- (select.east);
+\end{tikzpicture}

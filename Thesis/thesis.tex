@@ -31,6 +31,7 @@
 \usepackage{multirow,bigstrut}
 \usepackage[np,autolanguage]{numprint}
 \usepackage{pdfpages}
+\usepackage{tikz}
 \usepackage{url}
 
 % De optie colorlinks mag verwijderd worden voor de af te drukken versie
@@ -41,6 +42,7 @@
 
 % Customisations
 \graphicspath{{./images/}}
+\usetikzlibrary{arrows,fit,shapes}
 
 \setlength{\parindent}{0pt}
 \setlist[description]{topsep=0.5em, itemsep=0.25em, leftmargin=2em, labelindent=2em}
@@ -52,6 +54,7 @@
 
   % Alias
   \include{alias}
+  \include{tikz}
 
   \begin{preface}
     \input{chapters/01-preface}
