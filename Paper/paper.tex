@@ -11,6 +11,8 @@
 \usepackage{float}
 \usepackage[np,autolanguage]{numprint}
 \usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{tikz}
 \usepackage{url}
 
 % De optie colorlinks mag verwijderd worden voor de af te drukken versie
@@ -18,26 +20,29 @@
 
 % Customisations
 \graphicspath{{./images/}}
+\usetikzlibrary{arrows,fit,shapes}
 
 % Document
 \begin{document}
 
   \include{alias}
+  \include{tikz}
 
   \title{Online Elections in Practice: Improvement and Application of the Helios Voting System}
   \author{Pieter~Maene}
 
   \maketitle
   
-  \begin{abstract}
-    Helios is a voter-verifiable online voting system that supports threshold encryption. The procedure to manage an election is discussed here. The interface of the system was modified to improve the usability. It was then successfully used in a real election. The Web Cryptography API adds cryptographic functionality to user agents. Its performance is compared to existing JavaScript crypto libraries. The results are promising, especially for more demanding calculations. The biggest disadvantages are the limited set of supported algorithms and lack of low-level functions. This makes it hard to develop custom encryption schemes.
+  %TODO Last sentence?
+  \begin{abstract}    
+    Helios is a voter-verifiable online voting system. Such a system allow the voter to verify whether his ballot was registered correctly and check the election result. The procedure for these systems is typically very complicated. The system's usability is determined by its interface which should support the procedure. Therefore, the procedure to manage an election with Helios was written out. The system's interface was modified to better support this procedure. Additionally, the Web Cryptography API adds native cryptographic functionality to user agents. Its faster implementation could speed up encryption operations and improve the usability. The modified system was deployed for a real election where the election administrator and voters used it successfully.
   \end{abstract}
   
   \input{sections/00-introduction}
   \input{sections/10-procedure}
-  \input{sections/11-interface}
-  \input{sections/12-application}
-  \input{sections/13-web_cryptography_api}
+  \input{sections/11-user_interface_improvements}
+  \input{sections/12-web_cryptography_api}
+  \input{sections/13-board_election}
   \input{sections/14-conclusion}
   
   \bibliographystyle{IEEEtran}

@@ -6,15 +6,21 @@
 \section{Procedure}
 \label{sec:procedure}
 
-\subsection{Preparation}
+This sections gives the procedure that should be followed to organise an election in the improved version of Helios (\ref{sec:user_interface_improvements}). Before he can start the procedure (\ref{sec:proc:helios}), the administrator should prepare some information (\ref{sec:proc:preparation}).
 
-The trustees will be responsible to decrypt the result. It is therefore important to give some thought to who this role will be given. If threshold encryption is being used, the election administrator should also determine the threshold scheme.
+\subsection{Preparation}
+\label{sec:proc:preparation}
+
+%TODO Threshold scheme recommendation?
+
+The trustees will be responsible for the decryption of the result. It is therefore important to give some thought to who this role will be given. Since using threshold encryption results in a more robust decryption process, it is advisable to use this. In that case, the election administrator should also determine the threshold scheme.
 
 \par For each question, the number of answers that can be selected by the voter can be specified. The result for each answer can be shown either as the absolute number of votes it received, or its relative position with respect to the other answers.
 
-\par Helios supports both open and closed elections. Anybody can vote in the former, while only specific voters are allowed to cast their ballot in the latter.
+\par Helios supports both open and closed elections. Anybody can vote in the former, while only specific voters are allowed to cast their ballot in the latter. A closed election should therefore be used when voter lists are available.
 
 \subsection{Helios}
+\label{sec:proc:helios}
 
 The first step is the creation of the election. Here, all basic information like its name should be given. It is also possible to enable options here, like threshold encryption or whether the election is private or not. The start and end date of the election can be controlled here as well.
 
@@ -29,8 +35,6 @@ The first step is the creation of the election. Here, all basic information like
 \end{enumerate}
 
 \par When all trustees have done this, the election can be frozen. Since the trustees will have to wait for the others, e-mails are sent to all of them when action is required.
-
-\par While waiting for the trustees to complete the key ceremony, the election administrator can continue setting up the election. He can enter the questions and upload the voter lists if the election is private.
 
 \par Once the election is frozen, voters will be able to cast their ballot, unless a specific starting time was entered. If no end time was given, the election will be closed at the administrator's discretion.
 
