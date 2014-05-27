@@ -32,7 +32,7 @@ Aangezien de standaard nog niet voltooid is, wordt deze nauwelijks ondersteund d
 \subsection{Modulaire exponentiatie}
 \label{sec:wc:modulaire_exponentiatie}
 
-Helios maakt gebruik van ElGamal (\ref{sec:helios:elgamal}) om de stemmen te encrypteren. Dit algoritme wordt echter niet ondersteund door de Web Cryptography API (\ref{sec:wc:web_cryptography_api}). Deze kan dus niet onmiddellijk gebruikt worden om de encryptie te versnellen. De modulaire exponentiaties vragen veruit de meeste rekentijd. Een verbetering daar zou dus ook positief zijn voor de algemene prestaties.
+Helios maakt gebruik van ElGamal (\ref{sec:helios:elgamal}) om de stemmen te encrypteren. Dit algoritme wordt echter niet ondersteund door de API (\ref{sec:wc:web_cryptography_api}). Deze kan dus niet onmiddellijk gebruikt worden om de encryptie te versnellen. De modulaire exponentiaties vragen veruit de meeste rekentijd. Een verbetering daar zou dus ook positief zijn voor de algemene prestaties.
 
 \npar Aangezien de enige publieke methodes van de API op hoog niveau werken, is er geen functie beschikbaar om dit te doen. Diffie-Hellman wordt echter wel ondersteund voor het genereren van een asymmetrisch sleutelpaar. De \texttt{deriveKey} methode van de API berekent de gedeelde geheime sleutel volgens \ref{eq:wc:diffie_hellman}.\cite{diffie_hellman_new_directions_in_cryptography}
 

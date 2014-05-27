@@ -8,45 +8,53 @@
 
 Het Helios verkiezingssysteem werd in de praktijk gebruikt tijdens de kringverkiezing van de Vlaamse Technische Kring. Dit is de faculteitskring van de studenten burgerlijk ingenieur aan de KU Leuven. Uit de kiesreglementen van VTK zelf en deze van LOKO volgen de vereisten waaraan het systeem moet voldoen (\ref{sec:kv:vereisten}). Om het systeem hiervoor te kunnen gebruiken, waren enkele aanpassingen nodig die overlopen worden in \ref{sec:kv:aanpassingen}. Gezien het cruciale karakter van een verkiezing, werd het systeem vervolgens uitgebreid getest (\ref{sec:kv:testen}). Tot slot wordt het verloop van de stemdag zelf besproken in \ref{sec:kv:stemdag}.
 
-%TODO Remove Color
-
 \section{Vereisten~\cite{loko_kiesreglement_verkiezingen}\cite{vtk_verkiezingsreglement}}
 \label{sec:kv:vereisten}
 
-%TODO Algemeen
-
 \subsection{Trustees}
 
+%TODO Remove Color
+
 \textcolor{blue}{Het kiesreglement van LOKO schrijft voor dat over de verkiezingen gewaakt moet worden door een Neutraal Comit\'e. Dit wordt samengesteld door de huidige studentenvertegenwoordigers. Het Neutraal Comit\'e wordt bij VTK aangeduid met VKK. De huidige praeses is hier steeds de voorzitter van. Hij wordt geholpen door minstens vijf andere mensen uit het huidige praesidium die in een masteropleiding zitten en zelf geen kandidaat zijn in de verkiezing.}
+
+%TODO Remove Color
 
 \npar \textcolor{blue}{De voorzitter van VKK moet de verkiezing zelf kunnen beheren. Daarnaast moet het mogelijk zijn om alle leden van VKK aan te duiden als trustees van de verkiezing. Het mag ook niet mogelijk zijn dat \'e\'en trustee de decryptie van het resultaat kan blokkeren.}
 
 \subsection{Vragen}
 
+%TODO Remove Color
+
 \textcolor{blue}{Er zijn twee verschillende types kiesploegen bij VTK. Enerzijds zijn er de serieuze ploegen die opkomen als praesidium voor het volgende jaar en anderzijds de lolploegen die niet als vertegenwoordigers verkiesbaar zijn. Beide verkiezingen moeten als aparte vragen op hetzelfde biljet gesteld kunnen worden.}
 
-\textcolor{blue}{}
+%TODO Remove Color
 
+\npar \textcolor{blue}{Wanneer er slechts \'e\'en offici\"ele ploeg is, moeten de kiezers voor, tegen of onthouding kunnen stemmen. Wanneer er twee ploegen zijn, mag er ten hoogste voor \'e\'en ploeg gestemd kunnen worden. Indien er meer dan twee ploegen zijn, moeten de kiezers de ploegen kunnen rangschikken. Dit laatste is echter zo uitzonderlijk dat hier geen harde vereiste van gemaakt wordt. Bij de lolploegen moet de kiezer ten hoogste alle kandidaten kunnen aanduiden.}
 
 \subsection{Kiezers}
 
-%TODO Kiezers
-\textcolor{red}{}
+%TODO Remove Color
+
+\textcolor{blue}{De voorwaarden om stemrecht te hebben in een kringverkiezing worden gegeven in Art. 11 \S 1 van het kiesreglement van LOKO.\cite{loko_kiesreglement_verkiezingen} Bij LOKO kan een lijst aangevraagd worden met alle stemgerechtigde studenten. Deze bestanden bevatten naast de naam en voornaam van de student ook zijn studentennummer. De verkiezing mag alleen toegankelijk zijn voor deze kiezers, die zich dus moeten kunnen aanmelden.}
+
+%TODO Remove Color
+
+\npar \textcolor{blue}{Bij VTK vertegenwoordigt het praesidium de studenten ook op onderwijsvlak. Om dit te kunnen doen, moet er volgens het reglement van LOKO een meerderheid behaald worden bij een opkomst van minstens 10\%.}
 
 \section{Aanpassingen}
 \label{sec:kv:aanpassingen}
 
+Aan de meeste vereisten in \ref{sec:kv:vereisten} werd reeds door Helios voldaan. Om te kiezers zich te laten aanmelden, werd ondersteuning voor Shibboleth ingebouwd (\ref{sec:kv:shibboleth}). Ook de berekening van het opkomstpercentage werd toegevoegd, zodat dit samen met de resultaten bekend gemaakt kon worden. Tot slot werd het mogelijk gemaakt om de publicatie van het resultaat uit te stellen (\ref{sec:kv:publicatie_van_het_resultaat}).
+
 \subsection{Shibboleth}
+\label{sec:kv:shibboleth}
 
 Shibboleth is het authenticatie mechanisme dat gebruikt wordt voor de centrale login van de KU Leuven. Iedere gebruiker kan uniek ge\"identificeerd worden aan de hand van zijn studentennummer. Alle stemgerechtigde kiezers voor een kringverkiezing hebben een dergelijke account. Helios had hier echter nog geen ondersteuning voor. Gezien het modulaire ontwerp van het authenticatiesysteem, was dit relatief eenvoudig toe te voegen.
 
 \npar De kieslijsten zelf werden opgemaakt door LOKO, de Leuvense studentenkoepel. Deze moesten wel nog omgezet worden naar een bestand dat uitgelezen kon worden door Helios. Het studentennummer werd hierbij gebruikt als het unieke ID voor elke kiezer. Een probleem was hier wel dat de e-mailadressen van de kiezers niet mee opgenomen waren in deze lijsten. Deze kunnen wel mee doorgegeven worden met het antwoord dat de server ontvangt nadat de student zich aangemeld heeft via de centrale login.
 
-\subsection{Opkomst}
-
-Bij VTK vertegenwoordigt het praesidium de studenten ook op onderwijsvlak. Om dit te kunnen doen, moet er volgens het reglement van LOKO een meerderheid behaald worden bij een opkomst van minstens 10\%.\cite{loko_kiesreglement_verkiezingen} De berekening van dit percentage werd dan ook toegevoegd zodat dit samen met de resultaten bekend gemaakt kon worden.
-
 \subsection{Publicatie van het resultaat}
+\label{sec:kv:publicatie_van_het_resultaat}
 
 Helios publiceert het resultaat van de verkiezing standaard van zodra het bekend is. Het is echter traditie om deze pas om middernacht bekend te maken. Het systeem moest hier dus licht voor aangepast worden.
 
@@ -80,7 +88,7 @@ Aangezien hier de meeste veranderingen gebeurd zijn (\ref{sec:ui:beheer}), moest
 
 Tijdens het testen kwamen geen functionele problemen naar voor met het stemhokje. Toch kwam ook hier veel feedback op van het praesidium. Veel mensen vonden het stemmen niet intu\"itief. Er waren twee belangrijke bemerkingen. Ten eerste waren sommige bewoordingen te ingewikkeld. De interface is volledig in het Engels en er kwamen veel onbekende vaktermen in voor. Dit kon eenvoudig opgelost worden door eenvoudigere terminologie in de plaats te gebruiken.
 
-\npar Ten tweede vonden velen het proces te moeilijk. Oorspronkelijk waren er vier stappen (\ref{fig:kv:voting_booth_flows}). Gebruikers kregen eerst een korte uitleg, gevolgd door het aanduiden van hun keuzes. Hierna konden deze gecontroleerd worden, waarna de stem ge\"encrypteerd werd. Daarna volgde nog een scherm (\ref{fig:kv:booth_submit}) waar gekozen kon worden om een audit te doen van de stem of ze te uploaden. In het laatste geval werd het stemhokje verlaten, maar moest de gebruiker nog eens bevestigen dat hij zijn stem wilde uitbrengen. Vooral deze twee laatste stappen vonden veel mensen verwarrend.
+\npar Ten tweede vonden velen het proces te moeilijk. Oorspronkelijk waren er vier stappen (\ref{fig:kv:voting_booth_flows}). Gebruikers kregen eerst een korte uitleg, gevolgd door het aanduiden van hun keuzes. Hierna konden deze gecontroleerd worden, waarna de stem ge\"encrypteerd werd. Daarna volgde nog een scherm waar gekozen kon worden om een audit te doen van de stem of ze te uploaden. In het laatste geval werd het stemhokje verlaten, maar moest de gebruiker nog eens bevestigen dat hij zijn stem wilde uitbrengen. Vooral deze twee laatste stappen vonden veel mensen verwarrend.
 
 \begin{figure}
   \centering
@@ -119,6 +127,8 @@ Er is elk jaar een opkomst van ongeveer 25\% bij de kringverkiezing van VTK, wat
 
 \section{Stemdag}
 \label{sec:kv:stemdag}
+
+%TODO More?
 
 De stemming zelf vond plaats op donderdag 8 mei 2014. Oorspronkelijk stond ze open van 7u00 tot 19u00. Omdat de communicatie 's ochtends traag op gang gekomen was, werd dit verlengd tot 20u00, wat ondersteund wordt door Helios. De trustees en het threshold schema waren dezelfde als tijdens de test (\ref{sec:kv:beheer}). De vragen en het resultaat worden getoond in \ref{fig:kv:result}. In totaal hebben 768 mensen hun stem uitgebracht, wat niet significant minder is dan in andere jaren. Dit is dus een sterke indicatie dat het proces voldoende eenvoudig is. Zowel bij het stemmen als het decrypteren van het resultaat waren er geen problemen.
 
