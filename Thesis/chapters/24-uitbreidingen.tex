@@ -1,23 +1,69 @@
 % 
-% Web Cryptography API
+% Uitbreidingen
 % @author Pieter Maene <pieter.maene@student.kuleuven.be>
 %
 
-\chapter{Web Cryptography API}
+\chapter{Uitbreidingen}
+\label{chap:uitbreidingen}
+
+Tot slot worden twee mogelijk toekomstige uitbreidingen besproken. Ten eerste worden aanbevelingen gemaakt voor het bewaren van geheime sleutels en fingerprints (\ref{chap:sleutels_en_fingerprints}). Ten tweede worden de prestaties van de Web Cryptography API onderzocht. Voor beide werden de mogelijkheden theoretisch onderzocht, maar niet ge\"implementeerd.
+
+\section{Bewaren van sleutels en fingerprints}
+\label{chap:sleutels_en_fingerprints}
+
+Tijdens de sleutelceremonie generen de trustees sleutelparen, waarvan de sleutels uiteraard veilig bewaard moeten kunnen worden (\ref{sec:sf:sleutels}). Daarnaast werkt Helios op verschillende plaatsen met fingerprints. In \ref{sec:sf:fingerprints} wordt eerst hun doel besproken, waarna gekeken wordt naar alternatieve methoden om ze weer te geven.
+
+\subsection{Sleutels}
+\label{sec:sf:sleutels}
+
+\subsubsection{Disk}
+\label{sec:sf:disk}
+
+De trustees downloaden hun geheime sleutels als JSON bestanden (\ref{sec:ui:trustee_dashboard}). Deze zullen dus eerst bewaard worden op de harde schijf van de computer die op dat moment gebruikt wordt. Hier zijn twee belangrijke nadelen aan. Ten eerste zou iedereen die toegang heeft tot die machine de sleutel kunnen bemachtigen. Ten tweede kan de sleutel alleen vanaf deze machine gebruikt worden.
+
+\npar Een eenvoudige oplossing voor het eerste probleem is de trustees vragen om hun account zeker te beveiligen met een wachtwoord. De sleutel zou ook op een beveiligde partitie geplaatst kunnen worden. Dit kan bijvoorbeeld gedaan worden door gebruik te maken van TrueCrypt.\cite{site:truecrypt}
+
+\npar Wanneer de sleutel op een andere machine ingevoerd moet worden, kan deze op een USB-stick opgeslagen worden. Hier is het zeker aangeraden om de sleutel op een ge\"encrypteerde partitie te plaatsen. Daarnaast zou de sleutel ook ge\"upload kunnen worden naar een private server of een cloud opslagdienst. In dit geval moet hij zeker eerst ge\"encrypteerd worden.
+
+\npar Het zou echter veel gebruiksvriendelijker zijn om dit in de generator in te bouwen. Voordat de sleutel gedownload wordt, kan deze eerst symmetrisch ge\"encrypteerd worden met een wachtwoord. Hiervoor zou bijvoorbeeld AES-CTR gebruikt kunnen worden, waarbij de sleutel afgeleid wordt van het opgegeven wachtwoord.\cite{rfc2898} Er zijn verschillende JavaScript libraries die hiervoor ondersteuning hebben.\cite{site:github_aes_js}\cite{site:github_sjcl} Bovendien wordt deze mode ook ondersteund door de Web Cryptography API (\ref{chap:web_cryptography_api}).\cite{sleevi_watson_web_cryptography_api}
+
+\subsubsection{Web Storage~\cite{hickson_web_storage}\cite{site:pilgrim_local_storage}}
+\label{sec:sf:web_storage}
+
+Door gebruik te maken van de HTML5 Web Storage specificatie, zouden de sleutels ook op een alternatieve manier bewaard kunnen worden. Deze specificatie geeft een ontwikkelaar onder andere toegang tot een persistente key/value store waar tot 5MB aan data in opgeslagen kan worden. Er wordt ook voldaan aan de same-origin policy. Dit wil zeggen dat de data alleen toegankelijk zijn van op hetzelfde domein.\cite{gollman_computer_security}
+
+\npar Deze functionaliteit zou toelaten om de geheime sleutels volledig te verbergen voor de trustees. In plaats van hen een bestand te laten downloaden met de sleutels, worden deze in de \texttt{localStorage} opgeslagen. Aangezien er naast de same-origin policy geen beveiligingsmechanismen ingebouwd zijn in de specificatie, is het beter om de sleutel eerst te encrypteren (\ref{sec:sf:disk}). Een \texttt{secureStorage} binnen de browser met ingebouwde encryptie zou dit nog eenvoudiger maken voor een ontwikkelaar.\cite{site:zakas_securestore} Een groot nadeel aan deze oplossing is dat de sleutel vast zit in de machine die gebruikt is om hem aan te maken.
+
+\subsection{Fingerprints}
+\label{sec:sf:fingerprints}
+
+Op verschillende plaatsen binnen Helios worden fingerprints gebruikt. Dit zijn base64-ge\"encodeerde SHA-256 hashes van specifieke data.\cite{fips_180_4} Zo is de \textit{Smart Ballot Tracker} (\ref{fig:kv:cast_confirm}) een fingerprint van de ge\"encrypteerde stem. Aan de trustee wordt ook een fingerprint van de gegenereerde publieke sleutels getoond. Dit zijn echter lange strings zijn die moeilijk te onthouden kunnen worden. Bovendien kan niet in \'e\'en oogopslag gezien worden of twee fingerprints hetzelfde zijn.
+
+\npar Daarom kunnen hiervoor beter visuele hashes gebruikt worden. Dit zijn unieke afbeeldingen op basis van een bepaalde string. Afbeeldingen kunnen niet alleen sneller herkend worden, het is ook veel eenvoudiger om ze te bewaren. Wanneer de fingerprint een string is, moet deze neergeschreven worden of gekopieerd worden naar een bestand. Een afbeelding daarentegen kan eenvoudig gedownload worden. Voorbeelden van dergelijke visuele hashsystemen zijn RoboHash (\ref{fig:sf:robohash}) en Identicon.\cite{site:robohash}\cite{wiki:identicon}
+
+\npar Een belangrijke voorwaarde voor het stemhokje is dat er geen netwerk requests meer mogen gebeuren voordat de stem volledig ge\"encrypteerd is.\cite{adida_helios} In het aangepaste stemhokje wordt het biljet ge\"encrypteerd nadat alle keuzes gemaakt zijn. Hoewel deze voorwaarde dus voldaan is wanneer de fingerprint getoond wordt, moet toch de voorkeur gegeven worden aan een systeem dat de figureren lokaal kan genereren. Indien een JavaScript implementatie niet mogelijk is, zouden ze gedownload kunnen worden van de server over een beveiligde verbinding.
+
+\begin{figure}
+  \center{\includegraphics[width=0.25\linewidth]{sf/robohash.png}}
+  \caption{RoboHash van de fingerprint in \ref{fig:kv:cast_confirm}}
+  \label{fig:sf:robohash}
+\end{figure}
+
+\section{Web Cryptography API}
 \label{chap:web_cryptography_api}
 
-Wanneer webontwikkelaars vandaag cryptografische functies nodig hebben in hun toepassingen, moeten ze bijna JavaScript gebruiken omwille van compatibiliteit. Hoewel er de laatste jaren zeer grote vooruitgang geboekt is, zullen de meeste JavaScript engines nog steeds minder goed presteren dan native code.\cite{site:resig_javascript_performance_rundown}\cite{site:cois_javascript_performance_rundown_2012}\cite{smedberg_performance_analysis_of_javascript} De W3C startte in 2012 een working group op om een nieuwe browser API te defini\"eren: de Web Cryptography API.\cite{wiki:webcrypto}
+Wanneer web ontwikkelaars vandaag cryptografische functies nodig hebben in hun toepassingen, moeten ze bijna JavaScript gebruiken omwille van compatibiliteit. Hoewel er de laatste jaren zeer grote vooruitgang geboekt is, zullen de meeste JavaScript engines nog steeds minder goed presteren dan native code.\cite{site:resig_javascript_performance_rundown}\cite{site:cois_javascript_performance_rundown_2012}\cite{smedberg_performance_analysis_of_javascript} De W3C startte in 2012 een working group op om een nieuwe browser API te defini\"eren: de Web Cryptography API.\cite{wiki:webcrypto}
 
 \npar In \ref{sec:wc:web_cryptography_api} wordt deze nieuwe API kort besproken. Daarna wordt in \ref{sec:wc:nfwebcrypto} gekeken naar de NfWebCrypto polyfill, die de nieuwe functionaliteit implementeert in een plugin voor Google Chrome. Tot slot wordt deze implementatie in \ref{sec:wc:benchmarks} vergeleken met bestaande cryptografische libraries.
 
-\section{Web Cryptography API~\cite{sleevi_watson_web_cryptography_api}}
+\subsection{Web Cryptography API~\cite{sleevi_watson_web_cryptography_api}}
 \label{sec:wc:web_cryptography_api}
 
 De Web Cryptography API definieert cryptografische operaties die gebruik maken van sleutels die beheerd worden door de browser. Al deze methodes zitten in de \texttt{SubtleCrypto} interface. Er zijn zowel methodes voor het beheren van het sleutelmateriaal als het encrypteren van data.
 
 \npar De API is ontworpen vanuit het idee om alleen standaardfunctionaliteit aan te bieden. Er wordt dus maar een beperkt aantal algoritmes ondersteund, die bovendien elk nog vaak hun eigen beperkingen hebben.\cite{mail:sleevi_algorithms_and_referenced_documents} Naargelang de functionaliteit van het algoritme, ondersteunt ook niet elk algoritme alle methodes van de interface.
 
-\section{NfWebCrypto}
+\subsection{NfWebCrypto}
 \label{sec:wc:nfwebcrypto}
 
 Aangezien de standaard nog niet voltooid is, wordt deze nauwelijks ondersteund door de grote browsers.\cite{site:html5test_web_cryptography_api} Alleen Internet Explorer 11 heeft reeds een implementatie, maar hierin is slechts een beperkt aantal algoritmes aanwezig.\cite{site:microsoft_web_cryptography} Om de vergelijking met de andere JavaScript libraries toch te kunnen uitvoeren, was dus een alternatieve implementatie nodig van deze API.
@@ -26,10 +72,10 @@ Aangezien de standaard nog niet voltooid is, wordt deze nauwelijks ondersteund d
 
 \npar NfWebCrypto daarentegen is een \cplusplus polyfill ontwikkeld door Netflix.\cite{site:nfwebcrypto} Intern wordt de bekende OpenSSL library gebruikt voor de cryptografische functionaliteit. Het grote voordeel is hier dus dat de cryptografische code nu native is, waardoor de prestaties vergelijkbaar zouden moeten zijn met die van een echte implementatie in de browser. Het grootste nadeel is hier wel dat het een plugin is voor Chrome. Bovendien moet deze handmatig gecompileerd worden en moet de browser op een speciale manier gestart worden, zodat het gebruik ervan niet zo vanzelfsprekend is. Hoewel dit dus gebruikt kan worden voor de tests, is dit niet direct bruikbaar voor praktische applicaties.
 
-\section{Benchmarks}
+\subsection{Benchmarks}
 \label{sec:wc:benchmarks}
 
-\subsection{Modulaire exponentiatie}
+\subsubsection{Modulaire exponentiatie}
 \label{sec:wc:modulaire_exponentiatie}
 
 Helios maakt gebruik van ElGamal (\ref{sec:helios:elgamal}) om de stemmen te encrypteren. Dit algoritme wordt echter niet ondersteund door de API (\ref{sec:wc:web_cryptography_api}). Deze kan dus niet onmiddellijk gebruikt worden om de encryptie te versnellen. De modulaire exponentiaties vragen veruit de meeste rekentijd. Een verbetering daar zou dus ook positief zijn voor de algemene prestaties.
@@ -70,7 +116,7 @@ Helios maakt gebruik van ElGamal (\ref{sec:helios:elgamal}) om de stemmen te enc
   \end{center}
 \end{table}
 
-\subsection{RSA}
+\subsubsection{RSA}
 
 Een tweede vergelijking werd gemaakt tussen JSBN en NfWebCrypto voor een RSA encryptie. Dit wordt niet gebruikt in Helios, maar ook deze resultaten zijn zeer interessant. De berekening van de RSA cijfertekst is opnieuw een modulaire exponentiatie (\ref{eq:wc:rsa}).\cite{rivest_shamir_adleman_rsa}
 

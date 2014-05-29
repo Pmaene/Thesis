@@ -4,11 +4,14 @@
   \node [block, below of=select, node distance=2.5cm] (review) {Review Choices};
   \node [decision, below of=review] (decide) {Satisfied with Choices?};
   \node [block, below of=decide, node distance=3cm] (submit) {Submit Ballot};
+  \node [block, below of=submit] (cast_confirm) {Submission Confirmation};
 
   \path [line] (intro) -- (select);
-  \path [line, dashed] (select) -- node{Encrypt Ballot} (review);
+  \path [line, dashed] (select) -- node(encrypt){Encrypt Ballot} (review);
   \path [line] (review) -- (decide);
   \path [line, dashed] (decide) -- node{Leave Voting Booth} (submit);
+  \path [line] (submit) -- (cast_confirm);
   
-  \draw [line] (decide.east) -- node{No} ++(1.5,0) node(lower_right){} |- (select.east);
+  \draw [line] (decide.west) -- node{No} ++(-1.5,0) node(lower_left){} |- (select.west);
+  \draw [line] (decide.east) -- node{Audit} ++(1.5,0) node(lower_right){} |- (encrypt.east);
 \end{tikzpicture}

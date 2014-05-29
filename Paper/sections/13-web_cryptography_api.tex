@@ -3,12 +3,12 @@
 % @author Pieter Maene <pieter.maene@student.kuleuven.be>
 %
 
-\section{Web Cryptography API}
+\section{Future Work: Web Cryptography API}
 \label{sec:web_cryptography_api}
 
 Currently, web developers implement cryptographic functionality in JavaScript. Despite great improvements in recent years, it is still slower than native code.\cite{site:resig_javascript_performance_rundown}\cite{site:cois_javascript_performance_rundown_2012}\cite{smedberg_performance_analysis_of_javascript} In 2012 a working group was started by W3C to write the Web Cryptography API specification, which would add cryptographic functionality to user agents.\cite{wiki:webcrypto} The specification defines the \texttt{SubtleCrypto} interface which has several high-level functions.\cite{sleevi_watson_web_cryptography_api} There are methods to manage the keys and to encrypt data. The API only supports a specific set of algorithms, nor does each algorithm support all functions of the interface.
 
-\par Since the specification has not been completed yet, most user agents do not support it. Internet Explorer 11 is the only browser that already has an implementation, but it misses some algorithms.\cite{site:microsoft_web_cryptography} Therefore, the NfWebCrypto polyfill was used for the benchmarks. This is a \cplusplus plugin for Chrome, so its performance should be comparable to a real implementation. Since a polyfill had to be used, the API's functionality was not used in production.
+\par Since the specification has not been completed yet, most user agents do not support it. Internet Explorer 11 is the only browser that already has an implementation, but it misses some algorithms.\cite{site:microsoft_web_cryptography} Therefore, the NfWebCrypto polyfill was used for the benchmarks. This is a \cplusplus plugin for Chrome, so its performance should be comparable to a real implementation. Since a polyfill had to be used, the API's functionality was not yet added to Helios.
 
 \subsection{Modular Exponentation}
 \label{sec:wc:modular_exponentiation}
@@ -34,14 +34,14 @@ Helios uses ElGamal to encrypt the ballots, which is an algorithm not supported 
 
 \begin{table}
   \begin{center}
+    \caption{Modular Exponentiation}
+    \label{tab:wc:modular_exponentiation}
     \begin{tabular}{r | c c}
       Library & Gemiddelde [ms] & Variantie [ms] \\ \hline
       JSBN & 33,9250 & 26,5019  \\
       Leemon & 99,1470 & 15,0785 \\
       NfWebCrypto & 16,0670 & 470,6251
     \end{tabular}
-    \caption{Modular Exponentiation}
-    \label{tab:wc:modular_exponentiation}
   \end{center}
 \end{table}
 
@@ -59,12 +59,12 @@ RSA was used to make a second comparison between JSBN and NfWebCrypto. This ciph
 
 \begin{table}
   \begin{center}
+    \caption{RSA}
+    \label{tab:wc:rsa}
     \begin{tabular}{r | c c}
       Library & Gemiddelde [ms] & Variantie [ms] \\ \hline
       JSBN & 0,6310 & 0,3632  \\
       NfWebCrypto & 2,1360 & 0,4219
     \end{tabular}
-    \caption{RSA}
-    \label{tab:wc:rsa}
   \end{center}
 \end{table}

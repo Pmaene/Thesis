@@ -3,7 +3,7 @@
 % @author Pieter Maene <pieter.maene@student.kuleuven.be>
 %
 
-\chapter{Procedure}
+\chapter{Verkiezingsprocedure in Helios}
 \label{chap:procedure}
 
 Dit hoofdstuk geeft de procedure die in de aangepaste versie van Helios gevolgd moet worden om een verkiezing op te zetten. In \ref{sec:proc:voorbereiding} wordt bekeken welke informatie gekend moet zijn voordat met het aanmaken van de verkiezing aangevat wordt. De procedure zelf wordt in \ref{sec:proc:helios} beschreven.
@@ -27,7 +27,7 @@ Een verkiezing in Helios kan opengesteld worden voor iedereen of voor specifieke
 
 \npar Deze kiezers kunnen in Helios ge\"importeerd worden door een CSV-bestand aan te maken. Helios heeft van elke kiezer de volledige naam en een uniek ID nodig. Het e-mailadres van de kiezer kan opgegeven worden, maar dit is niet vereist. Er kan ook aangegeven worden welk authenticatiesysteem (bv. Google of Shibboleth) gebruikt wordt door de kiezer. Wanneer dit laatste veld leeg is, zal een gegenereerd wachtwoord naar hem opgestuurd worden.
 
-\section{Helios}
+\section{Helios setup}
 \label{sec:proc:helios}
 
 \subsection{Aanmaken van de verkiezing}
@@ -40,7 +40,7 @@ De eerste stap is het aanmaken van de verkiezing. Hier moet eerst de basisinform
   \label{fig:proc:elections_new}
 \end{figure}
 
-\npar Vervolgens kunnen een aantal belangrijke functies aan- of uitgezet worden. Wanneer aliassen gebruikt worden, dan worden de namen van de kiezers verborgen in het publieke ballot tracking center (\ref{sec:helios:ballot_tracking_center}). Het is ook mogelijk om de antwoorden in een random volgorde op het biljet te laten zetten. Een geheime verkiezing kan alleen bekeken worden door de geregistreerde kiezers. Hier moet ook aangegeven worden of threshold encryptie  (\ref{sec:helios:threshold_encryptie}) gebruikt zal worden.
+\npar Vervolgens kunnen een aantal belangrijke functies aan- of uitgezet worden. Wanneer aliassen gebruikt worden, dan worden de namen van de kiezers verborgen in het publieke ballot tracking center (\ref{sec:helios:ballot_tracking_center}). Het is ook mogelijk om de antwoorden in een random volgorde op het biljet te laten zetten. Een geheime verkiezing kan alleen bekeken worden door de geregistreerde kiezers. Deze moet dus gebruikt worden wanneer kieslijsten beschikbaar zijn. Hier moet ook aangegeven worden of threshold encryptie  (\ref{sec:helios:threshold_encryptie}) gebruikt zal worden. Het is aangeraden dit aan te zetten, aangezien dat resulteert in een robuuster decryptieproces.
 
 \npar Tot slot is het mogelijk om aan te geven wanneer de verkiezing moet starten en sluiten. Wanneer het resultaat niet onmiddellijk na het aflopen van de verkiezing gepubliceerd mag worden, kan een alternatief tijdstip hiervoor opgegeven worden.
 

@@ -16,7 +16,7 @@
 \usepackage{url}
 
 % De optie colorlinks mag verwijderd worden voor de af te drukken versie
-\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
+\usepackage[pdfusetitle,plainpages=false]{hyperref}
 
 % Customisations
 \graphicspath{{./images/}}
@@ -33,16 +33,17 @@
 
   \maketitle
   
-  %TODO Last sentence?
   \begin{abstract}    
-    Helios is a voter-verifiable online voting system. Such a system allow the voter to verify whether his ballot was registered correctly and check the election result. The procedure for these systems is typically very complicated. The system's usability is determined by its interface which should support the procedure. Therefore, the procedure to manage an election with Helios was written out. The system's interface was modified to better support this procedure. Additionally, the Web Cryptography API adds native cryptographic functionality to user agents. Its faster implementation could speed up encryption operations and improve the usability. The modified system was deployed for a real election where the election administrator and voters used it successfully.
+    Helios is a voter-verifiable online voting system. Such a system allow the voter to verify whether his ballot was registered correctly and check the election result. The procedure for these systems is typically very complicated. The system's usability is determined by its interface which should support the procedure.
+    
+    \par This paper discusses the procedure to manage an election in Helios. The system's interface was modified to better support this procedure. The modified system is deployed for a real election where the election administrator and voters used it successfully. Additionally, the Web Cryptography API adds native cryptographic functionality to user agents. A benchmark showed that its implementation is faster, which could improve the usability of web applications.
   \end{abstract}
   
   \input{sections/00-introduction}
   \input{sections/10-procedure}
-  \input{sections/11-user_interface_improvements}
-  \input{sections/12-web_cryptography_api}
-  \input{sections/13-board_election}
+  \input{sections/11-interface}
+  \input{sections/12-board_election}
+  \input{sections/13-web_cryptography_api}
   \input{sections/14-conclusion}
   
   \bibliographystyle{IEEEtran}

@@ -12,6 +12,14 @@ The modified Helios voting system was used in the elections for the new board of
 
 %TODO Election Requirements
 
+A committee of at least five people from the current board watches over the election. The head of this committee is the current president of the board. He should be able to manage the election. It should be possible to appoint the other members as trustees. The decryption process cannot be blocked by one trustee.
+
+%TODO Herschrijven
+
+\par There are two types of candidates: the first can be officially elected as the next board, the second participates for fun. Both should be separate questions on the ballot. If there is only one official team, voters have to be able to vote pro, contra or abstention. If there are two teams, at most one should be selectable. If there are more than two, voters should express their appreciation for each team. However, this last case is so rare that it's not a strong requirement for the system. In the election of the fun team, it should be possible to select all of them at most.
+
+\par A list of all eligible voters can be requested from the university. These lists have the student's first name, last name and university identification number. Only these voters should be able to access the election. Therefore, an authentication system should be available. Finally, the participation percentage should be shown on the result page.
+
 \subsection{Specific Adjustments}
 
 Shibboleth is the single sign-on system used by the KU Leuven. Students have an account with a unique identification number. All voters in the election have such an account, so it could be used to authenticate them. Since Helios' authentication system is modular and already has support for other federated identity systems, adding Shibboleth was relatively straightforward.
@@ -21,6 +29,7 @@ Shibboleth is the single sign-on system used by the KU Leuven. Students have an 
 \par Helios did not yet show the election's participation percentage. This is the percentage of eligible voters that cast their vote. The system also immediately published the election result. They are traditionally announced to the public at midnight, but the election administrator does need earlier access to them. These two smaller features were therefore implemented as well.
 
 \subsection{Tests}
+\label{sec:be:tests}
 
 After installing the system on a server, it was thoroughly tested by the current board of VTK. In addition to verifying all technical aspects, the testers were also asked for feedback on the user interfaces. The election admin and booth were tested in the context of the actual election. The real voter list was replaced by the current board of the organisation, though.
 
@@ -36,12 +45,12 @@ After installing the system on a server, it was thoroughly tested by the current
   \centering
   \begin{minipage}{.45\linewidth}
     \centering
-    \scalebox{.7}{\input{images/old_voting_booth_flow.tikz}}
+    \scalebox{.6}{\input{images/old_voting_booth_flow.tikz}}
   \end{minipage}
   \quad
   \begin{minipage}{.45\linewidth}
     \centering
-    \scalebox{.7}{\input{images/new_voting_booth_flow.tikz}}
+    \scalebox{.6}{\input{images/new_voting_booth_flow.tikz}}
   \end{minipage}
   \caption{Old (Left) and New (Right) Voting Booth Flows}
   \label{fig:be:voting_booth_flows}
@@ -51,6 +60,6 @@ After installing the system on a server, it was thoroughly tested by the current
 
 \subsection{Election Day}
 
-The election itself took place on May 8\textsuperscript{th} 2014 from 7 am till 8 pm. During this time, 768 people cast a ballot which isn't significantly less than during previous years. This is a strong indication that the voting process was clear.
+The election itself took place on May 8\textsuperscript{th} 2014 from 7 am till 8 pm. During this time, 768 people cast a ballot which isn't significantly less than during previous years. This is a strong indication that the voting process was clear. No complaints were received from these voters either.
 
 \par Since everything had been tested in advance, no problems were encountered during the voting or when decrypting the result.

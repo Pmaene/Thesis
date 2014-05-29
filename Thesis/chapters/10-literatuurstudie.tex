@@ -6,9 +6,7 @@
 \chapter{Literatuurstudie}
 \label{chap:literatuurstudie}
 
-%TODO Remove Color
-
-Deze thesis handelt over methoden voor online verkiezingen. Een interessant verwant probleem zijn systemen die gebruik maken van papier. \textcolor{blue}{In dit hoofdstuk wordt specifiek gekeken naar papieren voter-verifiable systemen.}
+Deze thesis handelt over methoden voor online verkiezingen. Een interessant verwant probleem zijn systemen die gebruik maken van papier. In dit hoofdstuk wordt specifiek gekeken naar papieren voter-verifiable systemen.
 
 \npar In \ref{sec:ls:geschiedenis} wordt eerst een kort overzicht van de geschiedenis van stemsystemen gegeven. Vervolgens worden de voornaamste vereisten bekeken waaraan deze systemen moeten voldoen (\ref{sec:ls:vereisten}). Belangrijk hierbij is de definitie van een voter-verifiable systeem. Tot slot worden zowel systemen onderzocht die geen gebruik maken van cryptografische methoden (\ref{sec:ls:systemen_zonder_cryptografie}) als deze die daar wel op steunen (\ref{sec:ls:systemen_met_cryptografie}).
 
@@ -32,9 +30,7 @@ Bij het ontwerpen van een stemsysteem zijn er twee tegenstrijdige doelen. Enerzi
 
 \npar Hoewel het vaak zeer moeilijk is om een grote verkiezing doorslaggevend te wijzigen, wordt stemfraude toch regelmatig geconstateerd.\cite{adida_advances_in_cryptographic_voting_systems} E\'en van de grote moeilijkheden is dat zowel kiezers als bijzitters corrupt kunnen zijn. Er kan dus van geen enkele deelnemer verwacht worden dat hij eerlijk is.
 
-%TODO Remove Color
-
-\npar \textcolor{blue}{Het dus essentieel dat het stemsysteem vertrouwd wordt door de kiezers. Bij de huidige systemen moet hij dat echter meestal leggen bij de instantie die verkiezing organiseert (\ref{sec:ls:vertrouwen}). Nieuwe technieken laten ons echter toe om end-to-end verifiable systemen te ontwikkelen, waar de kiezer zelf de correctheid van het resultaat kan nagaan (\ref{sec:ls:end_to_end_verifiability}).}
+\npar Het dus essentieel dat het stemsysteem vertrouwd wordt door de kiezers. Bij de huidige systemen moet hij dat echter meestal leggen bij de instantie die verkiezing organiseert (\ref{sec:ls:vertrouwen}). Nieuwe technieken laten ons echter toe om end-to-end verifiable systemen te ontwikkelen, waar de kiezer zelf de correctheid van het resultaat kan nagaan (\ref{sec:ls:end_to_end_verifiability}).
 
 \subsection{Vertrouwen}
 \label{sec:ls:vertrouwen}
@@ -240,13 +236,9 @@ Scratch \& Vote werd in 2006 ontworpen door Ben Adida en Ronald L. Rivest. Het i
 
 \section{Online stemmen~\cite{adida_helios}}
 
-%TODO Remove Color
+Een mogelijkheid om mensen van op afstand te laten stemmen, is door een online verkiezingssysteem te gebruiken. Studies hebben aangetoond dat technologie\"en die het eenvoudiger maken om te stemmen, de opkomst kunnen verbeteren.\cite{news:guardian_shaking_up_voter_apathy_with_it} Het voornaamste probleem bij dit soort systemen is dat de omgeving niet langer gecontroleerd kan worden door de organisator van de verkiezing. Bij een online verkiezing kan de kiezer echter gedwongen worden om op een bepaalde manier te stemmen terwijl de aanvaller over zijn schouder meekijkt. Het is voor de kiezer ook eenvoudiger zijn stem te verkopen aangezien hij op dezelfde manier kan bewijzen aan de koper dat hij correct gestemd heeft.
 
-\textcolor{blue}{Een mogelijkheid om mensen van op afstand te laten stemmen, is door een online verkiezingssysteem te gebruiken. Studies hebben aangetoond dat technologie\"en die het eenvoudiger maken om te stemmen, de opkomst kunnen verbeteren.\cite{news:guardian_shaking_up_voter_apathy_with_it} Het voornaamste probleem bij dit soort systemen is dat de omgeving niet langer gecontroleerd kan worden door de organisator van de verkiezing. Bij een online verkiezing kan de kiezer echter gedwongen worden om op een bepaalde manier te stemmen terwijl de aanvaller over zijn schouder meekijkt. Het is voor de kiezer ook eenvoudiger zijn stem te verkopen aangezien hij op dezelfde manier kan bewijzen aan de koper dat hij correct gestemd heeft.}
-
-%TODO Remove Color
-
-\npar \textcolor{blue}{Helios lost dit probleem niet op, maar stelt dat er situaties zijn waar het gevaar op een aanval kleiner is omdat de inzet er minder groot is. Voorbeelden zijn verkiezingen bij een lokale sportclub of studentenorganisaties. Hier is echter wel nog steeds nood aan een betrouwbaar en geheim verkiezingssysteem. Een online verkiezingssysteem is hier dan ook ideaal, omdat de organisatie van de verkiezing anders veel meer werk zou vragen.}
+\npar Helios lost dit probleem niet op, maar stelt dat er situaties zijn waar het gevaar op een aanval kleiner is omdat de inzet er minder groot is. Voorbeelden zijn verkiezingen bij een lokale sportclub of studentenorganisaties. Hier is echter wel nog steeds nood aan een betrouwbaar en geheim verkiezingssysteem. Een online verkiezingssysteem is hier dan ook ideaal, omdat de organisatie van de verkiezing anders veel meer werk zou vragen.
 
 \section{Conclusie}
 \label{sec:ls:conclusie}
@@ -259,6 +251,4 @@ Bij open counting (\ref{sec:ls:open_counting}) wordt een transparante manier van
 
 \npar Papieren voter-verifiable systemen hebben dus enkele grote nadelen die hun praktisch nut sterk beperken. Ze zijn vaak zeer complex en niet bruikbaar voor grote verkiezingen. Cryptografische technieken lossen deze problemen wel deels op, maar worden dan weer moeilijker vertrouwd door de kiezer.
 
-%TODO Remove Color
-
-\npar \textcolor{blue}{Helios is in de eerste plaats een systeem dat toelaat om online verkiezingen te organiseren. Deze systemen kunnen echter alleen gebruikt worden wanneer het gevaar op dwang klein is. Het is hier immers niet mogelijk om de omgeving te controleren waarin de kiezer zijn stem uitbrengt, waardoor het voor een aanvaller eenvoudiger is om invloed uit te oefenen.}
+\npar Helios is in de eerste plaats een systeem dat toelaat om online verkiezingen te organiseren. Deze systemen kunnen echter alleen gebruikt worden wanneer het gevaar op dwang klein is. Het is hier immers niet mogelijk om de omgeving te controleren waarin de kiezer zijn stem uitbrengt, waardoor het voor een aanvaller eenvoudiger is om invloed uit te oefenen.

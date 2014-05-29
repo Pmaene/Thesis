@@ -5,12 +5,15 @@
   \node [decision, below of=review] (decide) {Satisfied with Choices?};
   \node [block, below of=decide, node distance=3cm] (confirm) {Confirm Ballot};
   \node [block, below of=confirm, node distance=2.5cm] (submit) {Submit Ballot};
+  \node [block, below of=submit] (cast_confirm) {Submission Confirmation};
 
   \path [line] (intro) -- (select);
   \path [line] (select) -- (review);
   \path [line] (review) -- (decide);
-  \path [line, dashed] (decide) -- node{Encrypt Ballot} (confirm);
+  \path [line, dashed] (decide) -- node(encrypt){Encrypt Ballot} (confirm);
   \path [line, dashed] (confirm) -- node{Leave Voting Booth} (submit);
+  \path [line] (submit) -- (cast_confirm);
   
   \draw [line] (decide.west) -- node{No} ++(-1.5,0) node(lower_right){} |- (select.west);
+  \draw [line] (confirm.east) -- node{Audit} ++(1.75,0) node(lower_left){} |- (encrypt.east);
 \end{tikzpicture}
