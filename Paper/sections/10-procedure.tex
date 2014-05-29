@@ -11,7 +11,7 @@ This sections gives the procedure that should be followed to organise an electio
 \subsection{Preparation}
 \label{sec:proc:preparation}
 
-The trustees will be responsible for the decryption of the result. It is therefore important to give some thought to who this role will be given. Since using threshold encryption results in a more robust decryption process, it is advisable to use this. In that case, the election administrator should also determine the threshold scheme.
+The trustees will be responsible for the decryption of the result. It is therefore important to give some thought to who this role will be given. Since using threshold encryption results in a more robust decryption process, it is advisable to use this. In that case, the election administrator should also determine the threshold scheme. This determines the number of trustees that will have to present their keys in order to decrypt the result.
 
 \par For each question, the election administrator can specify the number of answers that can be selected by the voter. The result for each answer is shown either as the absolute number of votes it received, or its relative position with respect to the other answers.
 
@@ -24,7 +24,7 @@ The first step is the creation of the election. Here, all basic information like
 
 \par After creating the election, the trustees have to be added. This step was placed first in the procedure because it is the longest to complete. After being added, the trustee receives an e-mail with the link to his trustee dashboard.
 
-\par If threshold encryption is not being used, each trustee simply has to generate a key pair. Once all trustees have done this, the election administrator can freeze the election. If threshold encryption was enabled, the key ceremony becomes more complicated. After adding all trustees, the election administrator can define the threshold scheme. This determines the number of trustees that will have to present their keys in order to decrypt the result. The trustees can then start the following ceremony.
+\par If threshold encryption is not being used, each trustee simply has to generate a key pair. Once all trustees have done this, the election administrator can freeze the election. If threshold encryption was enabled, the key ceremony becomes more complicated. After adding all trustees, the election administrator can define the threshold scheme. The trustees can then start the following ceremony.
 
 \begin{enumerate}
   \item The trustee generates his communication keys and uploads the public keys to the server. They will be used to encrypt and sign the communication between them.

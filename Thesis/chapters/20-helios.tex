@@ -6,21 +6,21 @@
 \chapter{Helios}
 \label{chap:helios}
 
-Het Helios verkiezingssysteem is een open-source project dat geleid wordt door Ben Adida.\cite{adida_helios} Het laat toe om online voter-verifiable verkiezingen te organiseren. Online verkiezingen kunnen wel alleen gebruikt worden in een context waar dwang geen grote bedreiging is. Dit systeem werd vorig jaar door Robbert Coeckelbergh uitgebreid met threshold encryptie en gerangschikte verkiezingen.\cite{coeckelbergh_toepassing_en_uitbreiding_van_het_helios_online_verkiezingssysteem} 
+Het Helios verkiezingssysteem is een open-source project dat geleid wordt door Ben Adida.\cite{adida_helios} Het laat toe om online voter-verifiable verkiezingen te organiseren. Zoals vermeld in \ref{sec:ls:online_stemmen} kunnen online verkiezingen alleen gebruikt worden in een context waar dwang geen grote bedreiging vormt. Dit systeem werd vorig jaar door Robbert Coeckelbergh uitgebreid met threshold encryptie en gerangschikte verkiezingen.\cite{coeckelbergh_toepassing_en_uitbreiding_van_het_helios_online_verkiezingssysteem} 
 
-\npar In dit hoofdstuk worden de belangrijkste cryptografische technieken uitgelegd die Helios gebruikt (\ref{sec:helios:cryptografische_technieken}). Daarna wordt de functionaliteit van de publieke delen van Helios besproken: het stemhokje (\ref{sec:helios:stemhokje}), het ballot tracking center (\ref{sec:helios:ballot_tracking_center}) en de controleapplicatie (\ref{sec:helios:controleapplicatie}).
+\npar In dit hoofdstuk worden de belangrijkste cryptografische technieken uitgelegd die Helios gebruikt (\ref{sec:helios:cryptografische_technieken}). Daarna wordt de functionaliteit van de publieke delen van Helios besproken: het stemhokje (\ref{sec:helios:stemhokje}), het ballot tracking center (\ref{sec:helios:ballot_tracking_center}), de controleapplicatie (\ref{sec:helios:controleapplicatie}) en het stemhokje (\ref{sec:helios:stemhokje}).
 
 \section{Cryptografische technieken}
 \label{sec:helios:cryptografische_technieken}
 
-Op het vlak van cryptografische technieken leunt Helios het dichtste aan bij Scratch \& Vote (\ref{sec:ls:scratch_and_vote}). Ook in dit systeem worden de stemmen ge\"encrypteerd. Na het aflopen van de stemming worden alle biljetten homomorf opgeteld. Tot slot wordt het resultaat gedecrypteerd. Alle ge\"encrypteerde stemmen worden ook online gepubliceerd, zodat iedereen kan verifi\"eren of het resultaat correct is.
+Op het vlak van cryptografische technieken leunt Helios het dichtste aan bij Scratch \& Vote (\ref{sec:ls:scratch_and_vote}). Ook in Helios worden de stemmen ge\"encrypteerd. Na het aflopen van de stemming worden alle biljetten homomorf opgeteld. Tot slot wordt het resultaat gedecrypteerd. Alle ge\"encrypteerde stemmen worden ook online gepubliceerd, zodat iedereen kan verifi\"eren of het resultaat correct is.
 
 \npar Het belangrijkste verschil is dat ElGamal gebruikt wordt in plaats van Paillier voor de homomorfe encryptie van de stemmen (\ref{sec:helios:elgamal} en \ref{sec:helios:homomorfe_encryptie}). Tot slot wordt de methode besproken waarop de sleutel verdeeld wordt tussen de trustees (\ref{sec:helios:threshold_encryptie}).
 
 \subsection{ElGamal~\cite{elgamal_elgamal}}
 \label{sec:helios:elgamal}
 
-Het ElGamal cryptosystem is een asymmetrisch schema dat gebaseerd is op het Diffie-Hellman protocol. Dit betekent dat een sleutelpaar met zowel een geheime als publieke sleutel nodig is. De publieke sleutel wordt gebruikt om de klaartekst te encrypteren. De decryptie kan alleen uitgevoerd worden met de geheime sleutel.
+Het ElGamal \textit{cryptosystem} is een asymmetrisch schema dat gebaseerd is op het Diffie-Hellman protocol. Dit betekent dat een sleutelpaar met zowel een geheime als publieke sleutel nodig is. De publieke sleutel wordt gebruikt om de klaartekst te encrypteren. De decryptie kan alleen uitgevoerd worden met de geheime sleutel.
 
 \npar Er wordt gewerkt in de groep $\mathbb{Z}_p$ waar $g$ de generator is. De geheime sleutel $sk$ wordt willekeurig gekozen binnen $\mathbb{Z}_{p-1}$. De publieke sleutel is dan ${pk} = g^{sk} \mod{p}$. De cijfertekst van een ElGamal encryptie bestaat uit twee delen: $c_1$ (\ref{eq:helios:elgamal_c1}) en $c_2$ (\ref{eq:helios:elgamal_c2}). In deze vergelijkingen is $m$ de klaartekst en $r$ opnieuw een willekeurig getal binnen $\mathbb{Z}_{p-1}$. $c_1$ en $r$ hebben respectievelijk de functie van tijdelijke publieke en private sleutel.\cite{preneel_cryptography_and_network_security}
 
@@ -70,7 +70,7 @@ Bij homomorfe encryptie kan een specifieke operatie met de cijfertekst uitgevoer
 \subsection{Threshold encryptie}
 \label{sec:helios:threshold_encryptie}
 
-Oorspronkelijk kon de publieke sleutel voor de verkiezing alleen berekend worden als het product van de afzonderlijke publieke sleutels van de trustees (\ref{eq:helios:elgamal_c2_homomorphic_trustees}). Voor de decryptie moet iedere trustee zijn factor uit de noemer van \ref{eq:helios:elgamal_m_homomorphic_trustees} berekenen. Deze factoren worden in Helios de decryptiefactoren genoemd.
+Oorspronkelijk kon de publieke sleutel voor de verkiezing alleen berekend worden als het product van de afzonderlijke publieke sleutels van de \textit{trustees} (\ref{eq:helios:elgamal_c2_homomorphic_trustees}). Voor de decryptie moet iedere trustee zijn factor uit de noemer van \ref{eq:helios:elgamal_m_homomorphic_trustees} berekenen. Deze factoren worden in Helios de decryptiefactoren genoemd.
 
 \begin{equation}
   \label{eq:helios:elgamal_c2_homomorphic_trustees}
@@ -86,9 +86,7 @@ Oorspronkelijk kon de publieke sleutel voor de verkiezing alleen berekend worden
 
 \subsubsection{Secret Sharing}
 
-%TODO Verifiable
-
-De methode die ge\"implementeerd werd is gebaseerd op Shamir's secret sharing.\cite{shamir_how_to_share_a_secret} Iedere trustee genereert eerst een veelterm van graad $k - 1$. Vervolgens stuurt hij elke trustee (ook zichzelf) een zogeheten \textit{share} van deze veelterm. Deze share is de waarde van de veelterm voor een punt $x$. Deze $x$-co\"ordinaat moet door iedereen gekend zijn, omdat het vereist is dat de shares die een trustee ontvangt van de anderen voor dezelfde waarde werden aangemaakt. Daarom wordt hiervoor binnen Helios het database ID van de trustee gebruikt. Dit is een uniek natuurlijk getal dat wordt opgehoogd telkens een nieuwe trustee aangemaakt wordt.
+De methode die ge\"implementeerd werd is gebaseerd op Shamir's secret sharing.\cite{shamir_how_to_share_a_secret} Iedere trustee genereert eerst een veelterm van graad $k - 1$. Vervolgens stuurt hij elke trustee (ook zichzelf) een zogeheten \textit{share} van deze veelterm. Deze share is de waarde van de veelterm voor een punt $x$. Deze $x$-co\"ordinaat moet door iedereen gekend zijn, omdat het vereist is dat de shares die een trustee ontvangt van de anderen voor dezelfde waarde werden aangemaakt. Daarom wordt hiervoor binnen Helios het database ID van de trustee gebruikt. Dit is een uniek natuurlijk getal dat wordt opgehoogd telkens een nieuwe trustee aangemaakt wordt. Door \textit{zero-knowledge} bewijzen op te stellen, wordt heel dit proces verifiable. Hier wordt echter niet verder op ingegaan.
 
 \npar Vervolgens moet de trustee de $n$ shares die hij zo ontvangt, optellen. Zo bekomt hij de $y$-co\"ordinaat die hoort bij zijn ID op een nieuwe veelterm, die de som is van de $n$ veeltermen die door de trustees gegenereerd werden. Deze waarde kan hij nu gebruiken als zijn geheime sleutel ${sk}$. Omdat ElGamal gebruikt wordt als encryptieschema, wordt zijn publieke sleutel ${pk} = g^{sk} \mod{p}$.
 
@@ -127,18 +125,18 @@ De cryptografische technieken van \ref{sec:helios:cryptografische_technieken} wo
 \subsection{Stemhokje}
 \label{sec:helios:stemhokje}
 
-Het stemhokje staat volledig los van de rest van het systeem. Het is een applicatie die de kiezer kan gebruiken om zijn stem uit te brengen. Nadat hij zijn keuze gemaakt heeft, wordt deze ge\"encrypteerd met de publieke sleutel voor de verkiezing. Zoals besproken in \ref{sec:helios:cryptografische_technieken}, zal de cijfertekst bestaan uit twee delen (\ref{eq:helios:elgamal_c1} en \ref{eq:helios:elgamal_c2_homomorphic}). Wanneer threshold encryptie aanstaat, wordt de publieke sleutel zoals gedefinieerd door \ref{eq:helios:threshold_encryption_public_key} gebruikt; anders is het deze van \ref{eq:helios:elgamal_c2_homomorphic_trustees}. Daarnaast worden ook zero-knowledge bewijzen opgesteld voor de stem. Deze zijn niet belangrijk voor deze thesis en hier wordt dan ook niet dieper op ingegaan.
+Het stemhokje staat volledig los van de rest van het systeem. Het is een applicatie die de kiezer kan gebruiken om zijn stem uit te brengen. Nadat hij zijn keuze gemaakt heeft, wordt deze ge\"encrypteerd met de publieke sleutel voor de verkiezing. Zoals besproken in \ref{sec:helios:cryptografische_technieken}, zal de cijfertekst bestaan uit twee delen (\ref{eq:helios:elgamal_c1} en \ref{eq:helios:elgamal_c2_homomorphic}). Wanneer threshold encryptie aanstaat, wordt de publieke sleutel zoals gedefinieerd door \ref{eq:helios:threshold_encryption_public_key} gebruikt; anders is het deze van \ref{eq:helios:elgamal_c2_homomorphic_trustees}. Daarnaast worden ook zero-knowledge bewijzen opgesteld voor de stem, maar hier wordt niet dieper op ingegaan.
 
-\npar Het encryptieproces is in JavaScript ge\"implementeerd en vindt dus volledig plaats in de browser van de kiezer. De stem van de kiezer zal dan nooit onge\"encrypteerd op de server toekomen. Alle informatie over de verkiezing kan eenvoudig opgevraagd worden. De kiezer zou dus ook zijn eigen software kunnen gebruiken om zijn stem te encrypteren.
+\npar Het encryptieproces is in JavaScript ge\"implementeerd en vindt dus volledig plaats in de browser van de kiezer. Zijn stem zal dan ook nooit onge\"encrypteerd op de server toekomen. Alle informatie over de verkiezing kan eenvoudig opgevraagd worden. De kiezer zou dus ook zijn eigen software kunnen gebruiken om zijn stem te encrypteren.
 
-\npar Aan elke ge\"encrypteerde stem wordt een \textit{Smart Ballot Tracker} toegekend. Dit is een fingerprint die de stem identificeert (\ref{sec:sf:fingerprints}). Aan de hand daarvan kan de kiezer zijn stem volgen doorheen het systeem en kan hij verifi\"eren dat zijn stem niet aangepast is.
+\npar Aan elke ge\"encrypteerde stem wordt een \textit{smart ballot tracker} toegekend. Dit is een fingerprint die de stem identificeert (\ref{sec:sf:fingerprints}). Aan de hand daarvan kan de kiezer zijn stem volgen doorheen het systeem en kan hij verifi\"eren dat ze niet aangepast is.
 
 \subsection{Ballot Tracking Center}
 \label{sec:helios:ballot_tracking_center}
 
 Net zoals bij Scratch \& Vote (\ref{sec:ls:scratch_and_vote}) worden de uitgebrachte stemmen gepubliceerd. In het ballot tracking center kan een lijst met alle kiezers teruggevonden worden. Bij een publieke verkiezing kan iedereen deze opvragen, bij een private alleen de geregistreerde kiezers. Standaard staan hier gewoon de namen van de kiezers, maar de beheerder kan ervoor kiezen om aliassen te gebruiken in de plaats.
 
-\npar Van zodra een kiezer zijn stem uitgebracht heeft, kan deze door iedereen bekeken worden (\ref{fig:helios:cast_vote}). Dit is nodig omdat zo het resultaat van de verkiezing gecontroleerd kan worden (\ref{sec:helios:controleapplicatie}). Al deze informatie kan ook opgevraagd worden als JSON, zodat ze eenvoudiger verwerkt kan worden door een applicatie.
+\npar Van zodra een kiezer zijn stem uitgebracht heeft, kan deze door iedereen bekeken worden (\ref{fig:helios:cast_vote}). Dit is nodig omdat zo het resultaat van de verkiezing gecontroleerd kan worden (\ref{sec:helios:controleapplicatie}). Al deze informatie kan ook opgevraagd worden als JSON, zodat de applicatie ze eenvoudiger kan verwerken. Een derde partij zou deze functionaliteit dus ook zelf kunnen implementeren.
 
 \begin{figure}
   \center{\includegraphics[width=0.9\linewidth]{helios/cast_vote.png}}

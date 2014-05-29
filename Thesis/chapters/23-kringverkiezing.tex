@@ -6,7 +6,7 @@
 \chapter{Kringverkiezing}
 \label{chap:kringverkiezing}
 
-Het Helios verkiezingssysteem werd in de praktijk gebruikt tijdens de kringverkiezing van de Vlaamse Technische Kring. Dit is de faculteitskring van de studenten burgerlijk ingenieur aan de KU Leuven. Uit de kiesreglementen van VTK zelf en deze van LOKO volgen de vereisten waaraan het systeem moet voldoen (\ref{sec:kv:vereisten}). Om het systeem hiervoor te kunnen gebruiken, waren enkele aanpassingen nodig die overlopen worden in \ref{sec:kv:aanpassingen}. Gezien het cruciale karakter van een verkiezing, werd het systeem vervolgens uitgebreid getest (\ref{sec:kv:testen}). Tot slot wordt het verloop van de stemdag zelf besproken in \ref{sec:kv:stemdag}.
+Het Helios verkiezingssysteem werd in de praktijk gebruikt tijdens de kringverkiezing van de Vlaamse Technische Kring. Dit is de faculteitskring van de studenten burgerlijk ingenieur aan de KU Leuven. Uit de kiesreglementen van VTK zelf en deze van LOKO volgen de vereisten waaraan het systeem moet voldoen (\ref{sec:kv:vereisten}). Om het hiervoor te kunnen gebruiken, waren enkele aanpassingen nodig die overlopen worden in \ref{sec:kv:aanpassingen}. Gezien het cruciale karakter van een verkiezing, werd het systeem vervolgens uitgebreid getest (\ref{sec:kv:testen}). Tot slot wordt het verloop van de stemdag zelf besproken in \ref{sec:kv:stemdag}.
 
 \section{Vereisten~\cite{loko_kiesreglement_verkiezingen}\cite{vtk_verkiezingsreglement}}
 \label{sec:kv:vereisten}
@@ -27,24 +27,24 @@ Er zijn twee verschillende types kiesploegen bij VTK. Enerzijds zijn er de serie
 
 De voorwaarden om stemrecht te hebben in een kringverkiezing worden gegeven in Art. 11 \S 1 van het kiesreglement van LOKO.\cite{loko_kiesreglement_verkiezingen} Bij LOKO kan een lijst aangevraagd worden met alle stemgerechtigde studenten. Deze bestanden bevatten naast de naam en voornaam van de student ook zijn studentennummer. De verkiezing mag alleen toegankelijk zijn voor deze kiezers, die zich dus moeten kunnen aanmelden.
 
-\npar Bij VTK vertegenwoordigt het praesidium de studenten ook op onderwijsvlak. Om dit te kunnen doen, moet er volgens het reglement van LOKO een meerderheid behaald worden bij een opkomst van minstens 10\%.
+\npar Bij VTK vertegenwoordigt het praesidium de studenten ook op onderwijsvlak. Om dit te kunnen doen, moet er volgens het reglement van LOKO een meerderheid behaald worden bij een opkomst van minstens 10\%. Het opkomstpercentage moet dus getoond worden bij het resultaat.
 
 \section{Aanpassingen}
 \label{sec:kv:aanpassingen}
 
-Aan de meeste vereisten in \ref{sec:kv:vereisten} werd reeds door Helios voldaan. Om te kiezers zich te laten aanmelden, werd ondersteuning voor Shibboleth ingebouwd (\ref{sec:kv:shibboleth}). Ook de berekening van het opkomstpercentage werd toegevoegd, zodat dit samen met de resultaten bekend gemaakt kon worden. Tot slot werd het mogelijk gemaakt om de publicatie van het resultaat uit te stellen (\ref{sec:kv:publicatie_van_het_resultaat}).
+Aan de meeste vereisten in \ref{sec:kv:vereisten} werd reeds door Helios voldaan. Om de kiezers zich te laten aanmelden, werd ondersteuning voor Shibboleth ingebouwd (\ref{sec:kv:shibboleth}). Ook de berekening van het opkomstpercentage werd toegevoegd, zodat dit samen met de resultaten bekend gemaakt kon worden. Tot slot werd het mogelijk gemaakt om de publicatie van het resultaat uit te stellen (\ref{sec:kv:publicatie_van_het_resultaat}).
 
 \subsection{Shibboleth}
 \label{sec:kv:shibboleth}
 
 Shibboleth is het authenticatie mechanisme dat gebruikt wordt voor de centrale login van de KU Leuven. Iedere gebruiker kan uniek ge\"identificeerd worden aan de hand van zijn studentennummer. Alle stemgerechtigde kiezers voor een kringverkiezing hebben een dergelijke account. Helios had hier echter nog geen ondersteuning voor. Gezien het modulaire ontwerp van het authenticatiesysteem, was dit relatief eenvoudig toe te voegen.
 
-\npar De kieslijsten zelf werden opgemaakt door LOKO, de Leuvense studentenkoepel. Deze moesten wel nog omgezet worden naar een bestand dat uitgelezen kon worden door Helios. Het studentennummer werd hierbij gebruikt als het unieke ID voor elke kiezer. Een probleem was hier wel dat de e-mailadressen van de kiezers niet mee opgenomen waren in deze lijsten. Deze kunnen wel mee doorgegeven worden met het antwoord dat de server ontvangt nadat de student zich aangemeld heeft via de centrale login.
+\npar De kieslijsten zelf werden opgemaakt door LOKO, de Leuvense studentenkoepel. Deze moesten wel nog omgezet worden naar een bestand dat uitgelezen kon worden door Helios. Het studentennummer werd hierbij gebruikt als het unieke ID voor elke kiezer. Een probleem was wel dat de e-mailadressen van de kiezers niet mee opgenomen waren in deze lijsten. Deze kunnen wel mee doorgegeven worden met het antwoord dat de server ontvangt nadat de student zich aangemeld heeft via de centrale login.
 
 \subsection{Publicatie van het resultaat}
 \label{sec:kv:publicatie_van_het_resultaat}
 
-Helios publiceert het resultaat van de verkiezing standaard van zodra het bekend is. Het is echter traditie om deze pas om middernacht bekend te maken. Het systeem moest hier dus licht voor aangepast worden.
+Helios publiceert het resultaat van de verkiezing standaard van zodra het bekend is. Het is echter traditie bij VTK om deze pas om middernacht bekend te maken. Het systeem moest hier dus licht voor aangepast worden.
 
 \section{Testen}
 \label{sec:kv:testen}
@@ -67,9 +67,9 @@ Aangezien hier de meeste veranderingen gebeurd zijn (\ref{sec:ui:beheer}), moest
   \lambda{_i}(0) & = N_i * (D_i^{-1} \mod{q}) \mod{q}
 \end{align}
 
-\npar Ten tweede werd de Helios trustee automatisch toegevoegd als trustee aan de verkiezing. Alle acties die een trustee moet uitvoeren, waren hiervoor geautomatiseerd. Na het uitvoeren van een aantal tests bleek dat de shares van deze trustee niet compatibel waren met deze van de anderen. Het grote verschil tussen beide is dat deze van Helios in Python en niet in JavaScript gegenereerd werden. Omdat er niet direct een fout gevonden kon worden, werd ervoor gekozen om Helios niet langer als trustee toe te voegen. Omdat alles hiervoor geautomatiseerd was, had deze toch niet zo'n belangrijke rol binnen het proces. Hij werd voornamelijk toegevoegd omdat dan een verkiezing zonder eigen trustees opgezet kon worden, wat leidt tot een eenvoudigere procedure.
+\npar Ten tweede werd Helios automatisch toegevoegd als trustee aan de verkiezing. Alle acties die een trustee moet uitvoeren, waren hiervoor geautomatiseerd. Na het uitvoeren van een aantal tests bleek dat de shares van deze trustee niet compatibel waren met deze van de anderen. Het grote verschil tussen beide is dat deze van Helios in Python en niet in JavaScript gegenereerd werden. Omdat de oorzaak van de fout niet gevonden kon worden, werd ervoor gekozen om Helios niet langer als trustee toe te voegen. Omdat alles hiervoor geautomatiseerd was, had deze toch niet zo'n belangrijke rol binnen het proces. Hij werd toegevoegd omdat dan een verkiezing zonder eigen trustees opgezet kon worden, wat leidt tot een eenvoudigere procedure.
 
-\npar Verder verliep deze test zeer goed. De voorzitter kon zonder hulp de volledige procedure (\ref{chap:procedure}) voor het aanmaken van een verkiezing met threshold encryptie doorlopen. Er werd verder geen formele analyse van de nieuwe interface gemaakt, aangezien deze slechts door een beperkt aantal mensen gebruikt zal worden. Ook de trustees hadden weinig moeite om hun geheime sleutels te bekomen. Ondanks de e-mails die verstuurd worden telkens een actie van hen nodig is, duurde het nog steeds even voordat dit in orde was.
+\npar Verder verliep deze test zeer goed. De voorzitter kon zonder hulp de volledige procedure (\ref{chap:procedure}) voor het aanmaken van een verkiezing met threshold encryptie doorlopen. Er werd verder geen formele analyse van de nieuwe interface gemaakt, aangezien deze slechts door een beperkt aantal mensen gebruikt zal worden. Ook de trustees hadden weinig moeite om hun geheime sleutels te bekomen. Ondanks de e-mails die verstuurd worden telkens een actie van hen nodig is, duurde het nog steeds even voordat dit deel van de procedure in orde was.
 
 \subsection{Stemhokje}
 \label{sec:kv:stemhokje}
@@ -93,9 +93,9 @@ Tijdens het testen kwamen geen functionele problemen naar voor met het stemhokje
   \label{fig:kv:voting_booth_flows}
 \end{figure}
 
-\npar Om dit proces te vereenvoudigen, werd de laatste stap van het stemhokje verwijderd. Na het bevestigen van zijn keuzes, wordt de kiezer onmiddellijk doorgestuurd naar het uploaden buiten het stemhokje. De audit van een stem werd verplaatst naar het scherm waar de keuzes bevestigd moet worden. Omdat de stem hiervoor reeds ge\"encrypteerd moet zijn, wordt dit nu gedaan na het beantwoorden van de laatste vraag. Het grootste nadeel hierbij is dat de encryptie opnieuw uitgevoerd moet worden wanneer de kiezer zijn stem wijzigt. In de huidige implementatie gaat dit echter al relatief vlot in moderne browsers. In de toekomst zal dit waarschijnlijk nog sneller kunnen door gebruik te maken van de Web Cryptography API (\ref{chap:web_cryptography_api}).
+\npar Om dit proces te vereenvoudigen, werd de laatste stap van het stemhokje verwijderd. Na het bevestigen van zijn keuzes, wordt de kiezer onmiddellijk doorgestuurd naar het uploaden buiten het stemhokje. De audit van een stem werd verplaatst naar het scherm waar de keuzes bevestigd moet worden. Omdat de stem hiervoor reeds ge\"encrypteerd moet zijn, wordt dit nu gedaan na het beantwoorden van de laatste vraag. Het grootste nadeel hierbij is dat de encryptie opnieuw uitgevoerd moet worden wanneer de kiezer zijn keuzes wijzigt. In de huidige implementatie gaat dit echter al relatief vlot in moderne browsers. In de toekomst zal dit waarschijnlijk nog sneller kunnen door gebruik te maken van de Web Cryptography API (\ref{chap:web_cryptography_api}).
 
-\npar Na het aanpassen van het stemhokje werd deze test herhaald om zeker te zijn dat alles nog correct werkte. Ook tijdens deze test kwamen nog vragen om enkele kleine dingen te wijzigen voor de echte verkiezing. Zo wordt er een waarschuwing gegeven wanneer de kiezer het laatste scherm sluit voordat hij zijn stem ge\"upload heeft.
+\npar Na het aanpassen van het stemhokje werd deze test herhaald om zeker te zijn dat alles nog correct werkte. Ook dan kwamen nog vragen om enkele kleine dingen te wijzigen voor de echte verkiezing. Zo wordt er een waarschuwing gegeven wanneer de kiezer het laatste scherm sluit voordat hij zijn stem ge\"upload heeft.
 
 \begin{figure}
   \center{\includegraphics[width=\linewidth]{kv/cast_confirm.png}}
@@ -109,7 +109,7 @@ Er is elk jaar een opkomst van ongeveer 25\% bij de kringverkiezing van VTK, wat
 
 \npar Deze stemmen werden gegenereerd door een server-side actie. De kiezers stemmen normaal via het stemhokje, maar dat proces is moeilijk te automatiseren. Het grote verschil is dat de encryptie in Python in plaats van JavaScript gebeurt.
 
-\npar Deze test werd niet op de server maar lokaal uitgevoerd. Het doel was hierbij te kijken of decryptie ook bij een groot aantal stemmen correct functioneerde. De belasting op de server van een groot aantal kiezers werd niet onderzocht omdat iedere kiezer slechts een beperkt aantal lichte requests uitvoert.
+\npar Deze test werd niet op de server maar lokaal uitgevoerd. Het doel was hierbij te kijken of de  decryptie ook bij een groot aantal stemmen correct functioneerde. De belasting op de server van een groot aantal kiezers werd niet onderzocht omdat iedere kiezer slechts een beperkt aantal lichte \textit{requests} uitvoert.
 
 \section{Stemdag}
 \label{sec:kv:stemdag}
