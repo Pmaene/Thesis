@@ -1,0 +1,36 @@
+\begin{tikzpicture}[node distance=2cm, auto]
+  \node [block] (create) {Create Election};
+  \node [block, below of=create] (trustees) {Add Trustees};
+  \node [block, below of=trustees] (freeze_trustees) {Freeze Trustee List};
+  \node [block, below of=freeze_trustees, node distance=2.5cm] (questions) {Add Questions};
+  
+  \node [block, below of=questions] (voters) {Manage Voters};
+  
+  \node [cloud, below of=voters] (wait_trustees) {Wait for Trustees};
+  \node [block, below of=wait_trustees] (freeze_ballot) {Freeze Ballot};
+  \node [cloud, below of=freeze_ballot] (voting) {Voting};
+  
+  \node [block, below of=voting] (tally) {Compute Encrypted Tally};
+  \node [cloud, below of=tally] (wait_df) {Wait for Decryption Factors};
+  \node [block, below of=wait_df] (release_tally) {Release Tally};
+  
+  \node [block, right of=wait_trustees, node distance=9cm] (communication_keys) {Generate Communication Keys};
+  \node [block, below of=communication_keys] (encrypted_shares) {Generate Encrypted Shares};
+  \node [block, below of=encrypted_shares] (upload_key) {Upload Key};
+  
+  \path [line] (create) -- (trustees);
+  \path [line] (trustees) -- (freeze_trustees);
+  \path [line, dashed] (freeze_trustees) -- node {Define Threshold Scheme} (questions);
+  \path [line] (questions) -- (voters);
+  \path [line] (voters) -- (wait_trustees);
+  \path [line] (wait_trustees) -- (freeze_ballot);
+  \path [line] (freeze_ballot) -- (voting);
+  \path [line] (voting) -- (tally);
+  \path [line] (tally) -- (wait_df);
+  \path [line] (wait_df) -- (release_tally);
+  
+  \path [line, dashed] (wait_trustees.east) -- (communication_keys.west);
+  \path [line, dashed] (upload_key.west) -- (wait_trustees.east);
+  \path [line, dashed] (communication_keys) -- (encrypted_shares);
+  \path [line, dashed] (encrypted_shares) -- (upload_key);
+\end{tikzpicture}
