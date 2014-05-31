@@ -13,7 +13,7 @@ Dit hoofdstuk geeft de procedure die in de aangepaste versie van Helios gevolgd 
 
 \subsection{Trustees}
 
-De trustees zijn de personen die verantwoordelijk zullen zijn voor het decrypteren van het resultaat. Aangezien zij een belangrijke rol spelen in het verkiezingsproces, is het belangrijk dat de beheerder vooraf vastlegt wie dit zal doen. Helios heeft ondersteuning voor threshold encryptie (\ref{sec:helios:threshold_encryptie}). Er moet dus ook nagedacht worden over het threshold schema: hoeveel trustees nodig zullen zijn om het resultaat van de verkiezing te decrypteren. Om een trustee aan te maken, moeten zijn naam en een geldig e-mailadres opgegeven worden.
+De trustees zijn de personen die verantwoordelijk zullen zijn voor het decrypteren van het resultaat. Aangezien zij een belangrijke rol spelen in het verkiezingsproces, is het belangrijk dat de beheerder vooraf vastlegt wie dit zal doen. Helios heeft ondersteuning voor threshold encryptie (\ref{sec:helios:threshold_encryptie}). Er moet dus ook nagedacht worden over het threshold schema: hoeveel trustees nodig zullen zijn om het resultaat van de verkiezing te decrypteren. Om een trustee aan te maken, moeten diens naam en een geldig e-mailadres opgegeven worden.
 
 \subsection{Vragen}
 \label{sec:proc:voorbereiding:vragen}
@@ -42,7 +42,7 @@ De eerste stap is het aanmaken van de verkiezing. Hier moet de basisinformatie v
 
 \npar Vervolgens kunnen een aantal belangrijke functies aan- of uitgezet worden. Wanneer aliassen gebruikt worden, dan worden de namen van de kiezers verborgen in het publieke ballot tracking center (\ref{sec:helios:ballot_tracking_center}). Het is ook mogelijk om de antwoorden in een random volgorde op het biljet te laten zetten. Een geheime verkiezing kan alleen bekeken worden door de geregistreerde kiezers. Deze moet dus gebruikt worden wanneer kieslijsten beschikbaar zijn. Hier moet ook aangegeven worden of threshold encryptie  (\ref{sec:helios:threshold_encryptie}) toegepast zal worden. Het is aangeraden dit aan te zetten, aangezien deze techniek resulteert in een robuuster decryptieproces.
 
-\npar Tot slot is het mogelijk om aan te geven wanneer de verkiezing moet starten en sluiten. Wanneer het resultaat niet onmiddellijk na het aflopen van de verkiezing gepubliceerd mag worden, kan hiervoor een alternatief tijdstip opgegeven worden.
+\npar Tot slot is het mogelijk om aan te geven wanneer de verkiezing moet starten en sluiten. Wanneer het resultaat niet onmiddellijk na de afloop van de verkiezing gepubliceerd mag worden, kan hiervoor een alternatief tijdstip opgegeven worden.
 
 \subsection{Trustees}
 \label{sec:proc:trustees}
@@ -71,11 +71,11 @@ Wanneer geen threshold encryptie gebruikt wordt, is dit proces eenvoudig. Van zo
 
 \begin{enumerate}
   \item De trustees moeten eerst de twee sleutelparen genereren die gebruikt zullen worden om hun onderlinge communicatie te beveiligen. Pas wanneer alle trustees deze stap uitgevoerd hebben, kan verdergegaan worden.
-  \item Elke trustee maakt vervolgens zijn shares aan en encrypteert deze voor de andere trustees. Hier moet opnieuw gewacht worden totdat alle trustees deze stap voltooid hebben.
-  \item De trustees kunnen nu de shares die ze van de andere gekregen hebben decrypteren en optellen. Zo bekomen ze het sleutelpaar dat later gebruikt zal kunnen worden om de encryptiesleutel van de verkiezing de reconstrueren.
+  \item Elke trustee maakt vervolgens zijn shares aan en encrypteert deze voor de andere trustees. Hier moet opnieuw gewacht worden tot alle trustees deze stap voltooid hebben.
+  \item De trustees kunnen nu de shares die ze van de anderen gekregen hebben, decrypteren en optellen. Zo bekomen ze het sleutelpaar dat later gebruikt zal kunnen worden om de encryptiesleutel van de verkiezing de reconstrueren.
 \end{enumerate}
 
-Pas wanneer alle trustees de volledige sleutelceremonie doorlopen hebben, kan de verkiezing door de beheerder bevroren worden. Omdat de verschillende trustees dus vaak op elkaar moeten wachten, krijgen ze een e-mail elke keer de volgende stap uit de ceremonie aangevat kan worden.
+Pas wanneer alle trustees de volledige sleutelceremonie doorlopen hebben, kan de verkiezing door de beheerder bevroren worden. Omdat de verschillende trustees dus vaak op elkaar moeten wachten, krijgen ze een e-mail wanneer de volgende stap uit de ceremonie aangevat kan worden.
 
 \subsection{Vragen}
 

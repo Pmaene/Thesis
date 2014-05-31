@@ -8,7 +8,7 @@
 
 Het Helios verkiezingssysteem is een open-source project dat geleid wordt door Ben Adida.\cite{adida_helios} Het laat toe om online voter-verifiable verkiezingen te organiseren. Zoals vermeld in \ref{sec:ls:online_stemmen} kunnen online verkiezingen alleen gebruikt worden in een context waar dwang geen grote bedreiging vormt. Dit systeem werd vorig jaar door Robbert Coeckelbergh uitgebreid met threshold encryptie en gerangschikte verkiezingen.\cite{coeckelbergh_toepassing_en_uitbreiding_van_het_helios_online_verkiezingssysteem} 
 
-\npar In dit hoofdstuk worden de belangrijkste cryptografische technieken uitgelegd die Helios gebruikt (\ref{sec:helios:cryptografische_technieken}). Daarna wordt de functionaliteit van de publieke delen van Helios besproken: het stemhokje (\ref{sec:helios:stemhokje}), het ballot tracking center (\ref{sec:helios:ballot_tracking_center}), de controleapplicatie (\ref{sec:helios:controleapplicatie}) en het stemhokje (\ref{sec:helios:stemhokje}).
+\npar In dit hoofdstuk worden de belangrijkste cryptografische technieken uitgelegd die Helios gebruikt (\ref{sec:helios:cryptografische_technieken}). Daarna wordt de functionaliteit van de publieke delen van Helios besproken: het stemhokje (\ref{sec:helios:stemhokje}), het ballot tracking center (\ref{sec:helios:ballot_tracking_center}) en de controleapplicatie (\ref{sec:helios:controleapplicatie}).
 
 \section{Cryptografische technieken}
 \label{sec:helios:cryptografische_technieken}
@@ -65,7 +65,7 @@ Bij homomorfe encryptie kan een specifieke operatie met de cijfertekst uitgevoer
 
 \npar Omwille van het discreet logaritme probleem is het terugvinden van $m$ echter niet meer zo vanzelfsprekend.\cite{menezes_vanstone_oorschot_handbook_of_applied_cryptography} Dit kan alleen gedaan worden door $g^m \mod{p}$ te berekenen voor elke $m$ en vervolgens te zoeken welke hetzelfde is als de klaartekst van de decryptie.
 
-\npar Scratch \& Vote (\ref{sec:ls:scratch_and_vote}) gebruikt multi-counters voor een stemming met meerdere kandidaten. Helios daarentegen encrypteert ieder mogelijk antwoord op een vraag afzonderlijk. Wanneer de optie gekozen wordt, is $m = 1$; anders wordt $m = 0$ gesteld.
+\npar Scratch \& Vote (\ref{sec:ls:scratch_and_vote}) gebruikt multi-counters voor een stemming met meerdere kandidaten. Helios daarentegen encrypteert ieder mogelijk antwoord op een vraag afzonderlijk. Wanneer het antwoord gekozen wordt, is $m = 1$; anders wordt $m = 0$ gesteld.
 
 \subsection{Threshold encryptie}
 \label{sec:helios:threshold_encryptie}
@@ -86,7 +86,7 @@ Oorspronkelijk kon de publieke sleutel voor de verkiezing alleen berekend worden
 
 \subsubsection{Secret Sharing}
 
-De methode die ge\"implementeerd werd is gebaseerd op Shamir's secret sharing.\cite{shamir_how_to_share_a_secret} Iedere trustee genereert eerst een veelterm van graad $k - 1$. Vervolgens stuurt hij elke trustee (ook zichzelf) een zogeheten \textit{share} van deze veelterm. Deze share is de waarde van de veelterm voor een punt $x$. Deze $x$-co\"ordinaat moet door iedereen gekend zijn, omdat het vereist is dat de shares die een trustee ontvangt van de anderen voor dezelfde waarde werden aangemaakt. Daarom wordt hiervoor binnen Helios het database ID van de trustee gebruikt. Dit is een uniek natuurlijk getal dat wordt opgehoogd telkens een nieuwe trustee aangemaakt wordt. Door \textit{zero-knowledge} bewijzen op te stellen, wordt heel dit proces verifiable. Hier wordt echter niet verder op ingegaan.
+De methode die ge\"implementeerd werd, is gebaseerd op Shamir's secret sharing.\cite{shamir_how_to_share_a_secret} Iedere trustee genereert eerst een veelterm van graad $k - 1$. Vervolgens stuurt hij elke trustee (ook zichzelf) een zogeheten \textit{share} van deze veelterm. Deze share is de waarde van de veelterm voor een punt $x$. Deze $x$-co\"ordinaat moet door iedereen gekend zijn, omdat het vereist is dat de shares die een trustee ontvangt van de anderen voor dezelfde waarde werden aangemaakt. Daarom wordt hiervoor binnen Helios het database ID van de trustee gebruikt. Dit is een uniek natuurlijk getal dat wordt opgehoogd telkens een nieuwe trustee aangemaakt wordt. Door \textit{zero-knowledge} bewijzen op te stellen, wordt heel dit proces verifiable. Hier wordt echter niet verder op ingegaan.
 
 \npar Vervolgens moet de trustee de $n$ shares die hij zo ontvangt, optellen. Zo bekomt hij de $y$-co\"ordinaat die hoort bij zijn ID op een nieuwe veelterm, die de som is van de $n$ veeltermen die door de trustees gegenereerd werden. Deze waarde kan hij nu gebruiken als zijn geheime sleutel ${sk}$. Omdat ElGamal gebruikt wordt als encryptieschema, wordt zijn publieke sleutel ${pk} = g^{sk} \mod{p}$.
 
@@ -106,7 +106,7 @@ De methode die ge\"implementeerd werd is gebaseerd op Shamir's secret sharing.\c
   PK & = g^{X} = \prod_{i=1}^k{{pk}_i^{\lambda_i(0)}} \mod{p}
 \end{align}
 
-\npar Om het resultaat te decrypteren moet de geheime sleutel voor de verkiezing gebruikt worden (\ref{eq:helios:threshold_encryption_secret_key}). Het grote voordeel van threshold encryptie is dat het hier niet belangrijk is van welke $k$ trustees de decryptiefactoren en bijhorende Lagrange-interpolatie gebruikt worden.
+\npar Om het resultaat te decrypteren, moet de geheime sleutel voor de verkiezing gebruikt worden (\ref{eq:helios:threshold_encryption_secret_key}). Het grote voordeel van threshold encryptie is dat het hier niet belangrijk is van welke $k$ trustees de decryptiefactoren en bijhorende Lagrange-interpolatie gebruikt worden.
 
 \begin{equation}
   \label{eq:helios:threshold_encryption_m}
@@ -116,7 +116,7 @@ De methode die ge\"implementeerd werd is gebaseerd op Shamir's secret sharing.\c
 \subsubsection{Communicatiesleutels}
 \label{sec:helios:communicatiesleutels}
 
-Voordat iedere trustee zijn gegenereerde shares doorstuurt naar de andere trustees, worden deze ge\"encrypteerd en getekend. Hiervoor wordt respectievelijk de publieke sleutel voor encryptie en voor tekenen van de andere trustee gebruikt. Dit geeft aanleiding tot twee nieuwe sleutelparen die de communicatiesleutels genoemd worden.
+Voordat iedere trustee zijn gegenereerde shares doorstuurt naar de andere trustees, worden deze ge\"encrypteerd en getekend. Hiervoor worden respectievelijk de publieke sleutel voor encryptie en de publieke sleutel voor tekenen van de andere trustee gebruikt. Dit geeft aanleiding tot twee nieuwe sleutelparen die de communicatiesleutels genoemd worden.
 
 \section{Toepassing in Helios}
 
@@ -129,7 +129,7 @@ Het stemhokje staat volledig los van de rest van het systeem. Het is een applica
 
 \npar Het encryptieproces is in JavaScript ge\"implementeerd en vindt dus volledig plaats in de browser van de kiezer. Zijn stem zal dan ook nooit onge\"encrypteerd op de server toekomen. Alle informatie over de verkiezing kan eenvoudig opgevraagd worden. De kiezer zou dus ook zijn eigen software kunnen gebruiken om zijn stem te encrypteren.
 
-\npar Aan elke ge\"encrypteerde stem wordt een \textit{smart ballot tracker} toegekend. Dit is een fingerprint die de stem identificeert (\ref{sec:sf:fingerprints}). Aan de hand daarvan kan de kiezer zijn stem volgen doorheen het systeem en kan hij verifi\"eren dat ze niet aangepast is.
+\npar Aan elke ge\"encrypteerde stem wordt een \textit{smart ballot tracker} toegekend. Dit is een fingerprint die de stem identificeert (\ref{sec:sf:fingerprints}). Aan de hand daarvan kan de kiezer zijn stem volgen doorheen het systeem en kan hij verifi\"eren of ze niet aangepast is.
 
 \subsection{Ballot Tracking Center}
 \label{sec:helios:ballot_tracking_center}
