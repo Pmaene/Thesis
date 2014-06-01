@@ -10,7 +10,7 @@ Deze thesis handelt over methoden voor online verkiezingen. Een interessant verw
 
 \npar In \ref{sec:ls:geschiedenis} wordt eerst een kort overzicht van de geschiedenis van stemsystemen gegeven. Vervolgens worden de voornaamste vereisten bekeken waaraan deze systemen moeten voldoen (\ref{sec:ls:vereisten}). Belangrijk hierbij is de definitie van een voter-verifiable systeem. Tot slot worden zowel systemen onderzocht die geen gebruik maken van cryptografische methoden (\ref{sec:ls:systemen_zonder_cryptografie}) als deze die daar wel op steunen (\ref{sec:ls:systemen_met_cryptografie}).
 
-\section{Geschiedenis~\cite{adida_advances_in_cryptographic_voting_systems}}
+\section[Geschiedenis]{Geschiedenis~\cite{adida_advances_in_cryptographic_voting_systems}}
 \label{sec:ls:geschiedenis}
 
 Onze samenleving heeft een rijke geschiedenis van stemprocedures, die teruggaat tot Athene in het oude Griekenland. Hier bracht men een negatieve stem uit op een potscherf. In deze paragraaf bekijken we kort enkele methodes die bepalend zijn geweest voor de manier waarop we vandaag werken.\cite{wiki:ostracon}
@@ -51,7 +51,7 @@ In een end-to-end verifiable voting systeem wordt niet nagegaan of de code van d
 
 In deze paragraaf worden enkele systemen besproken waarin geen gebruik gemaakt wordt van cryptografie. Open Counting (\ref{sec:ls:open_counting}) is een techniek waarbij alleen de telfase aangepast wordt. Floating receipts (\ref{sec:ls:floating_receipts}) kunnen de veiligheid van elk papieren stemsysteem sterk verbeteren. ThreeBallot (\ref{sec:ls:scratch_card}) en Scratch-Card zijn beiden voter-verifiable systemen die gebruik maken van papieren tickets. Twin (\ref{sec:ls:twin}) bouwt verder op floating receipts. Vooral ThreeBallot wordt in detail besproken omdat de belangrijkste concepten van papier-gebaseerde voter-verifiable verkiezingen hierin aan bod komen.
 
-\subsection{Open Counting~\cite{adi_schuler_frohlich_open_counting}}
+\subsection[Open Counting]{Open Counting~\cite{adi_schuler_frohlich_open_counting}}
 \label{sec:ls:open_counting}
 
 Open counting vertrekt van de systemen zoals we ze vandaag kennen, maar de stemmen worden op een nieuwe manier geteld. Het stembiljet is aangepast om eenvoudig optisch geteld te worden. De stemmen worden nog steeds geteld door ambtenaren. Elke stem wordt op een scherm getoond aan verschillende telstations, elk met hun eigen hardware die het getoonde biljet filmt en analyseert. Ieder station geeft op regelmatige tijdstippen zijn huidig totaal en wanneer er onenigheid is, wordt het gedisputeerde biljet gezocht en het probleem opgelost.
@@ -62,7 +62,7 @@ Open counting vertrekt van de systemen zoals we ze vandaag kennen, maar de stemm
 
 \npar Open counting is een relatief eenvoudige manier om de telprocedure transparanter te maken naar de kiezers. Elke stem moet echter afzonderlijk getoond worden, waardoor dit systeem alleen gebruikt kan worden wanneer het aantal biljetten beperkt is.
 
-\subsection{Floating Receipts~\cite{rivest_smith_three_voting_protocols}}
+\subsection[Floating Receipts]{Floating Receipts~\cite{rivest_smith_three_voting_protocols}}
 \label{sec:ls:floating_receipts}
 
 Floating receipts zijn een waardevolle toevoeging voor elk voter-verifiable papieren telsysteem. Een doos met stembiljetten wordt aan de uitgang van het stembureau geplaatst. De kiezer maakt bij het buitengaan een kopie van een stembiljet dat hij hieruit trekt, vooraleer hij zijn eigen exemplaar erbij legt. Hij neemt dus een willekeurig ticket mee dat niet het zijne is, maar hij kan dit ticket toch later gebruiken om te controleren of de stemprocedure correct verlopen is. Omdat de doos initieel leeg is, krijgen de eerste $T$ kiezers geen ticket mee naar huis. Hierbij is $T$ een constante die veel kleiner is dan het aantal kiezers, maar voldoende groot zodat $1/T$ klein is.
@@ -85,7 +85,7 @@ Twin is een voter-verifiable uitbreiding van het klassieke systeem dat gebruik m
 
 \npar Het voordeel bij dit systeem is dat het gekende biljet behouden blijft. De kiezer moet dus geen nieuwe regels volgen bij het invullen ervan. Het is echter wel belangrijk dat de kiezers de procedure volgen. Dit moet duidelijk aangegeven worden door de bijzitters.
 
-\subsection{ThreeBallot~\cite{rivest_threeballot}}
+\subsection[ThreeBallot]{ThreeBallot~\cite{rivest_threeballot}}
 \label{sec:ls:threeballot}
 
 ThreeBallot is een stemsysteem dat ontworpen werd door Ronald Rivest in 2006. Het systeem maakt gebruik van een speciaal stembiljet dat bestaat uit drie identieke delen. Er wordt gestemd door het invullen van rijen en het deponeren van kolommen. Door alle stembiljetten samen met een lijst van de kiezers op een publieke website (het bulletin-board) te plaatsen, wordt het systeem end-to-end verifiable.
@@ -97,7 +97,7 @@ De drie delen waaruit het stembiljet bestaat, kunnen ofwel op één blad geprint
 
 \begin{figure}
   \center{\includegraphics[width=0.5\linewidth]{ls/threeballot.png}}
-  \caption{Multi-Ballot\cite{rivest_threeballot}}
+  \caption[Multi-Ballot]{Multi-Ballot~\cite{rivest_threeballot}}
   \label{fig:ls:threeballot}
 \end{figure}
 
@@ -149,7 +149,7 @@ Scratch-Card\cite{randell_ryan_voting_technologies_and_trust} maakt gebruik van 
 
 \begin{figure}
   \center{\includegraphics[width=0.5\linewidth]{ls/scratch-card.png}}
-  \caption{Scratch-Card biljet\cite{randell_ryan_voting_technologies_and_trust}}
+  \caption[Scratch-Card biljet]{Scratch-Card biljet~\cite{randell_ryan_voting_technologies_and_trust}}
   \label{fig:ls:scratch-card}
 \end{figure}
 
@@ -170,7 +170,7 @@ De systemen in de vorige sectie maakten geen gebruik van ingewikkelde cryptograf
 
 \npar Bij Secret-Ballot Receipts (\ref{sec:ls:secret_ballot_receipts}) wordt optische cryptografie toegepast om de stem op het ticket te encrypteren. Scratch \& Vote (\ref{sec:ls:scratch_and_vote}) bouwt verder op de principes die geïntroduceerd werden bij Scratch-Card (\ref{sec:ls:scratch_card}).
 
-\subsection{Secret-Ballot Receipts~\cite{chaum_secret_ballot}}
+\subsection[Secret-Ballot Receipts]{Secret-Ballot Receipts~\cite{chaum_secret_ballot}}
 \label{sec:ls:secret_ballot_receipts}
 
 Secret-Ballot Receipts werden in 2004 gepubliceerd door David Chaum. De kiezer ziet zijn stem geprint worden in het stemhokje en kan zijn ticket gebruiken om nadien te controleren of ze correct meegeteld is. Omdat zijn keuzes ge\"encrypteerd worden tijdens het printproces, kan hij het ticket niet gebruiken om te bewijzen hoe hij gestemd heeft. Bovendien is het niet nodig om vertrouwde hardware te gebruiken aangezien de publieke code op relatief eenvoudige systemen gedraaid kan worden.
@@ -181,13 +181,13 @@ Secret-Ballot Receipts werden in 2004 gepubliceerd door David Chaum. De kiezer z
 
 \begin{figure}
   \center{\includegraphics[width=0.5\linewidth]{ls/secret-ballot_vote.png}}
-  \caption{Strookje met optische ge\"encrypteerde stem\cite{chaum_secret_ballot}}
+  \caption[Strookje met optische ge\"encrypteerde stem]{Strookje met optische ge\"encrypteerde stem~\cite{chaum_secret_ballot}}
   \label{fig:ls:secret_ballot_vote}
 \end{figure}
 
 \begin{figure}
   \center{\includegraphics[width=0.5\linewidth]{ls/secret-ballot_receipt.png}}
-  \caption{Laatste stukje ticket met beide kanten nog samen\cite{chaum_secret_ballot}}
+  \caption[Laatste stukje ticket met beide kanten nog samen]{Laatste stukje ticket met beide kanten nog samen~\cite{chaum_secret_ballot}}
   \label{fig:ls:secret_ballot_receipt}
 \end{figure}
 
@@ -201,7 +201,7 @@ Secret-Ballot Receipts werden in 2004 gepubliceerd door David Chaum. De kiezer z
 
 \npar Aangezien alles digitaal opgeslagen wordt, kan de telling ook voor grote verkiezingen effici\"ent uitgevoerd worden. Een bijkomend voordeel is dat kiezers via een computer moeten stemmen, wat ze vaak reeds gewoon zijn. Hoewel de software op eenvoudige machines kan draaien, zijn er nog steeds speciale printers nodig om de tickets af te drukken. 
 
-\subsection{Scratch \& Vote~\cite{adida_rivest_scratch_and_vote}}
+\subsection[Scratch \& Vote]{Scratch \& Vote~\cite{adida_rivest_scratch_and_vote}}
 \label{sec:ls:scratch_and_vote}
 
 Scratch \& Vote werd in 2006 ontworpen door Ben Adida en Ronald L. Rivest. Het is een variatie op Scratch-Card (\ref{sec:ls:scratch_card}) waarbij gebruik gemaakt wordt van homomorfe cryptografie en zero-knowledge correctheidsbewijzen. Iedereen kan het uiteindelijke resultaat verifi\"eren en alleen de cijfertekst van de uitslag moet gedecrypteerd worden door de verantwoordelijken van de verkiezing. Het grote verschil met Scratch-Card (\ref{sec:ls:scratch_card}) is dat er niet langer met een RIN/CIN gewerkt moet worden, net omdat de stemmen nu ge\"encrypteerd worden.
@@ -212,7 +212,7 @@ Scratch \& Vote werd in 2006 ontworpen door Ben Adida en Ronald L. Rivest. Het i
 
 \begin{figure}
   \center{\includegraphics[width=0.5\linewidth]{ls/scratch_and_vote_ballot.png}}
-  \caption{Scratch \& Vote biljet\cite{adida_rivest_scratch_and_vote}}
+  \caption[Scratch \& Vote biljet]{Scratch \& Vote biljet~\cite{adida_rivest_scratch_and_vote}}
   \label{fig:ls:scratch_and_vote_ballot}
 \end{figure}
 
@@ -224,7 +224,7 @@ Scratch \& Vote werd in 2006 ontworpen door Ben Adida en Ronald L. Rivest. Het i
 
 \begin{figure}[H]
   \center{\includegraphics[width=0.5\linewidth]{ls/scratch_and_vote_encryption.png}}
-  \caption{Scratch \& Vote encryptie\cite{adida_rivest_scratch_and_vote}}
+  \caption[Scratch \& Vote encryptie]{Scratch \& Vote encryptie~\cite{adida_rivest_scratch_and_vote}}
   \label{fig:ls:scratch_and_vote_encryption}
 \end{figure}
 
@@ -234,7 +234,7 @@ Scratch \& Vote werd in 2006 ontworpen door Ben Adida en Ronald L. Rivest. Het i
 
 \npar Zowel naar de kiezer als de bijzitters toe is dit systeem zeer gebruiksvriendelijk. Het standaard stembiljet is slechts licht gewijzigd en de kiezer zou er dus vertrouwd mee moeten zijn. Ook de stemprocedure is niet radicaal gewijzigd. Aangezien de telprocedure ook geautomatiseerd is, kan deze methode ook voor grote verkiezingen gebruikt worden.
 
-\section{Online stemmen~\cite{adida_helios}}
+\section[Online stemmen]{Online stemmen~\cite{adida_helios}}
 \label{sec:ls:online_stemmen}
 
 Een mogelijkheid om mensen van op afstand te laten stemmen, is door een online verkiezingssysteem te gebruiken. Studies hebben aangetoond dat technologie\"en die het eenvoudiger maken om te stemmen de opkomst kunnen verbeteren.\cite{news:guardian_shaking_up_voter_apathy_with_it} Het voornaamste probleem bij dit soort systemen is dat de omgeving niet langer gecontroleerd kan worden door de organisator van de verkiezing. Bij een online verkiezing kan de kiezer gedwongen worden om op een bepaalde manier te stemmen, terwijl de aanvaller over zijn schouder meekijkt. Het is voor de kiezer ook eenvoudiger zijn stem te verkopen aangezien hij op dezelfde manier kan bewijzen aan de koper dat hij correct gestemd heeft.
