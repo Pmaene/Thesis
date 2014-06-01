@@ -27,22 +27,22 @@ Helios uses ElGamal to encrypt the ballots, which is an algorithm not supported 
 \par The performance of the NfWebCrypto library is compared to that of JSBN and Leemon, two JavaScript big number libraries.\cite{site:wu_rsa_and_ecc_in_javascript}\cite{site:baird_big_integers_in_javascript} A \np{1024}-bit exponent is used, which is the size of the keys used by Helios. The calculation is repeated \np{1000} times for each library. The results are shown in \ref{fig:wc:modular_exponentiation} and \ref{tab:wc:modular_exponentiation}. The first exponentiation of the NfWebCrypto plugin took a lot longer, which explains the large variance. The NfWebCrypto plugin result was not correct. The communication with the plugin has to be \texttt{base64} encoded, which resulted in conversion issues between \cplusplus and JavaScript.
 
 \begin{figure}
-  \center{\includegraphics[width=\linewidth]{modular_exponentiation.eps}}
+  \centering
+  \includegraphics[width=\linewidth]{modular_exponentiation.eps}
   \caption{Modular Exponentiation}
   \label{fig:wc:modular_exponentiation}
 \end{figure}
 
 \begin{table}
-  \begin{center}
-    \caption{Modular Exponentiation}
-    \label{tab:wc:modular_exponentiation}
-    \begin{tabular}{r | c c}
-      Library & Gemiddelde [ms] & Variantie [ms] \\ \hline
-      JSBN & 33,9250 & 26,5019  \\
-      Leemon & 99,1470 & 15,0785 \\
-      NfWebCrypto & 16,0670 & 470,6251
-    \end{tabular}
-  \end{center}
+  \centering
+  \caption{Modular Exponentiation}
+  \label{tab:wc:modular_exponentiation}
+  \begin{tabular}{r | c c}
+    Library & Average [ms] & Variance [ms] \\ \hline
+    JSBN & 33.9250 & 26.5019  \\
+    Leemon & 99.1470 & 15.0785 \\
+    NfWebCrypto & 16.0670 & 470.6251
+  \end{tabular}
 \end{table}
 
 \subsection{RSA}
@@ -52,19 +52,19 @@ RSA was used to make a second comparison between JSBN and NfWebCrypto. This ciph
 \par JSBN has specific functions for RSA encryption and decryption. The Web Cryptography API supports the \texttt{RSAES-PKCS1-v1\_5} algorithm.\cite{rfc3447} Although public keys in the SPKI format can be imported, this proved difficult. Therefore, a new key was generated for each encryption. The time required for this is not taken into account. The results are shown in \ref{fig:wc:rsa} and \ref{tab:wc:rsa}. Surprisingly, the JavaScript implementation is faster than the NfWebCrypto plugin. This is caused by communication overhead.
 
 \begin{figure}
-  \center{\includegraphics[width=\linewidth]{rsa.eps}}
+  \centering
+  \includegraphics[width=\linewidth]{rsa.eps}
   \caption{RSA}
   \label{fig:wc:rsa}
 \end{figure}
 
 \begin{table}
-  \begin{center}
-    \caption{RSA}
-    \label{tab:wc:rsa}
-    \begin{tabular}{r | c c}
-      Library & Gemiddelde [ms] & Variantie [ms] \\ \hline
-      JSBN & 0,6310 & 0,3632  \\
-      NfWebCrypto & 2,1360 & 0,4219
-    \end{tabular}
-  \end{center}
+  \centering
+  \caption{RSA}
+  \label{tab:wc:rsa}
+  \begin{tabular}{r | c c}
+    Library & Average [ms] & Variance [ms] \\ \hline
+    JSBN & 0.6310 & 0.3632  \\
+    NfWebCrypto & 2.1360 & 0.4219
+  \end{tabular}
 \end{table}

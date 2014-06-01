@@ -44,7 +44,8 @@ Op verschillende plaatsen binnen Helios worden fingerprints gebruikt. Dit zijn b
 \npar Een belangrijke voorwaarde voor het stemhokje is dat er geen netwerk requests meer mogen gebeuren voordat de stem volledig ge\"encrypteerd is.\cite{adida_helios} In het aangepaste stemhokje wordt het biljet ge\"encrypteerd nadat alle keuzes gemaakt zijn. Hoewel deze voorwaarde dus voldaan is wanneer de fingerprint getoond wordt, moet de voorkeur gegeven worden aan een systeem dat de figureren lokaal kan genereren. Indien een JavaScript implementatie niet mogelijk is, moeten ze gedownload worden van de server over een beveiligde verbinding.
 
 \begin{figure}
-  \center{\includegraphics[width=0.33\linewidth]{sf/robohash.png}}
+  \centering
+  \includegraphics[width=0.33\linewidth]{sf/robohash.png}
   \caption{RoboHash van de fingerprint in \ref{fig:kv:cast_confirm}}
   \label{fig:sf:robohash}
 \end{figure}
@@ -98,22 +99,22 @@ Helios maakt gebruik van ElGamal (\ref{sec:helios:elgamal}) om de stemmen te enc
 \npar Het resultaat dat bekomen wordt na het uitvoeren van \texttt{exportKey} is wel niet correct. In de communicatie met de plugin moeten de parameters \texttt{base64} ge\"encodeerd worden. Vermoedelijk loopt hier nog iets mis met de conversie in \cplusplus en JavaScript.
 
 \begin{figure}
-  \center{\includegraphics[width=\linewidth]{wc/modular_exponentiation.eps}}
+  \centering
+  \includegraphics[width=\linewidth]{wc/modular_exponentiation.eps}
   \caption{Modulaire exponentiatie}
   \label{fig:wc:modular_exponentiation}
 \end{figure}
 
 \begin{table}
-  \begin{center}
-    \caption{Modulaire exponentiatie}
-    \label{tab:wc:modular_exponentiation}
-    \begin{tabular}{r | c c}
-      Library & Gemiddelde [ms] & Variantie [ms] \\ \hline
-      JSBN & 33,9250 & 26,5019  \\
-      Leemon & 99,1470 & 15,0785 \\
-      NfWebCrypto & 16,0670 & 470,6251
-    \end{tabular}
-  \end{center}
+  \centering
+  \caption{Modulaire exponentiatie}
+  \label{tab:wc:modular_exponentiation}
+  \begin{tabular}{r | c c}
+    Library & Gemiddelde [ms] & Variantie [ms] \\ \hline
+    JSBN & 33,9250 & 26,5019  \\
+    Leemon & 99,1470 & 15,0785 \\
+    NfWebCrypto & 16,0670 & 470,6251
+  \end{tabular}
 \end{table}
 
 \subsubsection{RSA}
@@ -132,21 +133,21 @@ Een tweede vergelijking werd gemaakt tussen JSBN en NfWebCrypto voor een RSA enc
 \npar Ook hier werd de encryptie \np{1000} keer uitgevoerd. De resultaten van deze test zijn terug te vinden in \ref{fig:wc:rsa} en \ref{tab:wc:rsa}. We zien dat de JavaScript implementatie voor deze veel kortere exponent sneller is dan de berekening door de NfWebCrypto plugin. De communicatie met de plugin weegt hier duidelijk zwaarder door.
 
 \begin{figure}
-  \center{\includegraphics[width=\linewidth]{wc/rsa.eps}}
+  \centering
+  \includegraphics[width=\linewidth]{wc/rsa.eps}
   \caption{RSA}
   \label{fig:wc:rsa}
 \end{figure}
 
 \begin{table}
-  \begin{center}
-    \caption{RSA}
-    \label{tab:wc:rsa}
-    \begin{tabular}{r | c c}
-      Library & Gemiddelde [ms] & Variantie [ms] \\ \hline
-      JSBN & 0,6310 & 0,3632  \\
-      NfWebCrypto & 2,1360 & 0,4219
-    \end{tabular}
-  \end{center}
+  \centering
+  \caption{RSA}
+  \label{tab:wc:rsa}
+  \begin{tabular}{r | c c}
+    Library & Gemiddelde [ms] & Variantie [ms] \\ \hline
+    JSBN & 0,6310 & 0,3632  \\
+    NfWebCrypto & 2,1360 & 0,4219
+  \end{tabular}
 \end{table}
 
 \section{Besluit}
