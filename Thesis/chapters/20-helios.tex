@@ -22,7 +22,7 @@ Op het vlak van cryptografische technieken leunt Helios het dichtste aan bij Scr
 
 Het ElGamal \textit{cryptosystem} is een asymmetrisch schema dat gebaseerd is op het Diffie-Hellman protocol. Dit betekent dat een sleutelpaar met zowel een geheime als publieke sleutel nodig is. De publieke sleutel wordt gebruikt om de klaartekst te encrypteren. De decryptie kan alleen uitgevoerd worden met de geheime sleutel.
 
-\npar Er wordt gewerkt in de groep $\mathbb{Z}_p$ waar $g$ de generator is. De geheime sleutel $sk$ wordt willekeurig gekozen binnen $\mathbb{Z}_{p-1}$. De publieke sleutel is dan ${pk} = g^{sk} \mod{p}$. De cijfertekst van een ElGamal encryptie bestaat uit twee delen: $c_1$ (\ref{eq:helios:elgamal_c1}) en $c_2$ (\ref{eq:helios:elgamal_c2}). In deze vergelijkingen is $m$ de klaartekst en $r$ opnieuw een willekeurig getal binnen $\mathbb{Z}_{p-1}$. $c_1$ en $r$ hebben respectievelijk de functie van tijdelijke publieke en private sleutel.\cite{preneel_cryptography_and_network_security}
+\npar Er wordt gewerkt in de groep $\mathbb{Z}_p$ waar $g$ de generator is. Hierbij is $p$ een veilig priemgetal dat deelbaar is door het priemgetal $q$. De geheime sleutel $sk$ wordt willekeurig gekozen binnen $\mathbb{Z}_{p-1}$. De publieke sleutel is dan ${pk} = g^{sk} \mod{p}$. De cijfertekst van een ElGamal encryptie bestaat uit twee delen: $c_1$ (\ref{eq:helios:elgamal_c1}) en $c_2$ (\ref{eq:helios:elgamal_c2}). In deze vergelijkingen is $m$ de klaartekst en $r$ opnieuw een willekeurig getal binnen $\mathbb{Z}_{p-1}$. $c_1$ en $r$ hebben respectievelijk de functie van tijdelijke publieke en private sleutel.\cite{preneel_cryptography_and_network_security}
 
 \begin{align}
   \label{eq:helios:elgamal_c1} 

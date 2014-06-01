@@ -16,11 +16,11 @@
   
   \node [block, right of=wait_trustees, node distance=9cm] (communication_keys) {Generate Communication Keys};
   \node [block, below of=communication_keys] (encrypted_shares) {Generate Encrypted Shares};
-  \node [block, below of=encrypted_shares] (upload_key) {Upload Key};
+  \node [block, below of=encrypted_shares] (upload_key) {Upload Keys};
   
   \path [line] (create) -- (trustees);
   \path [line] (trustees) -- (freeze_trustees);
-  \path [line, dashed] (freeze_trustees) -- node {Define Threshold Scheme} (questions);
+  \path [line] (freeze_trustees) -- node {Define Threshold Scheme} (questions);
   \path [line] (questions) -- (voters);
   \path [line] (voters) -- (wait_trustees);
   \path [line] (wait_trustees) -- (freeze_ballot);
@@ -31,6 +31,6 @@
   
   \path [line, dashed] (wait_trustees.east) -- (communication_keys.west);
   \path [line, dashed] (upload_key.west) -- (wait_trustees.east);
-  \path [line, dashed] (communication_keys) -- (encrypted_shares);
   \path [line, dashed] (encrypted_shares) -- (upload_key);
+  \path [line, dashed] (communication_keys) -- (encrypted_shares);
 \end{tikzpicture}

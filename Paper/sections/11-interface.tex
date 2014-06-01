@@ -12,7 +12,7 @@ Most of our work on the interface to improve the usability concentrated on two b
 
 The original interface integrated the administrative functions in the election view. This made it hard for the election admin to keep track of his progress in the procedure. It was therefore decided to move this functionality to a separate page. It shows the entire procedure and clearly indicates which steps have been completed. Since the actions lead away from this page, a bar was put on top of all pages where the progress is indicated as well.
 
-\par The workflow for an election with threshold encryption is thoroughly changed. Originally, a public bulletin board was available where anybody could upload a pair of communication keys. The admin could only add trustees to an election from a list of people who had done this. This meant that he had to wait for all trustees to do this before he could define the threshold scheme and continue setting up the election. This required a secondary path of communication, outside of Helios. Because the bulletin board was publicly accessible, an attacker could impersonate a trustee. Unless he has access to the trustee's e-mail account, he would not receive the URL to the trustee dashboard. In that case, he would only have been able to stall the key ceremony.
+\par The workflow for an election with threshold encryption is thoroughly changed. Originally, a public bulletin board was available, where anybody could upload a pair of communication keys. The admin could only add trustees to an election from a list of people who had done this. This meant that he had to wait for all trustees to do this before he could define the threshold scheme and continue setting up the election. This required a secondary path of communication, outside Helios. Because the bulletin board was publicly accessible, an attacker could impersonate a trustee. Unless he had access to the trustee's e-mail account, he would not receive the URL to the trustee dashboard. In that case, he would only have been able to stall the key ceremony.
 
 \par The bulletin board was removed completely and trustees are immediately added to the election. They then receive an e-mail with a unique link to their trustee dashboard where they generate their communication keys.
 
@@ -26,7 +26,7 @@ The trustees will perform all actions of the key ceremony in the trustee dashboa
 
 \par They are used in the trustee dashboard to offer the secret keys as a download. The details of the key are now hidden from the trustee. When his key is needed, he has to select this file in an input element. The file's contents are then read to the text area. These adjustments make it a lot easier for the trustee to manage his keys.
 
-\par In addition to using this API, the two secret keys of the communication pair are now stored in a single file. Since the distinction between two was only confusing to the trustee, this simplifies the key management for him.
+\par In addition to using this API, the two secret keys of the communication pair are now stored in a single file. Since the distinction between the two was only confusing to the trustee, this simplifies the key management for him.
 
 \subsection{Voting Booth}
 

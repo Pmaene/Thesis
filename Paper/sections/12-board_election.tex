@@ -16,9 +16,9 @@ A committee of at least five people from the current board watches over the elec
 
 %TODO Herschrijven
 
-\par There are two types of candidates: the first can be officially elected as the next board, the second participates for fun. Both should be separate questions on the ballot. If there is only one official team, voters have to be able to vote pro, contra or abstention. If there are two teams, at most one should be selectable. If there are more than two, voters should express their appreciation for each team. However, this last case is so rare that it's not a strong requirement for the system. In the election of the fun team, it should be possible to select all of them at most.
+\par There are two types of candidates: the first can be officially elected as the next board, the second participates for fun. Both should be separate questions on the ballot. If there is only one official team, voters have to be able to vote pro or contra, or to abstain. If there are two teams, at most one should be selectable. If there are more than two, voters should express their appreciation for each team. However, this last case is so rare that it's not a strong requirement for the system. In the election of the fun team, it should be possible to select all of them at most.
 
-\par A list of all eligible voters can be requested from the university. These lists have the student's first name, last name and university identification number. Only these voters should be able to access the election. Therefore, an authentication system should be available. Finally, the participation percentage should be shown on the result page.
+\par A list of all eligible voters can be requested from the university. These lists bear the student's first name, last name and university identification number. Only these voters should be able to access the election. Therefore, an authentication system should be available. Finally, the participation percentage should be shown on the result page.
 
 \subsection{Specific Adjustments}
 
@@ -26,7 +26,7 @@ Shibboleth is the single sign-on system used by the KU Leuven. Students have an 
 
 \par The list of voters was provided by an external organisation. This included the student's identification number and name, but the e-mail address was missing. This is needed by Helios to send a confirmation message after casting a ballot. A voter's e-mail address is retrieved from the Shibboleth response and added to the account to fix this.
 
-\par Helios did not yet show the election's participation percentage. This is the percentage of eligible voters that cast their vote. The system also immediately published the election result. They are traditionally announced to the public at midnight, but the election administrator does need earlier access to them. These two smaller features were therefore implemented as well.
+\par Helios did not yet show the election's participation percentage. This is the percentage of eligible voters that cast their vote. The system also immediately published the election result. These are traditionally announced to the public at midnight, but the election administrator does need earlier access. These two smaller features were therefore implemented as well.
 
 \subsection{Tests}
 \label{sec:be:tests}
@@ -60,6 +60,6 @@ After installing the system on a server, it was thoroughly tested by the current
 
 \subsection{Election Day}
 
-The election itself took place on May 8\textsuperscript{th} 2014 from 7 am till 8 pm. During this time, 768 people cast a ballot which isn't significantly less than during previous years. This is a strong indication that the voting process was clear. No complaints were received from these voters either.
+The election itself took place on May 8\textsuperscript{th} 2014 from 7 am till 8 pm. During this time, 768 people cast a ballot, which isn't significantly less than during previous years. This is a strong indication that the voting process was clear. No complaints were received from these voters either.
 
 \par Since everything had been tested in advance, no problems were encountered during the voting or when decrypting the result.
