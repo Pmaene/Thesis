@@ -15,7 +15,7 @@ Het Helios verkiezingssysteem is een open-source project dat geleid wordt door B
 
 Op het vlak van cryptografische technieken leunt Helios het dichtste aan bij Scratch \& Vote (\ref{sec:ls:scratch_and_vote}). Ook in Helios worden de stemmen ge\"encrypteerd. Na het aflopen van de stemming worden alle biljetten homomorf opgeteld. Tot slot wordt het resultaat gedecrypteerd. Alle ge\"encrypteerde stemmen worden ook online gepubliceerd, zodat iedereen kan verifi\"eren of het resultaat correct is.
 
-\npar Het belangrijkste verschil is dat ElGamal gebruikt wordt in plaats van Paillier voor de homomorfe encryptie van de stemmen (\ref{sec:helios:elgamal} en \ref{sec:helios:homomorfe_encryptie}). Tot slot wordt de methode besproken waarop de sleutel verdeeld wordt tussen de trustees (\ref{sec:helios:threshold_encryptie}).
+\npar Het belangrijkste verschil is dat ElGamal gebruikt wordt in plaats van Paillier voor de homomorfe encryptie van de stemmen (\ref{sec:helios:elgamal} en \ref{sec:helios:homomorfe_encryptie}). Tot slot wordt de methode besproken waarop de sleutel verdeeld wordt tussen de \textit{trustees} (\ref{sec:helios:threshold_encryptie}).
 
 \subsection[ElGamal]{ElGamal~\cite{elgamal_elgamal}}
 \label{sec:helios:elgamal}
@@ -70,7 +70,7 @@ Bij homomorfe encryptie kan een specifieke operatie met de cijfertekst uitgevoer
 \subsection{Threshold encryptie}
 \label{sec:helios:threshold_encryptie}
 
-Oorspronkelijk kon de publieke sleutel voor de verkiezing alleen berekend worden als het product van de afzonderlijke publieke sleutels van de \textit{trustees} (\ref{eq:helios:elgamal_c2_homomorphic_trustees}). Voor de decryptie moet iedere trustee zijn factor uit de noemer van \ref{eq:helios:elgamal_m_homomorphic_trustees} berekenen. Deze factoren worden in Helios de decryptiefactoren genoemd.
+Oorspronkelijk kon de publieke sleutel voor de verkiezing alleen berekend worden als het product van de afzonderlijke publieke sleutels van de trustees (\ref{eq:helios:elgamal_c2_homomorphic_trustees}). Voor de decryptie moet iedere trustee zijn factor uit de noemer van \ref{eq:helios:elgamal_m_homomorphic_trustees} berekenen. Deze factoren worden in Helios de decryptiefactoren genoemd.
 
 \begin{equation}
   \label{eq:helios:elgamal_c2_homomorphic_trustees}
