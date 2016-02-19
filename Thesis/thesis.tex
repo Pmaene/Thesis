@@ -3,7 +3,7 @@
 % @author Pieter Maene <pieter.maene@student.kuleuven.be>
 %
 
-\documentclass[master=elt,masteroption=im,inputenc=utf8]{kulemt}
+\documentclass[master=elt,masteroption=im,inputenc=utf8]{kulemt/kulemt}
 \setup{title={Online verkiezingen in de praktijk: verbetering en toepassing van het Helios verkiezingssysteem},
   author={Pieter Maene},
   promotor={Prof. dr. ir. Bart Preneel},
@@ -26,7 +26,6 @@
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{color}
 \usepackage{float}
-\usepackage{kulemtx}
 \usepackage{multirow,bigstrut}
 \usepackage[np,autolanguage]{numprint}
 \usepackage{pdfpages}
@@ -35,6 +34,9 @@
 
 % The "colorlinks" option should be removed for the print version
 \usepackage[pdfusetitle,plainpages=false]{hyperref}
+
+% kulemt package with additional styles
+\usepackage{./kulemt/kulemtx}
 
 % Remove the "%" on the next line to print the cover
 %\setup{coverpageonly}
